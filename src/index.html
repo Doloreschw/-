@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一物千景</title>
+<meta name="description" content="AI 场景种草策展台：把一件商品拆成具体的人和瞬间，用星图找到还没被写烂的种草场景。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brand" id="brand" type="button" aria-label="回到首页">
+    <span class="brand-mark">一物千景</span>
+    <span class="brand-sub">SCENE ATLAS FOR SELLERS</span>
+  </button>
+  <ol class="steps" aria-label="步骤">
+    <li><button type="button" id="step-home" data-go="home"><span class="n">01</span><span class="t">输入商品</span></button></li>
+    <li><button type="button" id="step-map" data-go="map" disabled><span class="n">02</span><span class="t">场景星图</span></button></li>
+    <li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">03</span><span class="t">策展清单</span></button></li>
+  </ol>
+</header>
+
+<main>
+  <!-- 01 首页 -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">AI 场景种草策展台 · 给中小商家</p>
+        <h1>一物<span class="dot">·</span>千景</h1>
+        <p class="lede">一件货，一千个被需要的瞬间。</p>
+        <p class="body">用户在小红书上用场景说话，商家却习惯用品类词思考。输入一件商品，看见它会在哪些人、哪些瞬间被需要；在星图上找到需求高、还没被写烂的场景，再决定这周发什么笔记。</p>
+      </div>
+      <form class="form-card" id="product-form" novalidate>
+        <h2>拆解你的商品</h2>
+        <div class="field">
+          <label for="f-name">商品名称</label>
+          <input id="f-name" name="name" maxlength="20" placeholder="例如：手冲咖啡壶">
+        </div>
+        <div class="field">
+          <label for="f-point">一句话卖点</label>
+          <input id="f-point" name="point" maxlength="40" placeholder="例如：细口出水，新手也能控流">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-price">价格区间</label>
+            <select id="f-price" name="price">
+              <option>百元以下</option>
+              <option selected>100-300元</option>
+              <option>300-800元</option>
+              <option>800元以上</option>
+            </select>
+          </div>
+          <div class="field" style="align-content:end">
+            <button class="btn btn-primary" type="submit" id="f-submit">拆解场景</button>
+          </div>
+        </div>
+        <p class="form-error" id="f-error" hidden>请先填写商品名称。</p>
+      </form>
+    </div>
+
+    <div class="section-head">
+      <h2>或者从一个示例开始</h2>
+      <p>每个示例预置 12 个场景，点开即可体验完整流程</p>
+    </div>
+    <div class="samples" id="samples"></div>
+
+    <div class="method">
+      <div><span class="k">STEP 01 · 拆人群</span><h3>把品类词拆成“人 × 瞬间”</h3><p>不是“保温杯推荐”，而是“凌晨两点赶稿的插画师”。</p></div>
+      <div><span class="k">STEP 02 · 看星图</span><h3>需求强度 × 内容拥挤度</h3><p>右下角是需求高、写的人少的机会区，越亮的星人群越大。</p></div>
+      <div><span class="k">STEP 03 · 排策划</span><h3>挑场景，排成一周的发布计划</h3><p>每个场景附搜索词、标题、封面构图和发布建议。</p></div>
+    </div>
+  </section>
+
+  <!-- 02 星图 -->
+  <section class="view" id="view-map" hidden>
+    <div class="map-head">
+      <div>
+        <p class="eyebrow" id="map-eyebrow">场景星图</p>
+        <h1 id="map-title"></h1>
+        <p class="tagline" id="map-tagline"></p>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+    <p class="notice" id="custom-notice" hidden>这是根据你的输入，用场景库组合生成的示意结果，可作为策划起点。示例商品的内容经过人工精修，更能代表正式效果。</p>
+
+    <div class="toolbar">
+      <div class="chips" id="circle-chips" aria-label="按兴趣圈层筛选"></div>
+      <div class="seg" role="group" aria-label="视图">
+        <button type="button" id="mode-chart" aria-pressed="true">星图</button>
+        <button type="button" id="mode-list" aria-pressed="false">列表</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap">
+      <svg id="chart" viewBox="0 0 1000 620" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
+      <div class="tooltip" id="tooltip" hidden></div>
+    </div>
+    <div class="scene-list" id="scene-list" hidden></div>
+    <div class="legend-note">
+      <span>● 星越大越亮，人群规模越大（示意）</span>
+      <span>同色细线连接同一兴趣圈层</span>
+      <span>红色虚线框为机会区：需求强度 ≥ 55，拥挤度 ≤ 45</span>
+    </div>
+  </section>
+
+  <!-- 03 策划 -->
+  <section class="view" id="view-plan" hidden>
+    <div class="plan-actions">
+      <button class="btn btn-sm" type="button" id="plan-back">← 回到星图继续挑选</button>
+      <button class="btn btn-primary btn-sm" type="button" id="plan-copy">复制全部文案</button>
+    </div>
+    <div id="plan-root"></div>
+  </section>
+
+  <footer class="site-foot">图中人群规模与拥挤度为示意数据，正式版本可接入平台搜索与笔记数据。 · 一物千景 Demo</footer>
+</main>
+
+<div class="tray" id="tray" hidden>
+  <div class="picked" id="tray-picked"></div>
+  <button class="btn btn-primary" type="button" id="tray-go">生成本周策划</button>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-title" role="dialog">
+  <div class="drawer-head">
+    <span class="cat" id="d-cat"></span>
+    <button class="icon-btn" type="button" id="d-close" aria-label="关闭">×</button>
+  </div>
+  <div class="drawer-body" id="d-body"></div>
+  <div class="drawer-foot">
+    <button class="btn" type="button" id="d-prev">上一个</button>
+    <button class="btn btn-primary" type="button" id="d-pick">加入策展清单</button>
+    <button class="btn" type="button" id="d-next">下一个</button>
+  </div>
+</aside>
+
+<div class="loading" id="loading" hidden>
+  <div class="loading-inner">
+    <div class="orbit"></div>
+    <p class="line">正在识别人群…</p>
+    <p class="line">正在定位瞬间…</p>
+    <p class="line">正在评估内容拥挤度…</p>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

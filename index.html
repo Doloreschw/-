@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一物千景</title>
+<meta name="description" content="AI 场景种草策展台：把一件商品拆成具体的人和瞬间，用星图找到还没被写烂的种草场景。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<style>
+/* 一物千景 · 观星台式布局：夜空星图为主画面，策划结果是一张“星表”纸页
+ * 单一深色主题（刻意为之），所有颜色来自下列 token */
+:root {
+  color-scheme: dark;
+  --ink: #0d1530;          /* 夜空底色，偏蓝的墨色 */
+  --ink-2: #141e3d;        /* 抬升面板 */
+  --ink-3: #1d2a52;        /* 边框、分隔 */
+  --chalk: #e9e6dc;        /* 主文字，粉笔白 */
+  --chalk-dim: #a3a8bd;    /* 次要文字 */
+  --chalk-faint: #6b7394;  /* 刻度、注释 */
+  --rose: #ff2442;         /* 小红书红：只用于机会区与主按钮 */
+  --rose-soft: rgba(255, 36, 66, 0.14);
+  --paper: #f3efe4;        /* 星表纸页 */
+  --paper-ink: #1b1f2e;
+  --paper-rule: #d6cfbd;
+
+  --f-display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --f-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --r: 6px;
+  --gutter: clamp(16px, 4vw, 40px);
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--f-body);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--rose); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+/* ── 顶栏 ── */
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 12px var(--gutter);
+  background: rgba(13, 21, 48, 0.86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--ink-3);
+}
+.brand { display: flex; align-items: baseline; gap: 10px; background: none; border: 0; padding: 0; }
+.brand-mark { font-family: var(--f-display); font-weight: 900; font-size: 20px; letter-spacing: 0.08em; }
+.brand-sub { font-family: var(--f-mono); font-size: 11px; color: var(--chalk-faint); letter-spacing: 0.12em; }
+.steps { display: flex; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.steps button {
+  display: flex; align-items: center; gap: 6px;
+  background: none; border: 1px solid transparent; border-radius: 99px;
+  padding: 4px 12px; font-size: 13px; color: var(--chalk-faint);
+}
+.steps button .n { font-family: var(--f-mono); font-size: 11px; }
+.steps button[aria-current="step"] { color: var(--chalk); border-color: var(--ink-3); background: var(--ink-2); }
+.steps button:disabled { cursor: default; opacity: 0.45; }
+
+main { padding-inline: var(--gutter); }
+.view { padding-block: 32px 120px; max-width: 1240px; margin: 0 auto; }
+
+/* ── 01 首页 ── */
+.hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: clamp(24px, 5vw, 72px); align-items: end; padding-block: 24px 40px; }
+.eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; color: var(--chalk-faint); text-transform: uppercase; }
+.hero h1 {
+  font-family: var(--f-display); font-weight: 900;
+  font-size: clamp(56px, 11vw, 132px); line-height: 0.95; letter-spacing: 0.04em;
+  margin-top: 14px;
+}
+.hero h1 .dot { color: var(--rose); }
+.hero .lede { font-family: var(--f-display); font-size: clamp(18px, 2.2vw, 24px); margin-top: 20px; color: var(--chalk); }
+.hero .body { color: var(--chalk-dim); margin-top: 14px; max-width: 34em; }
+
+.form-card {
+  background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r);
+  padding: 22px; display: grid; gap: 14px;
+}
+.form-card h2 { font-size: 15px; font-weight: 700; }
+.field { display: grid; gap: 6px; }
+.field label { font-size: 12px; color: var(--chalk-dim); letter-spacing: 0.04em; }
+.field input, .field select {
+  width: 100%; background: var(--ink); border: 1px solid var(--ink-3); border-radius: 4px;
+  padding: 10px 12px; font-size: 15px;
+}
+.field input::placeholder { color: var(--chalk-faint); }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-error { color: #ff8fa3; font-size: 13px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  border-radius: 99px; padding: 10px 20px; font-size: 14px; font-weight: 500;
+  border: 1px solid var(--ink-3); background: var(--ink-2); color: var(--chalk);
+  transition: background .2s, border-color .2s, transform .2s;
+}
+.btn:hover { border-color: var(--chalk-faint); }
+.btn-primary { background: var(--rose); border-color: var(--rose); color: #fff; }
+.btn-primary:hover { background: #ff3d57; border-color: #ff3d57; }
+.btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.btn-sm { padding: 6px 14px; font-size: 13px; }
+
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-block: 24px 16px; }
+.section-head h2 { font-family: var(--f-display); font-size: 22px; font-weight: 600; }
+.section-head p { color: var(--chalk-faint); font-size: 13px; }
+
+.samples { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.sample {
+  text-align: left; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r);
+  padding: 0; overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color .2s, transform .2s;
+}
+.sample:hover { border-color: var(--chalk-faint); transform: translateY(-2px); }
+.sample svg { display: block; width: 100%; height: auto; background: var(--ink); }
+.sample .meta { padding: 14px 16px 16px; display: grid; gap: 4px; }
+.sample .name { font-family: var(--f-display); font-size: 18px; font-weight: 600; }
+.sample .tag { font-size: 12px; color: var(--chalk-dim); }
+.sample .stat { font-family: var(--f-mono); font-size: 11px; color: var(--chalk-faint); margin-top: 6px; letter-spacing: 0.04em; }
+.sample .stat b { color: var(--rose); font-weight: 500; }
+
+.method { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 48px; border-top: 1px solid var(--ink-3); }
+.method > div { padding: 20px 20px 0 0; display: grid; gap: 6px; align-content: start; }
+.method .k { font-family: var(--f-mono); font-size: 11px; color: var(--chalk-faint); letter-spacing: 0.12em; }
+.method h3 { font-size: 15px; }
+.method p { color: var(--chalk-dim); font-size: 13px; }
+
+/* ── 加载 ── */
+.loading { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; background: rgba(13, 21, 48, 0.94); }
+.loading-inner { display: grid; gap: 14px; text-align: center; }
+.loading .orbit { width: 64px; height: 64px; margin: 0 auto 8px; border-radius: 50%; border: 1px solid var(--ink-3); position: relative; animation: spin 2.4s linear infinite; }
+.loading .orbit::after { content: ""; position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; margin-left: -4px; border-radius: 50%; background: var(--rose); box-shadow: 0 0 12px var(--rose); }
+.loading .line { font-size: 14px; color: var(--chalk-faint); transition: color .3s; }
+.loading .line.on { color: var(--chalk); }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── 02 星图 ── */
+.map-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.map-head h1 { font-family: var(--f-display); font-size: clamp(28px, 4vw, 40px); font-weight: 900; letter-spacing: 0.03em; }
+.map-head .tagline { color: var(--chalk-dim); font-size: 14px; margin-top: 6px; }
+.readout { display: flex; gap: 24px; flex-wrap: wrap; }
+.readout div { display: grid; }
+.readout .v { font-family: var(--f-mono); font-size: 26px; font-variant-numeric: tabular-nums; line-height: 1.1; }
+.readout .v.rose { color: var(--rose); }
+.readout .l { font-size: 12px; color: var(--chalk-faint); }
+.notice { margin-top: 16px; font-size: 13px; color: var(--chalk-dim); border-left: 2px solid var(--rose); padding: 4px 0 4px 12px; }
+
+.toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-block: 24px 12px; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  border: 1px solid var(--ink-3); background: transparent; border-radius: 99px;
+  padding: 3px 10px; font-size: 12px; color: var(--chalk-dim);
+}
+.chip i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.chip[aria-pressed="false"] { opacity: 0.4; }
+.seg { display: inline-flex; border: 1px solid var(--ink-3); border-radius: 99px; padding: 2px; }
+.seg button { background: none; border: 0; border-radius: 99px; padding: 4px 12px; font-size: 12px; color: var(--chalk-faint); }
+.seg button[aria-pressed="true"] { background: var(--ink-3); color: var(--chalk); }
+
+.chart-wrap { position: relative; background: radial-gradient(ellipse at 70% 80%, #182452 0%, var(--ink) 70%); border: 1px solid var(--ink-3); border-radius: var(--r); overflow: hidden; }
+.chart-wrap svg { display: block; width: 100%; height: auto; max-height: max(380px, calc(100vh - 360px)); }
+.axis-label { fill: var(--chalk-faint); font-family: var(--f-body); font-size: 13px; }
+.tick { fill: var(--chalk-faint); font-family: var(--f-mono); font-size: 11px; }
+.grid-line { stroke: var(--ink-3); stroke-width: 1; }
+.quad-label { fill: var(--chalk-faint); font-size: 13px; font-family: var(--f-display); letter-spacing: 0.1em; }
+.quad-label.opp { fill: var(--rose); }
+.opp-zone { fill: var(--rose-soft); stroke: var(--rose); stroke-dasharray: 4 6; stroke-opacity: 0.6; }
+.const-line { fill: none; stroke-width: 1; stroke-opacity: 0.22; stroke-dasharray: 2 4; }
+.star { cursor: pointer; }
+.star .halo { opacity: 0.22; transform-box: fill-box; transform-origin: center; animation: breathe 3.6s ease-in-out infinite; }
+.star .core { stroke: var(--ink); stroke-width: 1.5; }
+.star .num { fill: var(--chalk-dim); font-family: var(--f-mono); font-size: 11px; pointer-events: none; }
+.star:hover .core, .star:focus .core, .star.active .core { stroke: var(--chalk); stroke-width: 2; }
+.star.picked .ring { opacity: 1; }
+.star .ring { fill: none; stroke: var(--rose); stroke-width: 1.5; opacity: 0; }
+.star.dim { opacity: 0.12; pointer-events: none; }
+.star:focus { outline: none; }
+@keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.18; } 50% { transform: scale(1.35); opacity: 0.32; } }
+
+.tooltip {
+  position: absolute; pointer-events: none; z-index: 5; max-width: 240px;
+  background: var(--paper); color: var(--paper-ink); border-radius: 4px; padding: 8px 10px; font-size: 13px; line-height: 1.5;
+  box-shadow: 0 6px 24px rgba(0,0,0,.4);
+}
+.tooltip b { display: block; font-size: 13px; }
+.tooltip span { color: #5a5f73; font-size: 12px; }
+
+.legend-note { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; font-size: 12px; color: var(--chalk-faint); }
+
+.scene-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.scene-card {
+  text-align: left; background: var(--ink-2); border: 1px solid var(--ink-3); border-radius: var(--r);
+  padding: 14px 16px; display: grid; gap: 8px; align-content: start;
+}
+.scene-card:hover { border-color: var(--chalk-faint); }
+.scene-card .top { display: flex; justify-content: space-between; gap: 8px; font-family: var(--f-mono); font-size: 11px; color: var(--chalk-faint); }
+.scene-card h3 { font-size: 15px; font-weight: 700; }
+.scene-card .bars { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; align-items: center; font-size: 12px; color: var(--chalk-faint); }
+.bar { height: 4px; border-radius: 2px; background: var(--ink-3); position: relative; overflow: hidden; }
+.bar > i { position: absolute; inset: 0 auto 0 0; border-radius: 2px; background: var(--chalk-dim); }
+.bar.crowd > i { background: linear-gradient(90deg, #7fdccb, #f2b880 55%, var(--rose)); }
+.badge-opp { font-family: var(--f-body); color: var(--rose); font-size: 11px; border: 1px solid var(--rose); border-radius: 99px; padding: 0 6px; }
+
+/* ── 场景抽屉 ── */
+.scrim { position: fixed; inset: 0; z-index: 30; background: rgba(5, 9, 22, 0.55); opacity: 0; pointer-events: none; transition: opacity .25s; }
+.scrim.open { opacity: 1; pointer-events: auto; }
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0; z-index: 31; width: min(500px, 100%);
+  background: var(--ink-2); border-left: 1px solid var(--ink-3);
+  transform: translateX(100%); transition: transform .3s cubic-bezier(.2,.8,.2,1);
+  display: flex; flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.drawer.open { transform: none; }
+.drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--ink-3); }
+.drawer-head .cat { font-family: var(--f-mono); font-size: 12px; color: var(--chalk-faint); letter-spacing: 0.08em; }
+.icon-btn { background: none; border: 1px solid var(--ink-3); border-radius: 99px; width: 32px; height: 32px; display: grid; place-items: center; font-size: 16px; color: var(--chalk-dim); }
+.drawer-body { flex: 1; overflow-y: auto; padding: 20px 20px 24px; display: grid; gap: 22px; align-content: start; }
+.drawer-foot { padding: 14px 20px calc(14px + env(safe-area-inset-bottom, 0px)); border-top: 1px solid var(--ink-3); display: flex; gap: 10px; }
+.drawer-foot .btn { flex: 1; }
+.d-title { font-family: var(--f-display); font-size: 26px; font-weight: 900; line-height: 1.25; }
+.d-circle { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--chalk-dim); margin-top: 8px; }
+.d-circle i { width: 8px; height: 8px; border-radius: 50%; }
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; background: var(--ink-3); border: 1px solid var(--ink-3); border-radius: 4px; overflow: hidden; }
+.metrics div { background: var(--ink-2); padding: 10px 12px; display: grid; gap: 2px; }
+.metrics .v { font-family: var(--f-mono); font-size: 18px; font-variant-numeric: tabular-nums; }
+.metrics .l { font-size: 11px; color: var(--chalk-faint); }
+.moment { font-family: var(--f-display); font-size: 17px; line-height: 1.75; color: var(--chalk); border-left: 2px solid var(--chalk-faint); padding-left: 14px; }
+.block h4 { margin: 0 0 8px; font-size: 12px; font-weight: 500; color: var(--chalk-faint); letter-spacing: 0.12em; }
+.block ul { margin: 0; padding-left: 1.1em; display: grid; gap: 4px; color: var(--chalk-dim); }
+.searchbars { display: grid; gap: 6px; }
+.searchbar { display: flex; align-items: center; gap: 8px; background: var(--ink); border: 1px solid var(--ink-3); border-radius: 99px; padding: 6px 14px; font-size: 14px; }
+.searchbar::before { content: ""; width: 10px; height: 10px; border: 1.5px solid var(--chalk-faint); border-radius: 50%; flex: none; }
+.radar { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: center; background: var(--ink); border: 1px solid var(--ink-3); border-radius: 4px; padding: 14px; }
+.radar svg { width: 76px; height: 76px; }
+.radar .verdict { font-size: 14px; font-weight: 700; }
+.radar ul { margin-top: 6px; font-size: 13px; }
+.titles { display: grid; gap: 6px; }
+.title-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--ink-3); }
+.title-row span { min-width: 0; }
+.title-row button { flex: none; background: none; border: 1px solid var(--ink-3); border-radius: 99px; padding: 2px 10px; font-size: 12px; color: var(--chalk-faint); }
+.cover-wrap { display: grid; grid-template-columns: 132px 1fr; gap: 16px; align-items: start; }
+.cover { position: relative; aspect-ratio: 3 / 4; max-width: 100%; background: var(--paper); border-radius: 4px; overflow: hidden; }
+.cover .subject { position: absolute; border: 1.5px dashed #8c8573; border-radius: 3px; display: grid; place-items: center; font-size: 10px; color: #6e685a; text-align: center; padding: 4px; line-height: 1.3; }
+.cover .text-band { position: absolute; left: 8px; right: 8px; background: var(--rose); color: #fff; font-size: 10px; font-weight: 700; line-height: 1.35; padding: 5px 6px; border-radius: 2px; }
+.cover-note { font-size: 13px; color: var(--chalk-dim); display: grid; gap: 6px; }
+.cover-note b { color: var(--chalk); font-weight: 500; }
+
+/* ── 底部策展托盘 ── */
+.tray {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 15;
+  padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom, 0px));
+  background: rgba(20, 30, 61, 0.94); backdrop-filter: blur(10px);
+  border-top: 1px solid var(--ink-3);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.tray .picked { display: flex; align-items: center; gap: 8px; min-width: 0; flex-wrap: wrap; font-size: 13px; color: var(--chalk-dim); }
+.tray .slot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid var(--ink-3); }
+.tray .slot.on { background: var(--rose); border-color: var(--rose); box-shadow: 0 0 8px var(--rose); }
+
+/* ── 03 星表策划 ── */
+.plan-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.sheet {
+  background: var(--paper); color: var(--paper-ink); border-radius: 4px;
+  padding: clamp(20px, 5vw, 56px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+.sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: end; border-bottom: 2px solid var(--paper-ink); padding-bottom: 18px; }
+.sheet-head .kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.16em; color: #6e685a; }
+.sheet-head h1 { font-family: var(--f-display); font-weight: 900; font-size: clamp(30px, 5vw, 52px); line-height: 1.1; margin-top: 8px; }
+.sheet-head .sub { margin-top: 8px; color: #4a4e5e; }
+.sheet-head .issue { text-align: right; font-family: var(--f-mono); font-size: 12px; color: #6e685a; line-height: 1.7; }
+.sheet-intro { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-bottom: 1px solid var(--paper-rule); }
+.sheet-intro div { padding: 14px 16px 14px 0; }
+.sheet-intro .v { font-family: var(--f-mono); font-size: 22px; font-variant-numeric: tabular-nums; }
+.sheet-intro .l { font-size: 12px; color: #6e685a; }
+.entry { display: grid; grid-template-columns: 88px minmax(0, 1fr) minmax(0, 0.8fr); gap: 24px; padding-block: 24px; border-bottom: 1px solid var(--paper-rule); }
+.entry .day { font-family: var(--f-display); font-weight: 900; font-size: 30px; line-height: 1; }
+.entry .day small { display: block; font-family: var(--f-mono); font-weight: 400; font-size: 11px; color: #6e685a; margin-top: 8px; letter-spacing: 0.06em; }
+.entry h3 { font-family: var(--f-display); font-size: 21px; font-weight: 900; line-height: 1.35; }
+.entry .who { font-size: 13px; color: #5a5f73; margin-top: 4px; }
+.entry .headline { margin-top: 12px; font-size: 16px; font-weight: 700; }
+.entry .headline::before { content: "首选标题　"; font-weight: 400; font-size: 12px; color: #6e685a; }
+.entry .kw { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.entry .kw span { font-size: 12px; border: 1px solid var(--paper-rule); border-radius: 99px; padding: 1px 9px; }
+.entry dl { margin: 0; display: grid; gap: 10px; font-size: 13px; }
+.entry dt { font-size: 11px; color: #6e685a; letter-spacing: 0.1em; }
+.entry dd { margin: 2px 0 0; }
+.entry .tag-opp { color: var(--rose); font-weight: 700; }
+.sheet-foot { margin-top: 20px; font-size: 12px; color: #6e685a; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.empty { text-align: center; padding: 60px 20px; color: var(--chalk-dim); display: grid; gap: 14px; justify-items: center; }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 60;
+  transform: translateX(-50%) translateY(20px); opacity: 0; transition: all .25s;
+  background: var(--paper); color: var(--paper-ink); padding: 8px 16px; border-radius: 99px; font-size: 13px; pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+.site-foot { max-width: 1240px; margin: 0 auto; padding: 0 0 100px; font-size: 12px; color: var(--chalk-faint); border-top: 1px solid var(--ink-3); padding-top: 14px; }
+
+/* ── 响应式 ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; align-items: start; }
+  .samples { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .entry { grid-template-columns: 64px minmax(0, 1fr); }
+  .entry dl { grid-column: 2; }
+}
+@media (max-width: 560px) {
+  .steps .t { display: none; }
+  .brand-sub { display: none; }
+  .method { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .samples { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .sample .tag { display: none; }
+  .cover-wrap { grid-template-columns: 110px 1fr; }
+  .sheet-head { grid-template-columns: 1fr; }
+  .sheet-head .issue { text-align: left; }
+  .sheet-intro { grid-template-columns: 1fr 1fr 1fr; }
+  .entry { grid-template-columns: 1fr; gap: 12px; }
+  .entry dl { grid-column: auto; }
+  .readout .v { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brand" id="brand" type="button" aria-label="回到首页">
+    <span class="brand-mark">一物千景</span>
+    <span class="brand-sub">SCENE ATLAS FOR SELLERS</span>
+  </button>
+  <ol class="steps" aria-label="步骤">
+    <li><button type="button" id="step-home" data-go="home"><span class="n">01</span><span class="t">输入商品</span></button></li>
+    <li><button type="button" id="step-map" data-go="map" disabled><span class="n">02</span><span class="t">场景星图</span></button></li>
+    <li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">03</span><span class="t">策展清单</span></button></li>
+  </ol>
+</header>
+
+<main>
+  <!-- 01 首页 -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">AI 场景种草策展台 · 给中小商家</p>
+        <h1>一物<span class="dot">·</span>千景</h1>
+        <p class="lede">一件货，一千个被需要的瞬间。</p>
+        <p class="body">用户在小红书上用场景说话，商家却习惯用品类词思考。输入一件商品，看见它会在哪些人、哪些瞬间被需要；在星图上找到需求高、还没被写烂的场景，再决定这周发什么笔记。</p>
+      </div>
+      <form class="form-card" id="product-form" novalidate>
+        <h2>拆解你的商品</h2>
+        <div class="field">
+          <label for="f-name">商品名称</label>
+          <input id="f-name" name="name" maxlength="20" placeholder="例如：手冲咖啡壶">
+        </div>
+        <div class="field">
+          <label for="f-point">一句话卖点</label>
+          <input id="f-point" name="point" maxlength="40" placeholder="例如：细口出水，新手也能控流">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="f-price">价格区间</label>
+            <select id="f-price" name="price">
+              <option>百元以下</option>
+              <option selected>100-300元</option>
+              <option>300-800元</option>
+              <option>800元以上</option>
+            </select>
+          </div>
+          <div class="field" style="align-content:end">
+            <button class="btn btn-primary" type="submit" id="f-submit">拆解场景</button>
+          </div>
+        </div>
+        <p class="form-error" id="f-error" hidden>请先填写商品名称。</p>
+      </form>
+    </div>
+
+    <div class="section-head">
+      <h2>或者从一个示例开始</h2>
+      <p>每个示例预置 12 个场景，点开即可体验完整流程</p>
+    </div>
+    <div class="samples" id="samples"></div>
+
+    <div class="method">
+      <div><span class="k">STEP 01 · 拆人群</span><h3>把品类词拆成“人 × 瞬间”</h3><p>不是“保温杯推荐”，而是“凌晨两点赶稿的插画师”。</p></div>
+      <div><span class="k">STEP 02 · 看星图</span><h3>需求强度 × 内容拥挤度</h3><p>右下角是需求高、写的人少的机会区，越亮的星人群越大。</p></div>
+      <div><span class="k">STEP 03 · 排策划</span><h3>挑场景，排成一周的发布计划</h3><p>每个场景附搜索词、标题、封面构图和发布建议。</p></div>
+    </div>
+  </section>
+
+  <!-- 02 星图 -->
+  <section class="view" id="view-map" hidden>
+    <div class="map-head">
+      <div>
+        <p class="eyebrow" id="map-eyebrow">场景星图</p>
+        <h1 id="map-title"></h1>
+        <p class="tagline" id="map-tagline"></p>
+      </div>
+      <div class="readout" id="readout"></div>
+    </div>
+    <p class="notice" id="custom-notice" hidden>这是根据你的输入，用场景库组合生成的示意结果，可作为策划起点。示例商品的内容经过人工精修，更能代表正式效果。</p>
+
+    <div class="toolbar">
+      <div class="chips" id="circle-chips" aria-label="按兴趣圈层筛选"></div>
+      <div class="seg" role="group" aria-label="视图">
+        <button type="button" id="mode-chart" aria-pressed="true">星图</button>
+        <button type="button" id="mode-list" aria-pressed="false">列表</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap" id="chart-wrap">
+      <svg id="chart" viewBox="0 0 1000 620" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
+      <div class="tooltip" id="tooltip" hidden></div>
+    </div>
+    <div class="scene-list" id="scene-list" hidden></div>
+    <div class="legend-note">
+      <span>● 星越大越亮，人群规模越大（示意）</span>
+      <span>同色细线连接同一兴趣圈层</span>
+      <span>红色虚线框为机会区：需求强度 ≥ 55，拥挤度 ≤ 45</span>
+    </div>
+  </section>
+
+  <!-- 03 策划 -->
+  <section class="view" id="view-plan" hidden>
+    <div class="plan-actions">
+      <button class="btn btn-sm" type="button" id="plan-back">← 回到星图继续挑选</button>
+      <button class="btn btn-primary btn-sm" type="button" id="plan-copy">复制全部文案</button>
+    </div>
+    <div id="plan-root"></div>
+  </section>
+
+  <footer class="site-foot">图中人群规模与拥挤度为示意数据，正式版本可接入平台搜索与笔记数据。 · 一物千景 Demo</footer>
+</main>
+
+<div class="tray" id="tray" hidden>
+  <div class="picked" id="tray-picked"></div>
+  <button class="btn btn-primary" type="button" id="tray-go">生成本周策划</button>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-title" role="dialog">
+  <div class="drawer-head">
+    <span class="cat" id="d-cat"></span>
+    <button class="icon-btn" type="button" id="d-close" aria-label="关闭">×</button>
+  </div>
+  <div class="drawer-body" id="d-body"></div>
+  <div class="drawer-foot">
+    <button class="btn" type="button" id="d-prev">上一个</button>
+    <button class="btn btn-primary" type="button" id="d-pick">加入策展清单</button>
+    <button class="btn" type="button" id="d-next">下一个</button>
+  </div>
+</aside>
+
+<div class="loading" id="loading" hidden>
+  <div class="loading-inner">
+    <div class="orbit"></div>
+    <p class="line">正在识别人群…</p>
+    <p class="line">正在定位瞬间…</p>
+    <p class="line">正在评估内容拥挤度…</p>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* 一物千景 · 场景数据
+ * x = 需求强度 (0-100)，y = 内容拥挤度 (0-100，越高越红海)，size = 人群规模 (1-3，示意)
+ * 所有数值均为示意数据，正式版本可接入平台搜索与笔记数据。
+ */
+window.CIRCLES = {
+  work:   { name: "职场通勤", color: "#F2B880" },
+  campus: { name: "校园考试", color: "#8EC5FF" },
+  family: { name: "亲子家庭", color: "#B9E4A7" },
+  outdoor:{ name: "户外山野", color: "#7FDCCB" },
+  solo:   { name: "独居自处", color: "#D7B8FF" },
+  gift:   { name: "送礼心意", color: "#FF8FA3" }
+};
+
+window.PRODUCTS = [
+/* ───────────── 01 便携保温杯 ───────────── */
+{
+  id: "cup", name: "便携保温杯", tagline: "316不锈钢 · 12小时保温 · 一键开盖", price: "100-300元", emoji: "◐",
+  scenes: [
+    { id:"cup1", title:"凌晨两点还在赶稿的插画师", circle:"work", x:78, y:34, size:2,
+      moment:"数位板旁的热水早凉了，她懒得起身去烧，只想伸手就有一口温的，别打断刚找到的手感。",
+      pains:["一起身灵感就断","普通杯子放桌边容易被手肘碰倒"],
+      searches:["熬夜画画 桌面好物","自由职业 工作台 必备","不用起身的喝水神器"],
+      hooks:["单手开盖不用放下笔","防漏倒了也不怕弄湿画稿"],
+      worn:["“打工人续命好物”泛泛合集","开箱+倒热水测温度的固定套路"],
+      titles:["凌晨2点的画桌上，终于不用再起身烧水了","自由插画师的桌面，只留这一个杯子","赶稿人请收下：一口热水不打断手感"],
+      cover:{ layout:"left", text:"top", subject:"深夜台灯下的数位板，杯子在手边", note:"暖光+屏幕冷光对比，杯子只占画面1/4，让“深夜工作”先被看见" } },
+    { id:"cup2", title:"冬天送娃上学的早高峰妈妈", circle:"family", x:82, y:74, size:3,
+      moment:"7点10分，书包、早餐、外套都塞好了，最后才想起孩子的水杯，还得是到中午都温的。",
+      pains:["孩子嫌重、总忘带回家","早上手忙脚乱没空灌水"],
+      searches:["儿童保温杯 上学","小学生 保温杯 轻便","孩子不爱喝水怎么办"],
+      hooks:["轻到孩子愿意自己背","杯身可以写名字防丢"],
+      worn:["儿童杯安全材质科普","“宝妈必囤”清单"],
+      titles:["孩子终于愿意自己背水杯了，原因是轻","早上7点的妈妈，只需要这一个动作","上学第一周，老师夸了他的水杯"],
+      cover:{ layout:"center", text:"bottom", subject:"小手握着杯子走进校门的背影", note:"不拍产品正面，拍孩子的背影，标题放底部" } },
+    { id:"cup3", title:"考研自习室里一坐十二小时", circle:"campus", x:86, y:58, size:3,
+      moment:"图书馆不让带开水壶，接一次热水要排队五分钟，她算过，一天能省出半小时。",
+      pains:["反复接水打断专注","自习室安静，开盖声太响会尴尬"],
+      searches:["考研 自习室 必备","图书馆 静音 水杯","考研党 一天的装备"],
+      hooks:["一杯够喝一上午","开盖静音不打扰别人"],
+      worn:["考研文具全家福","励志打卡类摆拍"],
+      titles:["考研第187天，桌上终于少跑一趟开水房","图书馆静音党：开盖不吵到隔壁","一杯撑过一上午，考研人的小确幸"],
+      cover:{ layout:"top-left", text:"top", subject:"堆满真题的书桌一角，杯子立在书堆边", note:"俯拍桌面，用书和笔记营造真实感，避免过度摆拍" } },
+    { id:"cup4", title:"冬季登顶后想喝口热水的徒步者", circle:"outdoor", x:70, y:48, size:2,
+      moment:"零下三度的山顶，风很大，打开杯子那一下冒出的白气，是整趟路最值得拍的画面。",
+      pains:["冷天普通杯两小时就凉","戴手套拧不开杯盖"],
+      searches:["冬季徒步 装备","登山 保温杯 推荐","户外 戴手套 好拧"],
+      hooks:["山顶倒出来还冒热气","大盖子戴手套也能拧"],
+      worn:["户外装备硬核参数对比","专业品牌测评"],
+      titles:["零下3度的山顶，那一口热水是真的","冬天爬山，我只多带了这一样","登顶照里最出片的，居然是一缕白气"],
+      cover:{ layout:"center", text:"top", subject:"山顶背景里杯口升起的白气", note:"逆光拍白气，产品是道具，情绪是主角" } },
+    { id:"cup5", title:"不想在会议室拿“保温杯”的职场新人", circle:"work", x:64, y:82, size:3,
+      moment:"她想喝热水，但不想被叫“老干部”，开会时放在桌上的东西，也是一种自我介绍。",
+      pains:["保温杯总和“中年”挂钩","颜值杯往往保温差"],
+      searches:["好看的保温杯","通勤 保温杯 高级感","不土的保温杯"],
+      hooks:["看起来像随行杯","配色能和电脑包搭"],
+      worn:["“颜值天花板”保温杯合集","ins风桌面布景"],
+      titles:["会议桌上没人认出它是保温杯","职场第一年，我把老干部杯换掉了","通勤包里的高级感，从一个杯子开始"],
+      cover:{ layout:"left", text:"bottom", subject:"会议桌一角，笔记本与杯子同框", note:"这个场景已经很拥挤，建议用“反差”角度切入" } },
+    { id:"cup6", title:"生理期在工位上需要一杯热水的她", circle:"work", x:80, y:40, size:3,
+      moment:"肚子隐隐作痛的下午，她不想一趟趟走去茶水间，只想把热的捂在手里。",
+      pains:["不好意思频繁离开工位","需要热度维持更久"],
+      searches:["生理期 办公室 好物","经期 工位 小物","女生 办公室 抽屉 必备"],
+      hooks:["一杯热水捂到下班","杯身握着刚好暖手"],
+      worn:["暖宫贴、红糖姜茶合集"],
+      titles:["那几天的工位，我只需要这一杯","女生抽屉里，应该常备的不是红糖","不用解释，也能被照顾到的下午"],
+      cover:{ layout:"center", text:"top", subject:"双手捧着杯子的特写", note:"只拍手和杯子，温柔、克制，不要出现“痛”的表情" } },
+    { id:"cup7", title:"开夜车的网约车司机", circle:"work", x:55, y:16, size:2,
+      moment:"凌晨一点，最后一单送到机场，车里只有导航的声音和杯架里那杯还热的茶。",
+      pains:["开车时没法拧盖","杯子在杯架里会晃"],
+      searches:["开车 喝水 方便","车载 保温杯","跑夜车 必备"],
+      hooks:["单手开盖不用低头","杯身尺寸卡得进杯架"],
+      worn:["几乎没有人写过"],
+      titles:["跑了三年夜车，杯架里终于有了刚好的杯子","凌晨1点的机场高速，一口热茶","司机师傅说：开车喝水最怕拧盖子"],
+      cover:{ layout:"left", text:"top", subject:"夜晚车内中控，杯子在杯架里", note:"蓝海场景，素人真实口吻效果最好，不必精修" } },
+    { id:"cup8", title:"冬夜露营守着篝火的人", circle:"outdoor", x:42, y:24, size:1,
+      moment:"火快灭了，大家都钻进帐篷，她还坐在外面，杯里的热可可要撑到看完星星。",
+      pains:["夜里气温骤降饮品很快变冷","营地取热水不方便"],
+      searches:["冬季露营 保暖","露营 热饮","营地 夜晚 必备"],
+      hooks:["睡前灌满，第二天早上还温","可以直接装热可可、热红酒"],
+      worn:["露营装备大合集"],
+      titles:["冬天露营，最后一口热可可留给星星","零下的营地，我靠这个熬到了凌晨","露营装备里最被低估的一件"],
+      cover:{ layout:"center", text:"bottom", subject:"篝火余光下握着杯子的剪影", note:"暗调画面，红色只出现在火光里" } },
+    { id:"cup9", title:"想给爸爸换掉玻璃茶杯的女儿", circle:"gift", x:58, y:52, size:2,
+      moment:"爸爸用了十年的玻璃杯又裂了一道缝，她想送个他会真的天天用、不会嫌“浪费钱”的东西。",
+      pains:["长辈嫌贵、舍不得用","长辈要泡茶，茶叶堵口"],
+      searches:["送爸爸 实用礼物","长辈 泡茶 保温杯","父亲节 礼物 不踩雷"],
+      hooks:["自带茶隔，茶水分离","爸爸会拿去单位跟同事炫耀"],
+      worn:["“送长辈礼物清单”类合集"],
+      titles:["给爸爸换掉用了10年的玻璃杯","我爸收到后，第二天就带去单位了","送长辈礼物，实用比贵重更重要"],
+      cover:{ layout:"left", text:"top", subject:"长辈的手和茶杯，背景是旧茶几", note:"用旧物和新物同框，讲“替换”的故事" } },
+    { id:"cup10", title:"早八地铁上单手抓扶手的通勤族", circle:"work", x:72, y:88, size:3,
+      moment:"一只手抓扶手、一只手刷手机，杯子在包里，最怕的是一开包发现漏了一包水。",
+      pains:["包里漏水毁掉电脑","杯子太重压肩"],
+      searches:["通勤 保温杯 轻","不漏水 保温杯","通勤包 装什么"],
+      hooks:["倒置摇晃不漏","轻到感觉不到"],
+      worn:["“通勤好物”大合集","倒置测漏视频"],
+      titles:["通勤包里放了一年，从没漏过","早八人的包，再轻一点","被挤成照片的地铁上，它没有漏"],
+      cover:{ layout:"center", text:"top", subject:"打开的通勤包俯拍", note:"最拥挤的场景，除非有明显差异点，否则不建议首发" } },
+    { id:"cup11", title:"在医院陪护家人的夜里", circle:"family", x:62, y:12, size:2,
+      moment:"病房的开水间在走廊尽头，晚上要陪着，不敢走远，她只想身边随时有一杯热的。",
+      pains:["不能频繁离开病床","需要长时间保温"],
+      searches:["住院 陪护 带什么","陪床 必备 清单","医院 陪护 好物"],
+      hooks:["灌一次撑过整晚","家人半夜醒来随时能喝"],
+      worn:["几乎没有商家内容"],
+      titles:["陪护清单里，我把它写在第一行","在医院陪妈妈的第七天","那些深夜，热水是我能给的最小的照顾"],
+      cover:{ layout:"center", text:"bottom", subject:"病房窗台上的杯子与晨光", note:"语气要克制真诚，避免营销感，这类内容更需要信任" } },
+    { id:"cup12", title:"夏天被图书馆冷气冻到的研究生", circle:"campus", x:48, y:30, size:2,
+      moment:"外面35度，图书馆里18度，她穿着外套写论文，想喝冰的又怕冷，最后还是想要温的。",
+      pains:["夏天用不到保温杯的误解","冰饮和热饮需求来回切换"],
+      searches:["图书馆 冷气 太冷","夏天 空调房 喝什么","保温杯 也能保冷吗"],
+      hooks:["早上装冰水，下午还是冰的","一个杯子冷热都能装"],
+      worn:["几乎没人写夏天保温杯"],
+      titles:["夏天也离不开保温杯的人，请举手","35度的天，18度的图书馆","原来保温杯最好用的季节是夏天"],
+      cover:{ layout:"top-left", text:"top", subject:"图书馆窗外烈日，桌上杯子挂着凉意", note:"反季节切入，搜索竞争低、话题新" } }
+  ]
+},
+/* ───────────── 02 香薰蜡烛 ───────────── */
+{
+  id: "candle", name: "香薰蜡烛", tagline: "大豆蜡 · 木质调 · 燃烧约40小时", price: "100-300元", emoji: "✺",
+  scenes: [
+    { id:"cd1", title:"下班回出租屋，需要一个“开关”的人", circle:"solo", x:84, y:80, size:3,
+      moment:"门一关，外卖放下，她点上蜡烛，那一刻才算真正下班。",
+      pains:["工作情绪带回家","出租屋没有“家”的感觉"],
+      searches:["下班 仪式感","出租屋 改造 氛围","一个人住 治愈"],
+      hooks:["点燃那一下就是下班信号","不用大改，也能有家的味道"],
+      worn:["“下班后的仪式感”已大量重复","烛光+红酒的标准画面"],
+      titles:["我给自己设了一个“下班开关”","出租屋也值得被好好闻一闻","一个人住的第三年，学会了点蜡烛"],
+      cover:{ layout:"center", text:"top", subject:"门边钥匙盘旁刚点燃的烛光", note:"已是红海，换“门口”这个不常见的位置拍" } },
+    { id:"cd2", title:"刚搬进老房子，想盖住旧味道", circle:"solo", x:62, y:44, size:2,
+      moment:"房东说房子“很干净”，但一进门还是有上一任租客的味道，她想先让房间认识自己。",
+      pains:["异味来源不明，通风也散不掉","不想用刺鼻的香精喷雾"],
+      searches:["老房子 异味","搬家 去味","租房 房间味道"],
+      hooks:["木质调盖住潮味不呛人","闻起来像是“我的房间”"],
+      worn:["甲醛科普、除味剂测评"],
+      titles:["搬进老房子的第一晚，我先换了味道","房间认识你，需要一点时间和一支蜡烛","租的房子，也要闻起来像自己的"],
+      cover:{ layout:"left", text:"bottom", subject:"未拆完的纸箱上放着蜡烛", note:"“搬家进行时”比完美房间更真实" } },
+    { id:"cd3", title:"考试周睡不着的大学生", circle:"campus", x:55, y:38, size:2,
+      moment:"明天考高数，宿舍熄灯了，她还在脑子里背公式，想要点什么让自己慢下来。",
+      pains:["宿舍禁止明火","焦虑到睡不着"],
+      searches:["考试周 失眠","睡前 放松","宿舍 香氛 不用火"],
+      hooks:["不点燃也能扩香","睡前闻着更容易放空"],
+      worn:["助眠好物合集"],
+      titles:["考试周的宿舍，不点燃的香气也能陪你","睡不着的晚上，我会打开它闻一闻","给明天要考试的自己，一点安静"],
+      cover:{ layout:"center", text:"top", subject:"台灯下合上的课本与蜡烛罐", note:"注意强调“不点燃”，避免宿舍用火风险" } },
+    { id:"cd4", title:"养猫的家里担心猫砂味", circle:"solo", x:76, y:26, size:2,
+      moment:"朋友来家里第一句话是“你养猫了吧”，她有点尴尬，想要家里先被闻到的是别的味道。",
+      pains:["担心香氛对猫不友好","猫可能碰倒明火"],
+      searches:["养猫 家里 味道","猫砂味 怎么去","养猫 能用香薰吗"],
+      hooks:["选择宠物友好的香调","放在猫够不到的地方"],
+      worn:["除臭猫砂测评"],
+      titles:["养猫的家，也可以先被闻到木头香","朋友来了，没人发现我养了两只猫","铲屎官的香气选择清单"],
+      cover:{ layout:"center", text:"bottom", subject:"高处书架上的蜡烛，猫在下面", note:"同时展示“安全距离”，传递负责任的态度" } },
+    { id:"cd5", title:"第一次去男友父母家带伴手礼", circle:"gift", x:50, y:18, size:2,
+      moment:"水果太普通，烟酒不合适，她想要一件看起来有心、又不会太贵重的礼物。",
+      pains:["不知道长辈喜好","怕礼物太轻或太重"],
+      searches:["第一次见家长 带什么","见男朋友父母 礼物","上门 伴手礼"],
+      hooks:["包装体面，拿得出手","香调温和，长辈不会抗拒"],
+      worn:["见家长礼物清单多为烟酒茶"],
+      titles:["第一次见家长，我带了一支蜡烛","阿姨说：这个味道真好闻","见家长伴手礼，不想送水果的看这里"],
+      cover:{ layout:"left", text:"top", subject:"系着丝带的礼盒和一束花", note:"蓝海+高客单场景，适合加大投入" } },
+    { id:"cd6", title:"闺蜜搬新家的乔迁礼", circle:"gift", x:70, y:84, size:3,
+      moment:"她搬家了，群里商量送什么，最后还是落到“香薰蜡烛吧”。",
+      pains:["容易撞礼","送的香味对方未必喜欢"],
+      searches:["乔迁礼物","闺蜜 搬家 送什么","乔迁 礼物 不踩雷"],
+      hooks:["可刻字，不撞礼","多香调可选"],
+      worn:["乔迁礼物大合集里几乎必有香薰蜡烛"],
+      titles:["给闺蜜的乔迁礼，我刻上了她的新门牌","送了五年蜡烛，这次终于送对了味","乔迁礼不撞款的小心思"],
+      cover:{ layout:"center", text:"top", subject:"新钥匙与刻字蜡烛", note:"红海场景，靠“刻字/定制”做差异" } },
+    { id:"cd7", title:"在家办公，分不清上下班", circle:"work", x:58, y:30, size:2,
+      moment:"卧室就是办公室，电脑合上了，脑子还在开会，她需要一个信号告诉自己可以停了。",
+      pains:["工作和生活没有边界","长期居家情绪低落"],
+      searches:["居家办公 效率","在家工作 分界线","远程办公 心理"],
+      hooks:["开工点一支，收工熄灭","用气味划出工作区"],
+      worn:["居家办公桌面改造"],
+      titles:["居家办公两年，我用气味给自己打卡","熄灭蜡烛，就是我的下班铃","远程工作者的边界感练习"],
+      cover:{ layout:"left", text:"top", subject:"合上的笔记本电脑旁熄灭的蜡烛与一缕烟", note:"“熄灭”这个动作是记忆点" } },
+    { id:"cd8", title:"每天泡澡的二十分钟", circle:"solo", x:66, y:72, size:2,
+      moment:"手机放在门外，浴室只留烛光，这二十分钟谁也找不到她。",
+      pains:["浴室湿气大","想要沉浸感但不想太复杂"],
+      searches:["泡澡 氛围","浴室 香薰","睡前 放松 仪式"],
+      hooks:["烛光让浴室像小型SPA","香味在热气里更柔和"],
+      worn:["浴缸+烛光的标准画面已很多"],
+      titles:["每天最安静的20分钟","手机放门外，蜡烛点起来","给没有浴缸的人：淋浴也可以有烛光"],
+      cover:{ layout:"center", text:"bottom", subject:"雾气中的烛光", note:"可以做“没有浴缸”的反差切入" } },
+    { id:"cd9", title:"给民宿房间做“气味记忆”的主理人", circle:"work", x:44, y:14, size:1,
+      moment:"客人退房后留言说“想念房间里的味道”，主理人意识到，香气可以成为民宿的名片。",
+      pains:["批量采购成本","需要稳定统一的香味"],
+      searches:["民宿 香氛","民宿 细节 提升","民宿 好评 小心思"],
+      hooks:["同一香调做全店统一","可做B端定制款"],
+      worn:["几乎没有商家从B端写"],
+      titles:["客人退房后，留言说想念房间的味道","民宿主理人的小心机：给房间一个专属香","如何让客人记住你的民宿"],
+      cover:{ layout:"left", text:"top", subject:"民宿床头柜一角", note:"B端场景，可以引导到批量采购" } },
+    { id:"cd10", title:"瑜伽或冥想开始前的五分钟", circle:"solo", x:46, y:52, size:1,
+      moment:"铺好垫子，关掉通知，点一支蜡烛，看着火苗呼吸几次，再开始。",
+      pains:["很难静下来","练习容易被打断"],
+      searches:["冥想 入门","在家 瑜伽 氛围","正念 练习"],
+      hooks:["盯着火苗练习专注","固定香气帮助进入状态"],
+      worn:["冥想好物零散"],
+      titles:["冥想新手，从盯着一支蜡烛开始","每天早上的5分钟，我先点一支蜡烛","气味是最快的“开始键”"],
+      cover:{ layout:"center", text:"top", subject:"瑜伽垫一角与烛光", note:"留白多一点，配色素净" } },
+    { id:"cd11", title:"哄睡孩子后，属于妈妈的一小时", circle:"family", x:68, y:20, size:2,
+      moment:"孩子终于睡着，客厅收拾到一半，她坐下来点了蜡烛，这一小时只属于她自己。",
+      pains:["没有自己的时间","需要注意儿童安全"],
+      searches:["宝妈 自己的时间","带娃 崩溃 放松","妈妈 治愈 时刻"],
+      hooks:["孩子睡了才点，起身前熄灭","不用出门的小奖励"],
+      worn:["几乎没有商家内容"],
+      titles:["孩子睡着后的一小时，是我的","当妈以后，我学会了给自己点一支蜡烛","不是母亲，只是我自己的时间"],
+      cover:{ layout:"center", text:"bottom", subject:"沙发旁的烛光与散落的玩具", note:"真实不完美的客厅比精修更打动人" } },
+    { id:"cd12", title:"纪念日在家布置一场小惊喜", circle:"gift", x:40, y:64, size:2,
+      moment:"他说“不用过了吧”，她还是偷偷买了花和蜡烛，在他回家前把客厅暗下来。",
+      pains:["布置太复杂","怕效果不如图片"],
+      searches:["纪念日 布置 在家","惊喜 布置 简单","在家 浪漫 晚餐"],
+      hooks:["几支蜡烛就能改变房间氛围","不用复杂装饰"],
+      worn:["“求婚布置”类内容很多"],
+      titles:["没订餐厅，我们在家过了纪念日","三支蜡烛就能完成的惊喜","他推门的那一刻"],
+      cover:{ layout:"center", text:"top", subject:"暗下来的客厅里一排烛光", note:"别用花瓣，简单的画面反而高级" } }
+  ]
+},
+/* ───────────── 03 通勤托特包 ───────────── */
+{
+  id: "tote", name: "通勤托特包", tagline: "防泼水帆布 · 14寸电脑仓 · 多分区", price: "300-800元", emoji: "▢",
+  scenes: [
+    { id:"tt1", title:"一包装下电脑、午饭和健身衣的打工人", circle:"work", x:88, y:68, size:3,
+      moment:"早上出门要带的东西：电脑、充电器、饭盒、运动鞋，她不想再拎两个袋子。",
+      pains:["东西多，一个包装不下","饭盒和电脑混在一起怕弄脏"],
+      searches:["通勤包 能装电脑","大容量 托特包","上班 带饭 包"],
+      hooks:["分区放，饭盒不碰电脑","一个包解决一整天"],
+      worn:["“能装”测试视频大量重复"],
+      titles:["早上出门，我只拿一个包","电脑、饭盒、运动鞋，都在里面","打工人的包，必须能装下一整天"],
+      cover:{ layout:"top-left", text:"top", subject:"包里物品平铺俯拍", note:"“装包”内容拥挤，需要更有生活感的物品组合" } },
+    { id:"tt2", title:"入职第一周，想要看起来靠谱", circle:"work", x:60, y:40, size:2,
+      moment:"新工作第一天，她换了三次衣服，最后发现最让她安心的是手里拎着的那个包。",
+      pains:["学生包显得稚气","皮包太贵太正式"],
+      searches:["入职 第一天 穿搭","职场新人 包","实习生 通勤包"],
+      hooks:["低调利落，不显学生气","价格适合第一份工资"],
+      worn:["职场穿搭合集"],
+      titles:["入职第一周，我换掉了学生时代的双肩包","职场新人，不用一开始就买皮包","第一份工资，买了一个靠谱的包"],
+      cover:{ layout:"left", text:"bottom", subject:"写字楼电梯镜子前的半身照", note:"“新人”情绪是核心，要有一点点紧张感" } },
+    { id:"tt3", title:"抱着论文资料去找导师的研究生", circle:"campus", x:52, y:34, size:2,
+      moment:"打印稿、电脑、两本参考书，她不想抱着一摞东西穿过整个校园。",
+      pains:["A4资料容易折角","双肩包拿东西不方便"],
+      searches:["研究生 包","能放A4 的包","学生 托特包 推荐"],
+      hooks:["A4资料平放不折角","开口大，随手就能拿"],
+      worn:["学生包内容多为双肩包"],
+      titles:["去见导师的路上，论文终于没折角了","研究生的包，A4能平放是刚需","抱着一摞书走过校园的日子结束了"],
+      cover:{ layout:"center", text:"top", subject:"包里露出的打印稿和书脊", note:"细节特写，展示“A4平放”" } },
+    { id:"tt4", title:"复工后每天背奶的新手妈妈", circle:"family", x:80, y:22, size:2,
+      moment:"吸奶器、储奶袋、冰包，还有电脑，她需要一个看起来不像妈妈包的通勤包。",
+      pains:["妈妈包太“妈”，不想被看出来","需要保温分区"],
+      searches:["背奶 包","背奶妈妈 通勤","复工 背奶 装备"],
+      hooks:["放得下冰包，又像普通通勤包","职场与母亲身份都被照顾"],
+      worn:["几乎没有通勤包品牌写过"],
+      titles:["复工第一个月，我的包里装着两种身份","背奶妈妈也想要一个好看的通勤包","没人看得出来，这是一个背奶包"],
+      cover:{ layout:"left", text:"top", subject:"办公桌下的包，露出冰包一角", note:"高需求蓝海，情感共鸣强" } },
+    { id:"tt5", title:"下雨天骑车去上班的人", circle:"work", x:66, y:28, size:2,
+      moment:"突然下雨，她把包挂在车把上骑了十分钟，到公司第一件事是打开看电脑有没有湿。",
+      pains:["普通帆布包遇雨就透","挂车把容易晃"],
+      searches:["防水 通勤包","骑车 通勤 包","下雨 电脑 包"],
+      hooks:["防泼水，小雨不透","肩带长度可以斜挎骑车"],
+      worn:["防水测试视频较少"],
+      titles:["雨天骑车上班，电脑还是干的","通勤骑行党的包，要能扛小雨","一场突然的雨，验证了我的选择"],
+      cover:{ layout:"center", text:"bottom", subject:"水珠挂在包面上的特写", note:"一个水滴镜头就能说明卖点" } },
+    { id:"tt6", title:"周末逛展和citywalk", circle:"outdoor", x:58, y:86, size:3,
+      moment:"美术馆、咖啡店、二手书店，她一天要走两万步，包要好看，也要装得下顺手买的画册。",
+      pains:["好看的包装不下东西","走一天肩膀疼"],
+      searches:["citywalk 包","逛展 穿搭","帆布包 推荐"],
+      hooks:["装得下画册","肩带宽，走一天不勒"],
+      worn:["citywalk穿搭已极度拥挤"],
+      titles:["逛展一整天，包里多了一本画册","citywalk的包，要好看也要能装","两万步之后，肩膀没有抗议"],
+      cover:{ layout:"center", text:"top", subject:"美术馆白墙前的背影", note:"非常拥挤，建议作为次要场景" } },
+    { id:"tt7", title:"当天往返的高铁出差", circle:"work", x:70, y:44, size:2,
+      moment:"早上7点的高铁，中午见客户，晚上回家，她不想为一天拖一个行李箱。",
+      pains:["一天出差带行李箱太麻烦","需要放下一件换洗衣物"],
+      searches:["出差 当天往返","一日出差 包","商务 通勤包"],
+      hooks:["装得下电脑+一件衬衫","放在高铁行李架上不显眼"],
+      worn:["出差收纳内容偏向行李箱"],
+      titles:["当天往返的出差，我只带一个包","早7点高铁，晚9点到家","不拖行李箱的出差，轻松多了"],
+      cover:{ layout:"left", text:"top", subject:"高铁车窗边的座位与包", note:"车窗流动的风景让画面有节奏" } },
+    { id:"tt8", title:"想送即将入职学妹的毕业礼物", circle:"gift", x:38, y:30, size:1,
+      moment:"学妹找到第一份工作，她想送一个比鲜花更实用、能每天用到的东西。",
+      pains:["预算有限但想体面","不知道对方喜好"],
+      searches:["毕业礼物 送学妹","入职 礼物","送同事 实用 礼物"],
+      hooks:["每天都会用到","颜色温和，不挑人"],
+      worn:["毕业礼物多为饰品和花"],
+      titles:["送学妹的入职礼物，我选了一个包","比鲜花更持久的祝福","毕业礼物，送一点“明天”"],
+      cover:{ layout:"center", text:"bottom", subject:"包上夹着一张手写卡片", note:"手写卡片是情绪锚点" } },
+    { id:"tt9", title:"下班直接去健身房的人", circle:"outdoor", x:62, y:56, size:2,
+      moment:"工作日去健身，她要在包里同时放电脑和湿毛巾，最怕下班后衣服味道沾到电脑包。",
+      pains:["干湿不分离","运动鞋没地方放"],
+      searches:["健身 通勤 一个包","干湿分离 包","下班 健身 带什么"],
+      hooks:["独立鞋袋，干湿分开","上班看起来不像运动包"],
+      worn:["健身包多为运动品牌"],
+      titles:["上班包，也是我的健身包","干湿分离之后，电脑终于没有汗味了","从工位到健身房，只换一双鞋"],
+      cover:{ layout:"top-left", text:"top", subject:"包里分区展示运动鞋与电脑", note:"一图说清分区设计" } },
+    { id:"tt10", title:"在咖啡馆远程办公的一天", circle:"solo", x:56, y:76, size:2,
+      moment:"她背着电脑去咖啡馆，点一杯拿铁坐一下午，包挂在椅背上，看起来也要像生活的一部分。",
+      pains:["包放地上不卫生","挂椅背容易滑落"],
+      searches:["咖啡馆 办公","远程办公 装备","数字游民 包"],
+      hooks:["提手可挂椅背","放在桌上也好看"],
+      worn:["咖啡馆办公拍照已较多"],
+      titles:["在咖啡馆工作的第100天","包挂在椅背上，也是风景","数字游民的轻装备"],
+      cover:{ layout:"center", text:"top", subject:"咖啡馆窗边，电脑和包同框", note:"拥挤度偏高，需更有个人风格的画面" } },
+    { id:"tt11", title:"周末带娃去公园野餐的妈妈", circle:"family", x:74, y:48, size:2,
+      moment:"湿巾、水杯、零食、小玩具，她想用一个好看的包代替那个印满卡通的妈妈包。",
+      pains:["妈妈包太幼稚","东西多找不到"],
+      searches:["遛娃 包","妈妈包 替代","带娃出门 必备"],
+      hooks:["分区多，随手就能找到湿巾","妈妈也想好看"],
+      worn:["妈妈包测评集中在专用品牌"],
+      titles:["带娃野餐，我没有背妈妈包","妈妈的包，也可以不印卡通","公园野餐一下午，包里装了什么"],
+      cover:{ layout:"center", text:"bottom", subject:"野餐垫上的包与孩子的小手", note:"孩子不露脸，只露手" } },
+    { id:"tt12", title:"担心大包显矮的小个子女生", circle:"work", x:46, y:62, size:2,
+      moment:"155cm的她，背大托特总觉得是“包背人”，可电脑又必须装下。",
+      pains:["大包显得人更小","肩带长度不合适"],
+      searches:["小个子 托特包","155 背什么包","小个子 通勤包"],
+      hooks:["肩带可调，挂在腰线以上","包型挺括不拖沓"],
+      worn:["小个子穿搭多，但包较少"],
+      titles:["155cm的我，终于不是“包背人”了","小个子通勤，包的比例很重要","肩带调短3cm，整个人高了一截"],
+      cover:{ layout:"left", text:"top", subject:"全身镜前的对比照", note:"做“比例”对比图，信息量足" } }
+  ]
+},
+/* ───────────── 04 冻干咖啡 ───────────── */
+{
+  id: "coffee", name: "冻干咖啡", tagline: "3秒速溶 · 冷水可溶 · 独立小罐", price: "百元以下", emoji: "◉",
+  scenes: [
+    { id:"cf1", title:"早八前五分钟冲出宿舍的学生", circle:"campus", x:86, y:84, size:3,
+      moment:"7点55分，她一手拿着课本，一手往瓶子里倒冷水，摇两下就出门。",
+      pains:["来不及买咖啡","早上没有热水"],
+      searches:["早八 续命","宿舍 咖啡","冷水 速溶 咖啡"],
+      hooks:["冷水3秒就化","一罐一杯，不用称量"],
+      worn:["“早八续命”内容极度拥挤"],
+      titles:["早八前5分钟，我的咖啡已经摇好了","宿舍没有热水，也能喝上咖啡","冲出宿舍的路上，它刚好化开"],
+      cover:{ layout:"center", text:"top", subject:"宿舍门口，手里晃着的透明瓶", note:"红海场景，靠动态和速度感做区分" } },
+    { id:"cf2", title:"出差住酒店，喝不上好咖啡", circle:"work", x:72, y:40, size:2,
+      moment:"酒店房间只有一包速溶三合一，第二天要见客户，她需要一杯像样的咖啡。",
+      pains:["酒店咖啡难喝","早上来不及出门找咖啡店"],
+      searches:["出差 咖啡","酒店 带什么","出差 必备 好物"],
+      hooks:["几个小罐塞进化妆包","酒店烧水壶就能冲"],
+      worn:["出差好物合集里较少"],
+      titles:["出差的第一件行李，是5罐咖啡","酒店的早晨，也可以有好咖啡","见客户之前的那一杯"],
+      cover:{ layout:"left", text:"bottom", subject:"酒店窗边的马克杯和城市清晨", note:"窗外风景让“出差”一眼可识别" } },
+    { id:"cf3", title:"露营早晨醒来的第一杯", circle:"outdoor", x:60, y:78, size:2,
+      moment:"帐篷外起了雾，炉子上烧着水，她想要一杯不用手冲器具的咖啡。",
+      pains:["露营装备太多","手冲器材麻烦"],
+      searches:["露营 咖啡","露营 早餐","户外 咖啡 简单"],
+      hooks:["一罐就是一杯，不用带器具","山间的雾和咖啡香"],
+      worn:["露营咖啡多为手冲内容"],
+      titles:["露营的早晨，不带手冲壶也可以","醒来时，雾还没散","露营装备减重：咖啡只带小罐"],
+      cover:{ layout:"center", text:"top", subject:"雾中帐篷前冒热气的杯子", note:"拥挤度偏高，可强调“轻装”角度" } },
+    { id:"cf4", title:"夜班护士交班前的提神时刻", circle:"work", x:64, y:14, size:2,
+      moment:"凌晨四点，病区安静下来，她在护士站喝一口咖啡，撑过最后两个小时。",
+      pains:["夜班时间长","没时间去买咖啡"],
+      searches:["夜班 护士","夜班 提神","护士 必备 好物"],
+      hooks:["护士站冷水就能冲","小罐装方便放口袋"],
+      worn:["几乎没有商家写过"],
+      titles:["夜班护士的凌晨4点","护士站抽屉里，常备这几罐","交班前的最后一杯"],
+      cover:{ layout:"center", text:"bottom", subject:"护士站台面上的杯子与夜色", note:"职业真实感最重要，可与真实护士博主合作" } },
+    { id:"cf5", title:"自驾高速，服务区咖啡太贵", circle:"outdoor", x:58, y:26, size:2,
+      moment:"开了三个小时，服务区一杯咖啡要38元还难喝，她从车里拿出自己带的那罐。",
+      pains:["长途驾驶疲劳","服务区咖啡贵且一般"],
+      searches:["自驾 提神","长途 开车 必备","自驾游 带什么"],
+      hooks:["矿泉水一倒就是冰美式","车里常备不占地方"],
+      worn:["几乎没人写过"],
+      titles:["自驾第三小时，我在服务区自己冲了一杯","长途开车的人，车里常备什么","服务区38元的咖啡，我不买了"],
+      cover:{ layout:"left", text:"top", subject:"车窗外高速公路，杯架里的冰咖啡", note:"价格对比是天然钩子" } },
+    { id:"cf6", title:"健身前一杯冰美式", circle:"outdoor", x:70, y:58, size:2,
+      moment:"下班去健身房前，她想喝一杯没有糖的冰美式，不想停下来排队。",
+      pains:["外卖咖啡加糖多","时间紧"],
+      searches:["健身前 咖啡","运动 前 喝什么","无糖 冰美式"],
+      hooks:["无糖无奶","摇摇杯一摇就好"],
+      worn:["健身饮品内容较多"],
+      titles:["健身前的冰美式，我自己摇","下班到健身房的路上，摇一杯","练前一杯，不用排队"],
+      cover:{ layout:"center", text:"top", subject:"健身包旁的摇摇杯", note:"可与运动博主合作" } },
+    { id:"cf7", title:"下午三点办公室集体犯困", circle:"work", x:84, y:72, size:3,
+      moment:"会议结束，整个办公室都开始犯困，有人提议拼单，她从抽屉里拿出几罐分给大家。",
+      pains:["拼单要等半小时","天天点外卖咖啡开销大"],
+      searches:["办公室 咖啡","下午 犯困","打工人 续命"],
+      hooks:["抽屉常备，随时分享","一杯的钱比外卖少很多"],
+      worn:["“打工人续命”内容拥挤"],
+      titles:["下午3点，我的抽屉成了办公室咖啡角","不拼单了，抽屉里就有","打工人每月咖啡账单，我省了一半"],
+      cover:{ layout:"top-left", text:"top", subject:"打开的办公桌抽屉，一排小罐", note:"“分享”比“自用”更有传播性" } },
+    { id:"cf8", title:"喝不惯黑咖啡，想自己做拿铁", circle:"solo", x:66, y:66, size:2,
+      moment:"美式太苦，外面的拿铁又太甜，她想在家用燕麦奶调一杯刚刚好的。",
+      pains:["黑咖啡太苦","外卖拿铁热量高"],
+      searches:["在家 做拿铁","燕麦拿铁 做法","速溶 咖啡 好喝 方法"],
+      hooks:["冷牛奶也能直接溶","自己控制甜度"],
+      worn:["DIY咖啡教程较多"],
+      titles:["不爱喝黑咖啡的人，试试这样做拿铁","在家30秒，一杯燕麦拿铁","喝咖啡入门，从调一杯拿铁开始"],
+      cover:{ layout:"center", text:"bottom", subject:"牛奶倒入时的分层画面", note:"分层瞬间是最强视觉钩子" } },
+    { id:"cf9", title:"给加班同事送“续命礼盒”", circle:"gift", x:44, y:26, size:1,
+      moment:"项目上线前一周，大家都在加班，她想给组里每个人送一份小礼物。",
+      pains:["预算有限但想有心意","不知道送什么"],
+      searches:["送同事 小礼物","加班 礼物","团队 打气 礼物"],
+      hooks:["小罐装分装成礼盒","每人一份不贵也有心意"],
+      worn:["同事礼物多为零食"],
+      titles:["项目上线前，我给组里每个人发了一份咖啡","送同事的礼物，实用最重要","给加班的伙伴们，一点续命的心意"],
+      cover:{ layout:"center", text:"top", subject:"桌上一排贴着名字的小礼盒", note:"B端团购场景可延伸" } },
+    { id:"cf10", title:"担心喝咖啡心慌的考研党", circle:"campus", x:54, y:30, size:2,
+      moment:"一杯外卖咖啡下去，她心跳加快、一下午都学不进去，想试试只喝半杯。",
+      pains:["外卖咖啡浓度太高","喝多了心慌"],
+      searches:["咖啡 心慌","喝咖啡 心跳快","考研 咖啡 怎么喝"],
+      hooks:["自己控制浓度","一罐可以分两次冲"],
+      worn:["几乎没有商家从“控量”角度写"],
+      titles:["喝咖啡容易心慌的人，可以试试“半罐”","考研党的咖啡，要自己控制浓度","我不是不能喝咖啡，只是需要少一点"],
+      cover:{ layout:"left", text:"top", subject:"半罐咖啡粉和一杯浅色咖啡", note:"注意避免健康功效宣称，只讲“自己控制浓度”" } },
+    { id:"cf11", title:"教爸妈第一次喝咖啡", circle:"family", x:34, y:12, size:1,
+      moment:"过年回家，她给爸妈冲了一杯加奶的咖啡，爸爸说“原来不苦”。",
+      pains:["长辈觉得咖啡苦、不健康","不会用咖啡器具"],
+      searches:["爸妈 喝咖啡","给父母 带什么","过年 回家 礼物"],
+      hooks:["不用器具，长辈也会冲","加奶调成他们接受的口味"],
+      worn:["几乎空白"],
+      titles:["过年回家，我教爸妈喝咖啡","爸爸说：原来咖啡不苦","给爸妈的第一杯咖啡"],
+      cover:{ layout:"center", text:"bottom", subject:"老茶几上的两杯咖啡", note:"家庭温情，蓝海但需求偏低，适合节日节点" } },
+    { id:"cf12", title:"夏天做咖啡冰块特调", circle:"solo", x:48, y:54, size:2,
+      moment:"周末下午，她把咖啡冻成冰块，倒进牛奶里，看着它一点点化开。",
+      pains:["冰块化了咖啡变淡","想做点好看的饮品"],
+      searches:["咖啡冰块","夏日 特调","在家 饮品 好看"],
+      hooks:["冷水即溶，做冰块很方便","越化越浓"],
+      worn:["夏日特调内容中等"],
+      titles:["咖啡冰块，越化越好喝","夏天的周末，冻一盒咖啡冰块","一杯会慢慢变色的拿铁"],
+      cover:{ layout:"center", text:"top", subject:"冰块在牛奶里化开的渐变", note:"渐变色天然适合封面" } }
+  ]
+}
+];
+
+/* ───────── 自定义商品：组合生成用的场景库 ───────── */
+window.SCENE_LIBRARY = [
+  { circle:"work",   who:"连续开了三个会的项目经理", when:"午饭只剩十分钟的时候", pain:"时间被切得很碎", search:"打工人 午休" },
+  { circle:"work",   who:"刚入职的应届生", when:"第一周想给同事留下好印象时", pain:"不想显得太学生气", search:"职场新人 必备" },
+  { circle:"work",   who:"居家办公的自由职业者", when:"分不清上班和下班的晚上", pain:"工作和生活没有边界", search:"居家办公 效率" },
+  { circle:"work",   who:"经常出差的销售", when:"当天往返的高铁上", pain:"行李必须越少越好", search:"出差 必备 好物" },
+  { circle:"campus", who:"备考第200天的考研党", when:"图书馆闭馆前的最后一小时", pain:"注意力越来越难集中", search:"考研 自习室 必备" },
+  { circle:"campus", who:"住六人间的大一新生", when:"熄灯后的宿舍", pain:"空间小、不能打扰室友", search:"宿舍 好物" },
+  { circle:"family", who:"刚复工的新手妈妈", when:"孩子睡着后的那一个小时", pain:"几乎没有属于自己的时间", search:"宝妈 自己的时间" },
+  { circle:"family", who:"想给爸妈换掉旧东西的女儿", when:"过年回家的那几天", pain:"长辈总说“不用浪费钱”", search:"给爸妈 实用 礼物" },
+  { circle:"outdoor",who:"周末徒步的新手", when:"第一次登顶的山顶", pain:"装备不想太专业太重", search:"徒步 新手 装备" },
+  { circle:"outdoor",who:"第一次去露营的情侣", when:"天黑以后的营地", pain:"东西太多不知道带什么", search:"露营 新手 清单" },
+  { circle:"solo",   who:"一个人住的第三年", when:"下班回家关上门的那一刻", pain:"房间缺少“家”的感觉", search:"一个人住 治愈" },
+  { circle:"solo",   who:"刚搬进老房子的租客", when:"搬家后的第一个晚上", pain:"一切都还很陌生", search:"租房 改造" },
+  { circle:"gift",   who:"第一次去见对方父母的人", when:"出门前最后挑礼物时", pain:"怕礼物太轻或太重", search:"见家长 带什么" },
+  { circle:"gift",   who:"想给闺蜜过生日的人", when:"生日前一周", pain:"不想和别人撞礼", search:"闺蜜 生日礼物" },
+  { circle:"gift",   who:"给加班团队打气的组长", when:"项目上线前一周", pain:"预算有限但想有心意", search:"送同事 小礼物" },
+  { circle:"outdoor",who:"下班直接去健身房的人", when:"从工位到健身房的路上", pain:"东西多、时间紧", search:"下班 健身 带什么" }
+];
+</script>
+<script>
+/* 一物千景 · 交互逻辑（纯前端，无后端依赖） */
+(function () {
+  "use strict";
+
+  var CIRCLES = window.CIRCLES;
+  var PRODUCTS = window.PRODUCTS;
+  var LIB = window.SCENE_LIBRARY;
+  var MAX_PICK = 6;
+  var DAYS = ["周一", "周二", "周三", "周四", "周五", "周六"];
+
+  var state = {
+    product: null,     // { name, tagline, price, code, custom, scenes }
+    filters: {},       // circle -> bool
+    picked: [],        // scene ids, in order
+    current: -1,       // index in visibleScenes for drawer
+    mode: "chart"
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  };
+
+  /* ───────── 指标 ───────── */
+  function isOpp(s) { return s.x >= 55 && s.y <= 45; }
+  function oppScore(s) { return Math.round(s.x * 0.6 + (100 - s.y) * 0.4); }
+  function magnitude(s) { return 4 - s.size; } // 1等星最亮 = 人群最大
+  function catalog(s, i) { return "YQ·" + state.product.code + "·" + String(i + 1).padStart(2, "0"); }
+  function crowdVerdict(y) {
+    if (y >= 65) return "红海：这个角度已经被写了很多";
+    if (y >= 45) return "中等：有人写过，仍有差异化空间";
+    return "蓝海：几乎没有商家在写";
+  }
+  function advice(s) {
+    if (isOpp(s)) return { tag: "机会区", text: "优先发布。用真实素人口吻，首发后可小额加热测试。", opp: true };
+    if (s.y >= 65) return { tag: "红海", text: "不建议首发。只有找到明显的差异角度时再写。", opp: false };
+    if (s.x < 45) return { tag: "小众", text: "需求偏小，适合配合节日或话题节点发布。", opp: false };
+    return { tag: "稳健", text: "可作为常规内容补充，保持账号的场景多样性。", opp: false };
+  }
+
+  /* ───────── 可复现的随机数（同名商品结果一致） ───────── */
+  function seeded(str) {
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return function () {
+      h += 0x6D2B79F5;
+      var t = h;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ───────── 自定义商品：场景库组合生成 ───────── */
+  function generate(name, point, price) {
+    var rnd = seeded(name + "|" + price);
+    var pool = LIB.slice();
+    for (var i = pool.length - 1; i > 0; i--) {
+      var j = Math.floor(rnd() * (i + 1));
+      var t = pool[i]; pool[i] = pool[j]; pool[j] = t;
+    }
+    var sell = point || "刚好合用";
+    var giftBoost = (price === "300-800元" || price === "800元以上") ? 12 : 0;
+    var scenes = pool.slice(0, 12).map(function (p, k) {
+      var x = Math.round(30 + rnd() * 62 + (p.circle === "gift" ? giftBoost : 0));
+      x = Math.min(x, 94);
+      var y = Math.round(10 + rnd() * 80);
+      var size = 1 + Math.floor(rnd() * 3);
+      var layouts = ["center", "left", "top-left"];
+      return {
+        id: "c" + k, title: p.who, circle: p.circle, x: x, y: y, size: size, custom: true,
+        moment: p.when + "，" + p.who + "最在意的是" + p.pain + "。如果手边刚好有一个" + name + "，" + sell + "。",
+        pains: [p.pain, "不确定" + name + "是否适合自己的情况"],
+        searches: [p.search, p.search.split(" ")[0] + " " + name, name + " 推荐", name + " 真实体验"],
+        hooks: [sell, "正好回应“" + p.pain + "”这件事"],
+        worn: y >= 55 ? [name + "测评大合集", "开箱加参数对比的固定套路"] : ["这个场景下还很少有" + name + "的内容"],
+        titles: [p.when + "，我带上了" + name, p.who + "的" + name + "清单", "给" + p.pain.replace(/^[很太]/, "") + "的人：试试" + name],
+        cover: {
+          layout: layouts[Math.floor(rnd() * 3)], text: rnd() > 0.5 ? "top" : "bottom",
+          subject: p.who + "与" + name + "同框",
+          note: "先让人看出是“" + p.when.replace(/的时候$/, "") + "”，商品只占画面一角"
+        }
+      };
+    });
+    return { name: name, tagline: point || "自定义商品", price: price, code: "NEW", custom: true, scenes: scenes };
+  }
+
+  function loadSample(id) {
+    var p = PRODUCTS.filter(function (q) { return q.id === id; })[0];
+    return { name: p.name, tagline: p.tagline, price: p.price, code: p.id.toUpperCase(), custom: false, scenes: p.scenes };
+  }
+
+  /* ───────── 视图切换 ───────── */
+  function go(view) {
+    ["home", "map", "plan"].forEach(function (v) {
+      $("view-" + v).hidden = v !== view;
+      var b = $("step-" + v);
+      if (v === view) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+    });
+    $("step-map").disabled = !state.product;
+    $("step-plan").disabled = state.picked.length === 0;
+    $("tray").hidden = view !== "map";
+    closeDrawer();
+    if (view === "plan") renderPlan();
+    window.scrollTo(0, 0);
+  }
+
+  function start(product) {
+    var loading = $("loading");
+    var lines = loading.querySelectorAll(".line");
+    lines.forEach(function (l) { l.classList.remove("on"); });
+    loading.hidden = false;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var step = reduce ? 150 : 600;
+    lines.forEach(function (l, i) { setTimeout(function () { l.classList.add("on"); }, step * i + 100); });
+    setTimeout(function () {
+      state.product = product;
+      state.picked = [];
+      state.filters = {};
+      Object.keys(CIRCLES).forEach(function (c) { state.filters[c] = true; });
+      loading.hidden = true;
+      renderMap();
+      go("map");
+    }, step * 3 + 300);
+  }
+
+  /* ───────── 首页 ───────── */
+  function miniConstellation(scenes) {
+    var w = 280, h = 150, pad = 14;
+    var svg = '<svg viewBox="0 0 ' + w + " " + h + '" aria-hidden="true">';
+    var ox = pad + 0.55 * (w - 2 * pad), oy = pad + (1 - 0.45) * (h - 2 * pad);
+    svg += '<rect x="' + ox + '" y="' + oy + '" width="' + (w - pad - ox) + '" height="' + (h - pad - oy) + '" fill="rgba(255,36,66,0.12)"/>';
+    Object.keys(CIRCLES).forEach(function (c) {
+      var pts = scenes.filter(function (s) { return s.circle === c; }).sort(function (a, b) { return a.x - b.x; });
+      if (pts.length > 1) {
+        svg += '<polyline fill="none" stroke="' + CIRCLES[c].color + '" stroke-opacity=".4" points="' +
+          pts.map(function (s) { return (pad + s.x / 100 * (w - 2 * pad)) + "," + (pad + (1 - s.y / 100) * (h - 2 * pad)); }).join(" ") + '"/>';
+      }
+    });
+    scenes.forEach(function (s) {
+      var cx = pad + s.x / 100 * (w - 2 * pad), cy = pad + (1 - s.y / 100) * (h - 2 * pad);
+      svg += '<circle cx="' + cx + '" cy="' + cy + '" r="' + (1.5 + s.size * 1.3) + '" fill="' + CIRCLES[s.circle].color + '"/>';
+    });
+    return svg + "</svg>";
+  }
+
+  function renderSamples() {
+    $("samples").innerHTML = PRODUCTS.map(function (p) {
+      var opp = p.scenes.filter(isOpp).length;
+      return '<button type="button" class="sample" data-id="' + p.id + '">' + miniConstellation(p.scenes) +
+        '<div class="meta"><span class="name">' + esc(p.name) + '</span><span class="tag">' + esc(p.tagline) + "</span>" +
+        '<span class="stat">12 个场景 · 机会区 <b>' + opp + "</b> 个 · " + esc(p.price) + "</span></div></button>";
+    }).join("");
+    $("samples").querySelectorAll(".sample").forEach(function (b) {
+      b.addEventListener("click", function () { start(loadSample(b.getAttribute("data-id"))); });
+    });
+  }
+
+  $("product-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = $("f-name").value.trim();
+    if (!name) { $("f-error").hidden = false; $("f-name").focus(); return; }
+    $("f-error").hidden = true;
+    var match = PRODUCTS.filter(function (p) { return p.name === name; })[0];
+    start(match ? loadSample(match.id) : generate(name, $("f-point").value.trim(), $("f-price").value));
+  });
+
+  /* ───────── 星图 ───────── */
+  var W = 1000, H = 620, L = 64, R = 24, T = 24, B = 56;
+  function px(x) { return L + x / 100 * (W - L - R); }
+  function py(y) { return T + (1 - y / 100) * (H - T - B); }
+
+  function visibleScenes() {
+    return state.product.scenes.filter(function (s) { return state.filters[s.circle]; });
+  }
+
+  function renderMap() {
+    var p = state.product;
+    $("map-eyebrow").textContent = "场景星图 · " + p.price;
+    $("map-title").textContent = p.name;
+    $("map-tagline").textContent = p.tagline;
+    $("custom-notice").hidden = !p.custom;
+    var opp = p.scenes.filter(isOpp).length;
+    var avg = Math.round(p.scenes.reduce(function (a, s) { return a + s.y; }, 0) / p.scenes.length);
+    $("readout").innerHTML =
+      '<div><span class="v">' + p.scenes.length + '</span><span class="l">场景</span></div>' +
+      '<div><span class="v rose">' + opp + '</span><span class="l">机会区</span></div>' +
+      '<div><span class="v">' + avg + '</span><span class="l">平均拥挤度</span></div>';
+    renderChips();
+    renderChart();
+    renderList();
+    renderTray();
+  }
+
+  function renderChips() {
+    var used = {};
+    state.product.scenes.forEach(function (s) { used[s.circle] = true; });
+    $("circle-chips").innerHTML = Object.keys(CIRCLES).filter(function (c) { return used[c]; }).map(function (c) {
+      return '<button type="button" class="chip" data-c="' + c + '" aria-pressed="' + state.filters[c] + '"><i style="background:' +
+        CIRCLES[c].color + '"></i>' + CIRCLES[c].name + "</button>";
+    }).join("");
+    $("circle-chips").querySelectorAll(".chip").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var c = b.getAttribute("data-c");
+        var on = Object.keys(state.filters).filter(function (k) { return state.filters[k]; });
+        if (on.length === 1 && state.filters[c]) return; // 至少保留一个
+        state.filters[c] = !state.filters[c];
+        b.setAttribute("aria-pressed", state.filters[c]);
+        renderChart(); renderList();
+      });
+    });
+  }
+
+  function starfield() {
+    var rnd = seeded("sky" + state.product.name), out = "";
+    for (var i = 0; i < 140; i++) {
+      out += '<circle cx="' + (rnd() * W).toFixed(1) + '" cy="' + (rnd() * H).toFixed(1) + '" r="' + (rnd() * 0.9 + 0.2).toFixed(2) +
+        '" fill="#e9e6dc" fill-opacity="' + (rnd() * 0.35 + 0.05).toFixed(2) + '"/>';
+    }
+    return out;
+  }
+
+  function renderChart() {
+    var scenes = state.product.scenes;
+    var s = '<defs><radialGradient id="glow"><stop offset="0" stop-color="#fff" stop-opacity="1"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>';
+    s += starfield();
+    // 网格与刻度
+    [0, 25, 50, 75, 100].forEach(function (v) {
+      s += '<line class="grid-line" x1="' + px(v) + '" y1="' + T + '" x2="' + px(v) + '" y2="' + (H - B) + '"/>';
+      s += '<line class="grid-line" x1="' + L + '" y1="' + py(v) + '" x2="' + (W - R) + '" y2="' + py(v) + '"/>';
+      s += '<text class="tick" x="' + px(v) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + v + "</text>";
+      s += '<text class="tick" x="' + (L - 10) + '" y="' + (py(v) + 4) + '" text-anchor="end">' + v + "</text>";
+    });
+    // 机会区
+    s += '<rect class="opp-zone" x="' + px(55) + '" y="' + py(45) + '" width="' + (px(100) - px(55)) + '" height="' + (py(0) - py(45)) + '"/>';
+    s += '<text class="quad-label opp" x="' + (px(100) - 10) + '" y="' + (py(0) - 12) + '" text-anchor="end">机会区 · 需求高 写的人少</text>';
+    s += '<text class="quad-label" x="' + (px(100) - 10) + '" y="' + (py(100) + 20) + '" text-anchor="end">红海 · 需求高 但很拥挤</text>';
+    s += '<text class="quad-label" x="' + (px(0) + 10) + '" y="' + (py(100) + 20) + '">内卷 · 需求低 也拥挤</text>';
+    s += '<text class="quad-label" x="' + (px(0) + 10) + '" y="' + (py(0) - 12) + '">小众 · 等待时机</text>';
+    // 坐标轴标题
+    s += '<text class="axis-label" x="' + ((L + W - R) / 2) + '" y="' + (H - 12) + '" text-anchor="middle">需求强度 →</text>';
+    s += '<text class="axis-label" transform="translate(18 ' + ((T + H - B) / 2) + ') rotate(-90)" text-anchor="middle">内容拥挤度 →</text>';
+    // 星座连线
+    Object.keys(CIRCLES).forEach(function (c) {
+      if (!state.filters[c]) return;
+      var pts = scenes.filter(function (q) { return q.circle === c; }).sort(function (a, b) { return a.x - b.x; });
+      if (pts.length > 1) {
+        s += '<polyline class="const-line" stroke="' + CIRCLES[c].color + '" points="' +
+          pts.map(function (q) { return px(q.x) + "," + py(q.y); }).join(" ") + '"/>';
+      }
+    });
+    // 星
+    scenes.forEach(function (q, i) {
+      var r = 4 + q.size * 3.2, col = CIRCLES[q.circle].color;
+      var cls = "star" + (state.filters[q.circle] ? "" : " dim") + (state.picked.indexOf(q.id) > -1 ? " picked" : "");
+      s += '<g class="' + cls + '" data-i="' + i + '" tabindex="' + (state.filters[q.circle] ? 0 : -1) + '" role="button" aria-label="' + esc(q.title) + '">' +
+        '<circle class="halo" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + (r * 2.6) + '" fill="' + col + '" style="animation-delay:-' + ((i * 0.37) % 3.6).toFixed(2) + 's"/>' +
+        '<circle class="ring" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + (r + 6) + '"/>' +
+        '<circle class="core" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + r + '" fill="' + col + '"/>' +
+        '<text class="num" x="' + (px(q.x) + r + 5) + '" y="' + (py(q.y) - r + 2) + '">' + String(i + 1).padStart(2, "0") + "</text></g>";
+    });
+    var svg = $("chart");
+    svg.innerHTML = s;
+    svg.querySelectorAll(".star").forEach(function (g) {
+      var i = +g.getAttribute("data-i");
+      g.addEventListener("click", function () { openDrawer(i); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrawer(i); } });
+      g.addEventListener("mouseenter", function () { showTip(i, g); });
+      g.addEventListener("mouseleave", hideTip);
+      g.addEventListener("focus", function () { showTip(i, g); });
+      g.addEventListener("blur", hideTip);
+    });
+  }
+
+  function showTip(i, g) {
+    var q = state.product.scenes[i], tip = $("tooltip");
+    var wrap = $("chart-wrap").getBoundingClientRect();
+    var b = g.querySelector(".core").getBoundingClientRect();
+    tip.innerHTML = "<b>" + esc(q.title) + "</b><span>" + CIRCLES[q.circle].name + " · 需求 " + q.x + " · 拥挤 " + q.y + "</span>";
+    tip.hidden = false;
+    var left = b.left - wrap.left + b.width / 2 - tip.offsetWidth / 2;
+    left = Math.max(8, Math.min(left, wrap.width - tip.offsetWidth - 8));
+    var top = b.top - wrap.top - tip.offsetHeight - 10;
+    if (top < 8) top = b.bottom - wrap.top + 10;
+    tip.style.left = left + "px";
+    tip.style.top = top + "px";
+  }
+  function hideTip() { $("tooltip").hidden = true; }
+
+  function renderList() {
+    var scenes = state.product.scenes;
+    var order = scenes.map(function (s, i) { return i; }).filter(function (i) { return state.filters[scenes[i].circle]; })
+      .sort(function (a, b) { return oppScore(scenes[b]) - oppScore(scenes[a]); });
+    $("scene-list").innerHTML = order.map(function (i) {
+      var q = scenes[i];
+      return '<button type="button" class="scene-card" data-i="' + i + '"><span class="top"><span>' + catalog(q, i) + "</span>" +
+        (isOpp(q) ? '<span class="badge-opp">机会区</span>' : "<span>" + CIRCLES[q.circle].name + "</span>") + "</span>" +
+        "<h3>" + esc(q.title) + "</h3>" +
+        '<span class="bars"><span>需求</span><span class="bar"><i style="width:' + q.x + '%"></i></span>' +
+        '<span>拥挤</span><span class="bar crowd"><i style="width:' + q.y + '%"></i></span></span></button>';
+    }).join("");
+    $("scene-list").querySelectorAll(".scene-card").forEach(function (b) {
+      b.addEventListener("click", function () { openDrawer(+b.getAttribute("data-i")); });
+    });
+  }
+
+  function setMode(m) {
+    state.mode = m;
+    $("chart-wrap").hidden = m !== "chart";
+    $("scene-list").hidden = m !== "list";
+    $("mode-chart").setAttribute("aria-pressed", m === "chart");
+    $("mode-list").setAttribute("aria-pressed", m === "list");
+  }
+  $("mode-chart").addEventListener("click", function () { setMode("chart"); });
+  $("mode-list").addEventListener("click", function () { setMode("list"); });
+
+  /* ───────── 场景抽屉 ───────── */
+  var drawerIndex = -1;
+
+  function radarSvg(y) {
+    var r = 30, c = 2 * Math.PI * r, col = y >= 65 ? "#ff2442" : y >= 45 ? "#f2b880" : "#7fdccb";
+    return '<svg viewBox="0 0 76 76" aria-hidden="true"><circle cx="38" cy="38" r="' + r + '" fill="none" stroke="#1d2a52" stroke-width="6"/>' +
+      '<circle cx="38" cy="38" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="6" stroke-linecap="round" stroke-dasharray="' +
+      (c * y / 100).toFixed(1) + " " + c.toFixed(1) + '" transform="rotate(-90 38 38)"/>' +
+      '<text x="38" y="43" text-anchor="middle" fill="#e9e6dc" font-family="IBM Plex Mono, monospace" font-size="16">' + y + "</text></svg>";
+  }
+
+  function coverHtml(q) {
+    var sub = { center: "left:18%;right:18%;top:24%;bottom:24%", left: "left:8%;width:46%;top:20%;bottom:16%", "top-left": "left:8%;width:60%;top:8%;height:52%" }[q.cover.layout] || "left:18%;right:18%;top:24%;bottom:24%";
+    var band = q.cover.text === "top" ? "top:8px" : "bottom:8px";
+    if (q.cover.layout === "top-left" && q.cover.text === "top") band = "bottom:8px";
+    return '<div class="cover" aria-hidden="true"><div class="subject" style="' + sub + '">' + esc(q.cover.subject) + "</div>" +
+      '<div class="text-band" style="' + band + '">' + esc(q.titles[0]) + "</div></div>";
+  }
+
+  function openDrawer(i) {
+    hideTip();
+    drawerIndex = i;
+    var q = state.product.scenes[i];
+    var c = CIRCLES[q.circle];
+    $("d-cat").textContent = catalog(q, i) + (isOpp(q) ? " · 机会区" : "");
+    var mag = magnitude(q);
+    $("d-body").innerHTML =
+      '<div><h2 class="d-title" id="d-title">' + esc(q.title) + '</h2><span class="d-circle"><i style="background:' + c.color + '"></i>' + c.name + "</span></div>" +
+      '<div class="metrics"><div><span class="v">' + q.x + '</span><span class="l">需求强度</span></div>' +
+      '<div><span class="v">' + q.y + '</span><span class="l">内容拥挤度</span></div>' +
+      '<div><span class="v">' + mag + ' 等星</span><span class="l">人群规模（示意）</span></div></div>' +
+      '<div class="block"><h4>那一刻</h4><p class="moment">' + esc(q.moment) + "</p></div>" +
+      '<div class="block"><h4>真实痛点</h4><ul>' + q.pains.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>" +
+      '<div class="block"><h4>她会这样搜</h4><div class="searchbars">' + q.searches.map(function (t) { return '<div class="searchbar">' + esc(t) + "</div>"; }).join("") + "</div></div>" +
+      '<div class="block"><h4>打动她的点</h4><ul>' + q.hooks.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div>" +
+      '<div class="block"><h4>同质化雷达</h4><div class="radar">' + radarSvg(q.y) + '<div><p class="verdict">' + crowdVerdict(q.y) +
+      "</p><ul>" + q.worn.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul></div></div></div>" +
+      '<div class="block"><h4>笔记标题建议</h4><div class="titles">' + q.titles.map(function (t, k) {
+        return '<div class="title-row"><span>' + esc(t) + '</span><button type="button" data-copy="' + k + '">复制</button></div>';
+      }).join("") + "</div></div>" +
+      '<div class="block"><h4>封面构图建议 · 3:4</h4><div class="cover-wrap">' + coverHtml(q) +
+      '<div class="cover-note"><span><b>主体：</b>' + esc(q.cover.subject) + "</span><span>" + esc(q.cover.note) + "</span></div></div></div>";
+    $("d-body").querySelectorAll("[data-copy]").forEach(function (b) {
+      b.addEventListener("click", function () { copyText(q.titles[+b.getAttribute("data-copy")], "标题已复制"); });
+    });
+    $("d-body").scrollTop = 0;
+    updatePickBtn();
+    $("drawer").classList.add("open");
+    $("drawer").setAttribute("aria-hidden", "false");
+    $("scrim").classList.add("open");
+    document.querySelectorAll(".star").forEach(function (g) { g.classList.toggle("active", +g.getAttribute("data-i") === i); });
+    setTimeout(function () { $("d-close").focus(); }, 50);
+  }
+
+  function closeDrawer() {
+    if (!$("drawer").classList.contains("open")) return;
+    $("drawer").classList.remove("open");
+    $("drawer").setAttribute("aria-hidden", "true");
+    $("scrim").classList.remove("open");
+    document.querySelectorAll(".star.active").forEach(function (g) { g.classList.remove("active"); });
+  }
+
+  function stepDrawer(dir) {
+    var scenes = state.product.scenes;
+    var vis = scenes.map(function (s, i) { return i; }).filter(function (i) { return state.filters[scenes[i].circle]; })
+      .sort(function (a, b) { return scenes[a].x - scenes[b].x; });
+    var pos = vis.indexOf(drawerIndex);
+    if (pos < 0) pos = 0;
+    openDrawer(vis[(pos + dir + vis.length) % vis.length]);
+  }
+
+  function updatePickBtn() {
+    var q = state.product.scenes[drawerIndex];
+    var on = state.picked.indexOf(q.id) > -1;
+    var full = !on && state.picked.length >= MAX_PICK;
+    var b = $("d-pick");
+    b.textContent = on ? "已加入 · 点击移除" : full ? "清单已满（" + MAX_PICK + " 个）" : "加入策展清单";
+    b.disabled = full;
+    b.classList.toggle("btn-primary", !on);
+  }
+
+  $("d-pick").addEventListener("click", function () {
+    var q = state.product.scenes[drawerIndex];
+    var k = state.picked.indexOf(q.id);
+    if (k > -1) { state.picked.splice(k, 1); toast("已从清单移除"); }
+    else if (state.picked.length < MAX_PICK) { state.picked.push(q.id); toast("已加入策展清单（" + state.picked.length + "/" + MAX_PICK + "）"); }
+    updatePickBtn();
+    renderChart();
+    document.querySelectorAll(".star").forEach(function (g) { g.classList.toggle("active", +g.getAttribute("data-i") === drawerIndex); });
+    renderTray();
+  });
+  $("d-close").addEventListener("click", closeDrawer);
+  $("scrim").addEventListener("click", closeDrawer);
+  $("d-prev").addEventListener("click", function () { stepDrawer(-1); });
+  $("d-next").addEventListener("click", function () { stepDrawer(1); });
+  document.addEventListener("keydown", function (e) {
+    if (!$("drawer").classList.contains("open")) return;
+    if (e.key === "Escape") closeDrawer();
+    if (e.key === "ArrowRight") stepDrawer(1);
+    if (e.key === "ArrowLeft") stepDrawer(-1);
+  });
+
+  /* ───────── 托盘 ───────── */
+  function renderTray() {
+    var n = state.picked.length, slots = "";
+    for (var i = 0; i < MAX_PICK; i++) slots += '<span class="slot' + (i < n ? " on" : "") + '"></span>';
+    $("tray-picked").innerHTML = slots + "<span>" + (n ? "已选 " + n + " 个场景" : "点击星星，把想打的场景加入清单") + "</span>";
+    $("tray-go").disabled = n === 0;
+    $("step-plan").disabled = n === 0;
+  }
+  $("tray-go").addEventListener("click", function () { go("plan"); });
+
+  /* ───────── 03 策划 ───────── */
+  function pickedScenes() {
+    var scenes = state.product.scenes;
+    return state.picked.map(function (id) {
+      for (var i = 0; i < scenes.length; i++) if (scenes[i].id === id) return { s: scenes[i], i: i };
+    }).filter(Boolean).sort(function (a, b) { return oppScore(b.s) - oppScore(a.s); });
+  }
+
+  function today() {
+    var d = new Date();
+    return d.getFullYear() + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + String(d.getDate()).padStart(2, "0");
+  }
+
+  function renderPlan() {
+    var root = $("plan-root");
+    if (!state.product || !state.picked.length) {
+      root.innerHTML = '<div class="empty"><p>清单还是空的。回到星图，点开星星，把想打的场景加入清单。</p></div>';
+      $("plan-copy").disabled = true;
+      return;
+    }
+    $("plan-copy").disabled = false;
+    var items = pickedScenes();
+    var opp = items.filter(function (it) { return isOpp(it.s); }).length;
+    var circles = {};
+    items.forEach(function (it) { circles[it.s.circle] = true; });
+    var html = '<article class="sheet"><header class="sheet-head"><div><p class="kicker">一物千景 · 本周种草策划</p>' +
+      "<h1>" + esc(state.product.name) + "：" + items.length + " 个瞬间</h1>" +
+      '<p class="sub">' + esc(state.product.tagline) + " · " + esc(state.product.price) + "</p></div>" +
+      '<div class="issue">生成于 ' + today() + "<br>按机会分排序<br>" + (state.product.custom ? "组合生成 · 示意" : "示例商品 · 示意数据") + "</div></header>" +
+      '<div class="sheet-intro"><div><span class="v">' + items.length + '</span><br><span class="l">篇笔记</span></div>' +
+      '<div><span class="v">' + opp + '</span><br><span class="l">来自机会区</span></div>' +
+      '<div><span class="v">' + Object.keys(circles).length + '</span><br><span class="l">覆盖兴趣圈层</span></div></div>';
+    items.forEach(function (it, k) {
+      var q = it.s, a = advice(q);
+      html += '<section class="entry"><div class="day">' + DAYS[k] + "<small>" + catalog(q, it.i) + "</small></div>" +
+        "<div><h3>" + esc(q.title) + '</h3><p class="who">' + CIRCLES[q.circle].name + " · 需求 " + q.x + " · 拥挤 " + q.y + "</p>" +
+        '<p class="headline">' + esc(q.titles[0]) + "</p>" +
+        '<div class="kw">' + q.searches.slice(0, 3).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div></div>" +
+        "<dl><div><dt>发布建议</dt><dd><span class=\"" + (a.opp ? "tag-opp" : "") + '">' + a.tag + "</span> · " + a.text + "</dd></div>" +
+        "<div><dt>打动点</dt><dd>" + esc(q.hooks[0]) + "</dd></div>" +
+        "<div><dt>封面</dt><dd>" + esc(q.cover.subject) + "。" + esc(q.cover.note) + "</dd></div></dl></section>";
+    });
+    html += '<footer class="sheet-foot"><span>人群规模与拥挤度为示意数据，正式版本可接入平台搜索与笔记数据。</span><span>一物千景</span></footer></article>';
+    root.innerHTML = html;
+  }
+
+  function planText() {
+    var items = pickedScenes();
+    var out = ["【" + state.product.name + " · 本周种草策划】", state.product.tagline + " · " + state.product.price, ""];
+    items.forEach(function (it, k) {
+      var q = it.s, a = advice(q);
+      out.push(DAYS[k] + "｜" + q.title + "（" + CIRCLES[q.circle].name + "）");
+      out.push("首选标题：" + q.titles[0]);
+      out.push("备选标题：" + q.titles.slice(1).join(" / "));
+      out.push("核心搜索词：" + q.searches.join("、"));
+      out.push("打动点：" + q.hooks.join("；"));
+      out.push("封面：" + q.cover.subject + "。" + q.cover.note);
+      out.push("发布建议：" + a.tag + "，" + a.text);
+      out.push("");
+    });
+    out.push("（人群规模与拥挤度为示意数据）");
+    return out.join("\n");
+  }
+
+  $("plan-copy").addEventListener("click", function () { copyText(planText(), "策划文案已复制"); });
+  $("plan-back").addEventListener("click", function () { go("map"); });
+
+  /* ───────── 工具 ───────── */
+  function copyText(text, msg) {
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? msg : "复制失败，请手动选择文字复制");
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { toast(msg); }, fallback);
+      } else fallback();
+    } catch (e) { fallback(); }
+  }
+
+  var toastTimer;
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.remove("show"); }, 1800);
+  }
+
+  document.querySelectorAll("[data-go]").forEach(function (b) {
+    b.addEventListener("click", function () { if (!b.disabled) go(b.getAttribute("data-go")); });
+  });
+  $("brand").addEventListener("click", function () { go("home"); });
+
+  // 窄屏默认列表视图更易点按
+  if (window.matchMedia && window.matchMedia("(max-width: 560px)").matches) setMode("list");
+
+  renderSamples();
+  go("home");
+})();
+</script>
+</body>
+</html>
