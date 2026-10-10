@@ -4,23 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>一物千景</title>
-<meta name="description" content="AI 场景种草策展台：把一件商品拆成具体的人和瞬间，用星图找到还没被写烂的种草场景。">
+<meta name="description" content="AI 场景种草策展台：先看品类市场与竞品价格带，再把商品拆成具体的人和瞬间，找到还没被写烂的种草场景。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <header class="topbar">
   <button class="brand" id="brand" type="button" aria-label="回到首页">
+    <span class="brand-dot" aria-hidden="true"></span>
     <span class="brand-mark">一物千景</span>
-    <span class="brand-sub">SCENE ATLAS FOR SELLERS</span>
+    <span class="brand-sub">AI 场景种草策展台</span>
   </button>
   <ol class="steps" aria-label="步骤">
     <li><button type="button" id="step-home" data-go="home"><span class="n">01</span><span class="t">输入商品</span></button></li>
-    <li><button type="button" id="step-map" data-go="map" disabled><span class="n">02</span><span class="t">场景星图</span></button></li>
-    <li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">03</span><span class="t">策展清单</span></button></li>
+    <li><button type="button" id="step-market" data-go="market" disabled><span class="n">02</span><span class="t">品类档案</span></button></li>
+    <li><button type="button" id="step-map" data-go="map" disabled><span class="n">03</span><span class="t">场景星图</span></button></li>
+    <li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">04</span><span class="t">策展清单</span></button></li>
   </ol>
 </header>
 
@@ -29,12 +31,17 @@
   <section class="view" id="view-home">
     <div class="hero">
       <div>
-        <p class="eyebrow">AI 场景种草策展台 · 给中小商家</p>
+        <p class="eyebrow">给小红书中小商家的选题工具</p>
         <h1>一物<span class="dot">·</span>千景</h1>
-        <p class="lede">一件货，一千个被需要的瞬间。</p>
-        <p class="body">用户在小红书上用场景说话，商家却习惯用品类词思考。输入一件商品，看见它会在哪些人、哪些瞬间被需要；在星图上找到需求高、还没被写烂的场景，再决定这周发什么笔记。</p>
+        <p class="lede">先看清市场，再找到被需要的瞬间。</p>
+        <p class="body">输入一件商品：先看它所在品类的市场规模、竞品和细分价格带，再把它拆成“具体的人 × 具体的瞬间”，在星图上找到需求高、还没被写烂的场景，排成一周的笔记策划。</p>
+        <div class="legend">
+          <span class="src src-org">机构数据</span><span class="muted">附原文链接</span>
+          <span class="src src-jd">京东实采</span><span class="muted">真实 SKU 标价</span>
+          <span class="src src-ai">AI 评估</span><span class="muted">判断，不是统计</span>
+        </div>
       </div>
-      <form class="form-card" id="product-form" novalidate>
+      <form class="card form-card" id="product-form" novalidate>
         <h2>拆解你的商品</h2>
         <div class="field">
           <label for="f-name">商品名称</label>
@@ -46,46 +53,53 @@
         </div>
         <div class="field-row">
           <div class="field">
-            <label for="f-price">价格区间</label>
-            <select id="f-price" name="price">
-              <option>百元以下</option>
-              <option selected>100-300元</option>
-              <option>300-800元</option>
-              <option>800元以上</option>
-            </select>
+            <label for="f-price">你的定价（元）</label>
+            <input id="f-price" name="price" type="number" min="1" max="99999" placeholder="例如：129">
           </div>
-          <div class="field" style="align-content:end">
-            <button class="btn btn-primary" type="submit" id="f-submit">拆解场景</button>
-          </div>
+          <button class="btn btn-primary" type="submit" id="f-submit">开始拆解</button>
         </div>
         <p class="form-error" id="f-error" hidden>请先填写商品名称。</p>
       </form>
     </div>
 
     <div class="section-head">
-      <h2>或者从一个示例开始</h2>
-      <p>每个示例预置 12 个场景，点开即可体验完整流程</p>
+      <h2>从一个示例开始</h2>
+      <p class="muted">示例品类已接入机构数据和京东实采价格</p>
     </div>
     <div class="samples" id="samples"></div>
 
     <div class="method">
-      <div><span class="k">STEP 01 · 拆人群</span><h3>把品类词拆成“人 × 瞬间”</h3><p>不是“保温杯推荐”，而是“凌晨两点赶稿的插画师”。</p></div>
-      <div><span class="k">STEP 02 · 看星图</span><h3>需求强度 × 内容拥挤度</h3><p>右下角是需求高、写的人少的机会区，越亮的星人群越大。</p></div>
-      <div><span class="k">STEP 03 · 排策划</span><h3>挑场景，排成一周的发布计划</h3><p>每个场景附搜索词、标题、封面构图和发布建议。</p></div>
+      <div><span class="k">01</span><h3>输入商品</h3><p>名称、卖点和你的定价。</p></div>
+      <div><span class="k">02</span><h3>品类档案</h3><p>市场规模、竞品品牌、细分类型和价格带，看清你站在哪。</p></div>
+      <div><span class="k">03</span><h3>场景星图</h3><p>需求 × 拥挤度，按兴趣圈层和年龄段筛出机会场景。</p></div>
+      <div><span class="k">04</span><h3>策展清单</h3><p>挑出场景，自动排成周一到周六的发布计划。</p></div>
     </div>
   </section>
 
-  <!-- 02 星图 -->
-  <section class="view" id="view-map" hidden>
-    <div class="map-head">
+  <!-- 02 品类档案 -->
+  <section class="view" id="view-market" hidden>
+    <div class="page-head">
       <div>
-        <p class="eyebrow" id="map-eyebrow">场景星图</p>
+        <div class="crumbs" id="m-crumbs"></div>
+        <h1 id="m-title"></h1>
+        <p class="tagline" id="m-tagline"></p>
+      </div>
+      <div class="readout" id="m-readout"></div>
+    </div>
+    <div id="m-root"></div>
+  </section>
+
+  <!-- 03 星图 -->
+  <section class="view" id="view-map" hidden>
+    <div class="page-head">
+      <div>
+        <div class="crumbs" id="map-crumbs"></div>
         <h1 id="map-title"></h1>
         <p class="tagline" id="map-tagline"></p>
       </div>
       <div class="readout" id="readout"></div>
     </div>
-    <p class="notice" id="custom-notice" hidden>这是根据你的输入，用场景库组合生成的示意结果，可作为策划起点。示例商品的内容经过人工精修，更能代表正式效果。</p>
+    <p class="notice"><span class="src src-ai">AI 评估</span>需求强度、内容拥挤度、人群规模和年龄段都是对每个场景的判断，用来排序和比较，不是统计数据。<span id="custom-notice" hidden>当前商品不在示例中，场景由场景库组合生成，可作为策划起点。</span></p>
 
     <div class="toolbar">
       <div class="chips" id="circle-chips" aria-label="按兴趣圈层筛选"></div>
@@ -94,20 +108,23 @@
         <button type="button" id="mode-list" aria-pressed="false">列表</button>
       </div>
     </div>
+    <div class="toolbar">
+      <div class="chips" id="age-chips" aria-label="按年龄段筛选"></div>
+    </div>
 
     <div class="chart-wrap" id="chart-wrap">
-      <svg id="chart" viewBox="0 0 1000 620" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
+      <svg id="chart" viewBox="0 0 1000 600" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
       <div class="tooltip" id="tooltip" hidden></div>
     </div>
     <div class="scene-list" id="scene-list" hidden></div>
     <div class="legend-note">
-      <span>● 星越大越亮，人群规模越大（示意）</span>
-      <span>同色细线连接同一兴趣圈层</span>
-      <span>红色虚线框为机会区：需求强度 ≥ 55，拥挤度 ≤ 45</span>
+      <span>● 越大，人群越多</span>
+      <span>同色虚线连接同一兴趣圈层</span>
+      <span>粉色区域为机会区：需求 ≥ 55 且拥挤度 ≤ 45</span>
     </div>
   </section>
 
-  <!-- 03 策划 -->
+  <!-- 04 策划 -->
   <section class="view" id="view-plan" hidden>
     <div class="plan-actions">
       <button class="btn btn-sm" type="button" id="plan-back">← 回到星图继续挑选</button>
@@ -116,7 +133,7 @@
     <div id="plan-root"></div>
   </section>
 
-  <footer class="site-foot">图中人群规模与拥挤度为示意数据，正式版本可接入平台搜索与笔记数据。 · 一物千景 Demo</footer>
+  <footer class="site-foot">机构数据均附原文链接；京东价格为 2026-10-10 搜索页实采；场景分数为 AI 评估。 · 一物千景 Demo</footer>
 </main>
 
 <div class="tray" id="tray" hidden>
@@ -141,14 +158,15 @@
 <div class="loading" id="loading" hidden>
   <div class="loading-inner">
     <div class="orbit"></div>
-    <p class="line">正在识别人群…</p>
-    <p class="line">正在定位瞬间…</p>
+    <p class="line">正在读取品类数据…</p>
+    <p class="line">正在拆解人群与瞬间…</p>
     <p class="line">正在评估内容拥挤度…</p>
   </div>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="data.js"></script>
+<script src="market.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

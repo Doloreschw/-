@@ -16,10 +16,12 @@ def main() -> None:
     html = (SRC / "index.html").read_text(encoding="utf-8")
     css = (SRC / "styles.css").read_text(encoding="utf-8")
     data = (SRC / "data.js").read_text(encoding="utf-8")
+    market = (SRC / "market.js").read_text(encoding="utf-8")
     app = (SRC / "app.js").read_text(encoding="utf-8")
 
     html = html.replace('<link rel="stylesheet" href="styles.css">', f"<style>\n{css}</style>")
     html = html.replace('<script src="data.js"></script>', f"<script>\n{data}</script>")
+    html = html.replace('<script src="market.js"></script>', f"<script>\n{market}</script>")
     html = html.replace('<script src="app.js"></script>', f"<script>\n{app}</script>")
 
     DIST.mkdir(exist_ok=True)

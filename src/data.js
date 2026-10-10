@@ -1,14 +1,14 @@
 /* 一物千景 · 场景数据
- * x = 需求强度 (0-100)，y = 内容拥挤度 (0-100，越高越红海)，size = 人群规模 (1-3，示意)
- * 所有数值均为示意数据，正式版本可接入平台搜索与笔记数据。
+ * x = 需求强度 (0-100)，y = 内容拥挤度 (0-100，越高越红海)，size = 人群规模 (1-3)
+ * 这些分数都是 AI 对每个场景的评估，不是统计数据；正式版本可接入平台搜索与笔记数据替换。
  */
 window.CIRCLES = {
-  work:   { name: "职场通勤", color: "#F2B880" },
-  campus: { name: "校园考试", color: "#8EC5FF" },
-  family: { name: "亲子家庭", color: "#B9E4A7" },
-  outdoor:{ name: "户外山野", color: "#7FDCCB" },
-  solo:   { name: "独居自处", color: "#D7B8FF" },
-  gift:   { name: "送礼心意", color: "#FF8FA3" }
+  work:   { name: "职场通勤", color: "#F2994A", age: "25-30" },
+  campus: { name: "校园考试", color: "#4F86F7", age: "18-24" },
+  family: { name: "亲子家庭", color: "#58B368", age: "31-40" },
+  outdoor:{ name: "户外山野", color: "#22A699", age: "25-30" },
+  solo:   { name: "独居自处", color: "#9B6BE0", age: "25-30" },
+  gift:   { name: "送礼心意", color: "#EC5D92", age: "25-30" }
 };
 
 window.PRODUCTS = [
