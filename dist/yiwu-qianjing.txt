@@ -1,0 +1,1219 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一物千景</title>
+<meta name="description" content="AI 场景种草策展台：先看品类市场与竞品价格带，再把商品拆成具体的人和瞬间，找到还没被写烂的种草场景。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<style>:root{color-scheme:light;--bg:#fafafa;--surface:#ffffff;--line:#ececef;--line-2:#dedee3;--ink:#17171c;--ink-2:#4f5059;--ink-3:#8b8c96;--accent:#ff2442;--accent-soft:#fff0f2;--field:#f4f4f6;--src-org:#2f5fe0;--src-org-bg:#edf2ff;--src-jd:#b35c00;--src-jd-bg:#fff4e6;--src-ai:#7446d3;--src-ai-bg:#f3eeff;--f-body:"Noto Sans SC","PingFang SC","Microsoft YaHei",sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;--r-lg:20px;--r:14px;--r-sm:10px;--shadow:0 1px 2px rgba(23,23,28,0.04),0 8px 24px rgba(23,23,28,0.05);--gutter:clamp(16px,4vw,40px)}*{box-sizing:border-box}[hidden]{display:none !important}html,body{height:100%}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65;-webkit-font-smoothing:antialiased}button,input,select{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit}:focus-visible{outline:2px solid var(--accent);outline-offset:2px}h1,h2,h3,h4{text-wrap:balance;margin:0}p{margin:0}.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px var(--gutter);background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0}.brand-dot{width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#ff7a8c,var(--accent))}.brand-mark{font-weight:900;font-size:18px;letter-spacing:0.06em}.brand-sub{font-size:12px;color:var(--ink-3)}.steps{display:flex;gap:4px;list-style:none;margin:0;padding:3px;background:var(--field);border-radius:99px}.steps button{display:flex;align-items:center;gap:6px;background:none;border:0;border-radius:99px;padding:5px 12px;font-size:13px;color:var(--ink-3)}.steps button .n{font-family:var(--f-mono);font-size:11px}.steps button[aria-current="step"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow);font-weight:500}.steps button:disabled{cursor:default;opacity:0.45}main{padding-inline:var(--gutter)}.view{padding-block:28px 120px;max-width:1200px;margin:0 auto}.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:22px}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:16px}.card-head h3{font-size:16px;font-weight:700}.card-head p{font-size:13px;color:var(--ink-3);margin-top:2px}.eyebrow{font-size:12px;letter-spacing:0.12em;color:var(--ink-3)}.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:99px;padding:10px 20px;font-size:14px;font-weight:500;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);transition:background .15s,border-color .15s,transform .15s}.btn:hover{border-color:var(--ink-3)}.btn:active{transform:scale(0.98)}.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn-primary:hover{background:#e81e3a;border-color:#e81e3a}.btn-dark{background:var(--ink);border-color:var(--ink);color:#fff}.btn:disabled{opacity:0.4;cursor:not-allowed}.btn-sm{padding:6px 14px;font-size:13px}.pill{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:2px 10px;font-size:12px;white-space:nowrap}.src{display:inline-flex;align-items:center;gap:4px;border-radius:6px;padding:1px 7px;font-size:11px;font-weight:500;white-space:nowrap}.src-org{color:var(--src-org);background:var(--src-org-bg)}.src-jd{color:var(--src-jd);background:var(--src-jd-bg)}.src-ai{color:var(--src-ai);background:var(--src-ai-bg)}.src-link{font-size:12px;color:var(--ink-3);text-decoration:none;border-bottom:1px dotted var(--line-2)}.src-link:hover{color:var(--ink)}.muted{color:var(--ink-3);font-size:13px}.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:clamp(24px,5vw,64px);align-items:center;padding-block:28px 40px}.hero h1{font-weight:900;font-size:clamp(52px,9vw,112px);line-height:1;letter-spacing:0.02em;margin-top:14px}.hero h1 .dot{color:var(--accent)}.hero .lede{font-size:clamp(18px,2vw,22px);font-weight:500;margin-top:18px}.hero .body{color:var(--ink-2);margin-top:12px;max-width:34em}.hero .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.form-card{display:grid;gap:14px;box-shadow:var(--shadow)}.form-card h2{font-size:16px;font-weight:700}.field{display:grid;gap:6px}.field label{font-size:12px;color:var(--ink-2)}.field input,.field select{width:100%;background:var(--field);border:1px solid transparent;border-radius:var(--r-sm);padding:10px 12px;font-size:15px;transition:border-color .15s,background .15s}.field input:focus,.field select:focus{background:var(--surface);border-color:var(--line-2);outline:none}.field input::placeholder{color:var(--ink-3)}.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end}.form-error{color:var(--accent);font-size:13px}.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-block:20px 14px}.section-head h2{font-size:20px;font-weight:700}.samples{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.sample{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:0;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}.sample:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.sample svg{display:block;width:100%;height:auto;background:var(--field)}.sample .meta{padding:14px 16px 16px;display:grid;gap:4px}.sample .path{font-size:11px;color:var(--ink-3)}.sample .name{font-size:17px;font-weight:700}.sample .stat{font-size:12px;color:var(--ink-2);margin-top:4px}.sample .stat b{color:var(--accent)}.method{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}.method>div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:4px;align-content:start}.method .k{font-family:var(--f-mono);font-size:11px;color:var(--ink-3)}.method h3{font-size:15px}.method p{color:var(--ink-2);font-size:13px}.loading{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(250,250,250,0.94)}.loading-inner{display:grid;gap:12px;text-align:center}.loading .orbit{width:54px;height:54px;margin:0 auto 6px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--accent);animation:spin 1s linear infinite}.loading .line{font-size:14px;color:var(--ink-3);transition:color .3s}.loading .line.on{color:var(--ink)}@keyframes spin{to{transform:rotate(360deg)}}.page-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:20px}.crumbs{display:flex;flex-wrap:wrap;gap:4px;align-items:center;font-size:12px;color:var(--ink-3)}.crumbs span:not(:last-child)::after{content:"›";margin-left:4px}.crumbs span:last-child{color:var(--ink);font-weight:500}.page-head h1{font-size:clamp(30px,4.5vw,44px);font-weight:900;letter-spacing:0.02em;margin-top:6px}.page-head .tagline{color:var(--ink-2);font-size:14px;margin-top:4px}.readout{display:flex;gap:10px;flex-wrap:wrap}.readout div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 16px;display:grid;min-width:96px}.readout .v{font-family:var(--f-mono);font-size:22px;line-height:1.2;font-variant-numeric:tabular-nums}.readout .v.accent{color:var(--accent)}.readout .l{font-size:12px;color:var(--ink-3)}.notice{margin-bottom:16px;font-size:13px;color:var(--ink-2);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 14px;display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}.dossier{align-items:start;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}.span-12{grid-column:span 12}.span-7{grid-column:span 7}.span-5{grid-column:span 5}.span-6{grid-column:span 6}.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}.trend svg{width:100%;height:auto;display:block}.trend .axis{fill:var(--ink-3);font-family:var(--f-mono);font-size:12px}.trend .val{fill:var(--ink);font-family:var(--f-mono);font-size:13px;font-weight:500}.trend .tb{fill:#ffd1d8}.trend .tb.solid{fill:var(--accent)}.trend .tb.est{fill:var(--surface);stroke:var(--accent);stroke-dasharray:4 3;stroke-width:1.5}.trend .gl{stroke:var(--line)}.big-figure{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}.big-figure .v{font-family:var(--f-mono);font-size:44px;font-weight:500;line-height:1.1}.big-figure .u{color:var(--ink-2)}.big-figure .g{color:var(--accent);font-weight:500}.facts{display:grid;gap:0}.fact{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--line)}.fact:last-child{border-bottom:0}.fact .k{font-size:13px;color:var(--ink-2)}.fact .v{font-weight:700;font-size:15px;grid-column:1}.fact .meta{grid-column:1 / -1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--ink-3)}.price-tools{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:10px}.price-tools label{font-size:13px;color:var(--ink-2)}.price-tools input[type="range"]{flex:1;min-width:160px;accent-color:var(--accent)}.price-tools input[type="number"]{width:96px;background:var(--field);border:1px solid transparent;border-radius:var(--r-sm);padding:6px 10px}.hist svg{width:100%;height:auto;display:block;overflow:visible}.hist .hb{fill:#e9e9ee;cursor:pointer;transition:fill .15s}.hist .hb:hover{fill:#d6d6de}.hist .hb.sel{fill:var(--ink)}.hist .hb.mine{fill:var(--accent)}.hist .lbl{fill:var(--ink-3);font-family:var(--f-mono);font-size:11px}.hist .cnt{fill:var(--ink-2);font-family:var(--f-mono);font-size:12px}.hist .marker{stroke:var(--accent);stroke-width:2}.hist .marker-t{fill:var(--accent);font-size:12px;font-weight:700}.position{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}.position div{background:var(--field);border-radius:var(--r);padding:10px 14px;display:grid}.position .v{font-family:var(--f-mono);font-size:18px}.position .l{font-size:12px;color:var(--ink-3)}.sku-list{margin-top:14px;max-height:340px;overflow-y:auto;border:1px solid var(--line);border-radius:var(--r)}.sku-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line);font-size:13px}.sku-row:last-child{border-bottom:0}.sku-row .t{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.sku-row .t small{color:var(--ink-3);margin-left:6px}.sku-row .p{font-family:var(--f-mono);font-weight:500}.sku-row a{font-size:12px;color:var(--ink-3);text-decoration:none}.sku-row a:hover{color:var(--accent)}.sku-row.mine{background:var(--accent-soft)}.sku-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:13px;color:var(--ink-2)}.add-comp{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.add-comp input{background:var(--field);border:1px solid transparent;border-radius:var(--r-sm);padding:7px 10px;font-size:13px}.add-comp input:first-child{flex:1;min-width:140px}.add-comp input[type="number"]{width:100px}.hbars{display:grid;gap:8px}.hbar{display:grid;grid-template-columns:112px minmax(0,1fr) 40px;gap:10px;align-items:center;background:none;border:0;padding:4px 6px;border-radius:8px;text-align:left;font-size:13px}.hbar:hover{background:var(--field)}.hbar[aria-pressed="true"]{background:var(--accent-soft)}.hbar .track{height:10px;background:var(--field);border-radius:99px;overflow:hidden}.hbar .fill{height:100%;border-radius:99px;background:var(--ink);transition:width .4s}.hbar[aria-pressed="true"] .fill{background:var(--accent)}.hbar .c{font-family:var(--f-mono);font-size:12px;color:var(--ink-2);text-align:right}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);max-height:360px;overflow-y:auto}table{width:100%;border-collapse:collapse;font-size:13px}th{position:sticky;top:0;background:var(--surface);text-align:left;font-weight:500;color:var(--ink-3);padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}th button{background:none;border:0;padding:0;color:inherit;font:inherit}th button[aria-sort]::after{content:" ↓";color:var(--accent)}td{padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}td.n{font-family:var(--f-mono);font-variant-numeric:tabular-nums}tbody tr{cursor:pointer}tbody tr:hover{background:var(--field)}tbody tr.sel{background:var(--accent-soft)}.share-note{font-size:13px;color:var(--ink-2);background:var(--field);border-radius:var(--r);padding:10px 14px;margin-bottom:12px}.age-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.age-block h4{font-size:13px;font-weight:500;color:var(--ink-2);margin-bottom:10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.age-chips{display:flex;gap:8px;flex-wrap:wrap}.age-chip{background:var(--field);border:1px solid transparent;border-radius:var(--r);padding:10px 14px;display:grid;text-align:left;min-width:92px}.age-chip:hover{border-color:var(--line-2)}.age-chip .v{font-family:var(--f-mono);font-size:18px}.age-chip .l{font-size:12px;color:var(--ink-3)}.quote{font-size:13px;color:var(--ink-2);border-left:2px solid var(--line-2);padding-left:10px;margin-top:10px}.sources{font-size:12px;color:var(--ink-3);display:grid;gap:6px}.sources ol{margin:0;padding-left:1.2em;display:grid;gap:4px}.sources a{color:var(--ink-2)}.dossier-cta{display:flex;justify-content:flex-end;margin-top:20px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.chips .lab{font-size:12px;color:var(--ink-3);margin-right:2px}.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:4px 11px;font-size:12px;color:var(--ink-2);transition:opacity .15s}.chip i{width:8px;height:8px;border-radius:50%;display:inline-block}.chip[aria-pressed="false"]{opacity:0.4}.seg{display:inline-flex;background:var(--field);border-radius:99px;padding:3px}.seg button{background:none;border:0;border-radius:99px;padding:4px 12px;font-size:12px;color:var(--ink-3)}.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}.chart-wrap{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}.chart-wrap svg{display:block;width:100%;height:auto;max-height:max(420px,calc(100vh - 330px))}.axis-label{fill:var(--ink-3);font-size:13px}.tick{fill:var(--ink-3);font-family:var(--f-mono);font-size:11px}.grid-line{stroke:var(--line);stroke-width:1}.quad-label{fill:var(--ink-3);font-size:13px;letter-spacing:0.06em}.quad-label.opp{fill:var(--accent);font-weight:700}.opp-zone{fill:var(--accent-soft);stroke:var(--accent);stroke-dasharray:5 5;stroke-opacity:0.5}.const-line{fill:none;stroke-width:1.2;stroke-opacity:0.35;stroke-dasharray:2 4}.star{cursor:pointer;transition:opacity .2s}.star .halo{opacity:0.18;transform-box:fill-box;transform-origin:center;animation:breathe 3.6s ease-in-out infinite}.star .core{stroke:#fff;stroke-width:2}.star .num{fill:var(--ink-3);font-family:var(--f-mono);font-size:11px;pointer-events:none}.star:hover .core,.star:focus .core,.star.active .core{stroke:var(--ink);stroke-width:2.5}.star .ring{fill:none;stroke:var(--accent);stroke-width:2;opacity:0}.star.picked .ring{opacity:1}.star.dim{opacity:0.1;pointer-events:none}.star:focus{outline:none}@keyframes breathe{0%,100%{transform:scale(1);opacity:0.14}50%{transform:scale(1.3);opacity:0.26}}.tooltip{position:absolute;pointer-events:none;z-index:5;max-width:240px;background:var(--ink);color:#fff;border-radius:10px;padding:8px 11px;font-size:13px;line-height:1.5}.tooltip b{display:block}.tooltip span{color:#c9c9d1;font-size:12px}.legend-note{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--ink-3);align-items:center}.scene-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}.scene-card{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:8px;align-content:start;transition:box-shadow .15s}.scene-card:hover{box-shadow:var(--shadow)}.scene-card .top{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--ink-3)}.scene-card h3{font-size:15px;font-weight:700}.scene-card .bars{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;font-size:12px;color:var(--ink-3)}.bar{height:5px;border-radius:3px;background:var(--field);position:relative;overflow:hidden}.bar>i{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--ink-2)}.bar.crowd>i{background:var(--accent);opacity:.7}.badge-opp{color:var(--accent);background:var(--accent-soft);border-radius:99px;padding:0 8px;font-size:11px}.scrim{position:fixed;inset:0;z-index:30;background:rgba(23,23,28,0.25);opacity:0;pointer-events:none;transition:opacity .25s}.scrim.open{opacity:1;pointer-events:auto}.drawer{position:fixed;top:0;right:0;bottom:0;z-index:31;width:min(500px,100%);background:var(--surface);border-left:1px solid var(--line);transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);box-shadow:-12px 0 40px rgba(23,23,28,.08)}.drawer.open{transform:none}.drawer-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line)}.drawer-head .cat{font-family:var(--f-mono);font-size:12px;color:var(--ink-3)}.icon-btn{background:var(--field);border:0;border-radius:99px;width:32px;height:32px;display:grid;place-items:center;font-size:16px;color:var(--ink-2)}.drawer-body{flex:1;overflow-y:auto;padding:20px 20px 24px;display:grid;gap:20px;align-content:start}.drawer-foot{padding:12px 20px calc(12px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);display:flex;gap:8px}.drawer-foot .btn{flex:1}.d-title{font-size:24px;font-weight:900;line-height:1.3}.d-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.metrics div{background:var(--field);border-radius:var(--r-sm);padding:10px 12px;display:grid;gap:2px}.metrics .v{font-family:var(--f-mono);font-size:18px}.metrics .l{font-size:11px;color:var(--ink-3)}.moment{font-size:16px;line-height:1.8;background:var(--field);border-radius:var(--r);padding:14px 16px}.block h4{margin:0 0 8px;font-size:12px;font-weight:500;color:var(--ink-3);letter-spacing:0.08em;display:flex;gap:6px;align-items:center}.block ul{margin:0;padding-left:1.1em;display:grid;gap:4px;color:var(--ink-2)}.searchbars{display:grid;gap:6px}.searchbar{display:flex;align-items:center;gap:8px;background:var(--field);border-radius:99px;padding:7px 14px;font-size:14px}.searchbar::before{content:"";width:10px;height:10px;border:1.5px solid var(--ink-3);border-radius:50%;flex:none}.radar{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}.radar svg{width:72px;height:72px}.radar .verdict{font-size:14px;font-weight:700}.radar ul{margin-top:4px;font-size:13px}.titles{display:grid}.title-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.title-row span{min-width:0}.title-row button{flex:none;background:var(--field);border:0;border-radius:99px;padding:3px 11px;font-size:12px;color:var(--ink-2)}.cover-wrap{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:start}.cover{position:relative;aspect-ratio:3 / 4;max-width:100%;background:var(--field);border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line)}.cover .subject{position:absolute;border:1.5px dashed var(--ink-3);border-radius:6px;display:grid;place-items:center;font-size:10px;color:var(--ink-2);text-align:center;padding:4px;line-height:1.3;background:rgba(255,255,255,.6)}.cover .text-band{position:absolute;left:8px;right:8px;background:var(--surface);color:var(--ink);font-size:10px;font-weight:700;line-height:1.35;padding:5px 6px;border-radius:4px;box-shadow:var(--shadow)}.cover-note{font-size:13px;color:var(--ink-2);display:grid;gap:6px}.cover-note b{color:var(--ink);font-weight:500}.tray{position:fixed;left:0;right:0;bottom:0;z-index:15;padding:12px var(--gutter) calc(12px + env(safe-area-inset-bottom,0px));background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.tray .picked{display:flex;align-items:center;gap:6px;min-width:0;flex-wrap:wrap;font-size:13px;color:var(--ink-2)}.tray .slot{width:12px;height:12px;border-radius:50%;background:var(--field);border:1px solid var(--line-2)}.tray .slot.on{background:var(--accent);border-color:var(--accent)}.plan-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}.sheet{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(20px,5vw,48px);box-shadow:var(--shadow)}.sheet-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:end;padding-bottom:18px;border-bottom:1px solid var(--line)}.sheet-head h1{font-weight:900;font-size:clamp(28px,4.5vw,44px);line-height:1.15;margin-top:6px}.sheet-head .sub{margin-top:6px;color:var(--ink-2)}.sheet-head .issue{text-align:right;font-size:12px;color:var(--ink-3);line-height:1.8}.sheet-intro{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding-block:18px}.sheet-intro div{background:var(--field);border-radius:var(--r);padding:12px 14px}.sheet-intro .v{font-family:var(--f-mono);font-size:22px;display:block}.sheet-intro .l{font-size:12px;color:var(--ink-3)}.entry{display:grid;grid-template-columns:80px minmax(0,1fr) minmax(0,0.8fr);gap:22px;padding-block:22px;border-top:1px solid var(--line)}.entry .day{font-weight:900;font-size:26px;line-height:1}.entry .day small{display:block;font-family:var(--f-mono);font-weight:400;font-size:11px;color:var(--ink-3);margin-top:8px}.entry h3{font-size:19px;font-weight:900;line-height:1.35}.entry .who{font-size:13px;color:var(--ink-3);margin-top:4px}.entry .headline{margin-top:12px;font-size:15px;font-weight:700}.entry .headline::before{content:"首选标题 ";font-weight:400;font-size:12px;color:var(--ink-3)}.entry .kw{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.entry .kw span{font-size:12px;background:var(--field);border-radius:99px;padding:2px 10px}.entry dl{margin:0;display:grid;gap:10px;font-size:13px}.entry dt{font-size:11px;color:var(--ink-3);letter-spacing:0.08em}.entry dd{margin:2px 0 0}.entry .tag-opp{color:var(--accent);font-weight:700}.sheet-foot{margin-top:10px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.empty{text-align:center;padding:60px 20px;color:var(--ink-2);display:grid;gap:14px;justify-items:center}.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:60;transform:translateX(-50%) translateY(16px);opacity:0;transition:all .25s;background:var(--ink);color:#fff;padding:8px 16px;border-radius:99px;font-size:13px;pointer-events:none}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.site-foot{max-width:1200px;margin:0 auto;padding:14px 0 100px;font-size:12px;color:var(--ink-3);border-top:1px solid var(--line)}@media (max-width:960px){.hero{grid-template-columns:1fr}.samples{grid-template-columns:repeat(2,minmax(0,1fr))}.method{grid-template-columns:repeat(2,minmax(0,1fr))}.span-7,.span-5,.span-6{grid-column:span 12}.entry{grid-template-columns:64px minmax(0,1fr)}.entry dl{grid-column:2}.sheet-intro{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.steps .t{display:none}.brand-sub{display:none}.field-row{grid-template-columns:1fr}.samples{gap:10px}.method{grid-template-columns:1fr}.age-grid{grid-template-columns:1fr}.position{grid-template-columns:1fr 1fr 1fr}.position .v{font-size:15px}.hbar{grid-template-columns:88px minmax(0,1fr) 32px}.cover-wrap{grid-template-columns:104px 1fr}.sheet-head{grid-template-columns:1fr}.sheet-head .issue{text-align:left}.entry{grid-template-columns:1fr;gap:10px}.entry dl{grid-column:auto}.card{padding:16px}.big-figure .v{font-size:34px}}@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important}}</style>
+</head>
+<body>
+<header class="topbar">
+<button class="brand" id="brand" type="button" aria-label="回到首页">
+<span class="brand-dot" aria-hidden="true"></span>
+<span class="brand-mark">一物千景</span>
+<span class="brand-sub">AI 场景种草策展台</span>
+</button>
+<ol class="steps" aria-label="步骤">
+<li><button type="button" id="step-home" data-go="home"><span class="n">01</span><span class="t">输入商品</span></button></li>
+<li><button type="button" id="step-market" data-go="market" disabled><span class="n">02</span><span class="t">品类档案</span></button></li>
+<li><button type="button" id="step-map" data-go="map" disabled><span class="n">03</span><span class="t">场景星图</span></button></li>
+<li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">04</span><span class="t">策展清单</span></button></li>
+</ol>
+</header>
+<main>
+<section class="view" id="view-home">
+<div class="hero">
+<div>
+<p class="eyebrow">给小红书中小商家的选题工具</p>
+<h1>一物<span class="dot">·</span>千景</h1>
+<p class="lede">先看清市场，再找到被需要的瞬间。</p>
+<p class="body">输入一件商品：先看它所在品类的市场规模、竞品和细分价格带，再把它拆成“具体的人 × 具体的瞬间”，在星图上找到需求高、还没被写烂的场景，排成一周的笔记策划。</p>
+<div class="legend">
+<span class="src src-org">机构数据</span><span class="muted">附原文链接</span>
+<span class="src src-jd">京东实采</span><span class="muted">真实 SKU 标价</span>
+<span class="src src-ai">AI 评估</span><span class="muted">判断，不是统计</span>
+</div>
+</div>
+<form class="card form-card" id="product-form" novalidate>
+<h2>拆解你的商品</h2>
+<div class="field">
+<label for="f-name">商品名称</label>
+<input id="f-name" name="name" maxlength="20" placeholder="例如：手冲咖啡壶">
+</div>
+<div class="field">
+<label for="f-point">一句话卖点</label>
+<input id="f-point" name="point" maxlength="40" placeholder="例如：细口出水，新手也能控流">
+</div>
+<div class="field-row">
+<div class="field">
+<label for="f-price">你的定价（元）</label>
+<input id="f-price" name="price" type="number" min="1" max="99999" placeholder="例如：129">
+</div>
+<button class="btn btn-primary" type="submit" id="f-submit">开始拆解</button>
+</div>
+<p class="form-error" id="f-error" hidden>请先填写商品名称。</p>
+</form>
+</div>
+<div class="section-head">
+<h2>从一个示例开始</h2>
+<p class="muted">示例品类已接入机构数据和京东实采价格</p>
+</div>
+<div class="samples" id="samples"></div>
+<div class="method">
+<div><span class="k">01</span><h3>输入商品</h3><p>名称、卖点和你的定价。</p></div>
+<div><span class="k">02</span><h3>品类档案</h3><p>市场规模、竞品品牌、细分类型和价格带，看清你站在哪。</p></div>
+<div><span class="k">03</span><h3>场景星图</h3><p>需求 × 拥挤度，按兴趣圈层和年龄段筛出机会场景。</p></div>
+<div><span class="k">04</span><h3>策展清单</h3><p>挑出场景，自动排成周一到周六的发布计划。</p></div>
+</div>
+</section>
+<section class="view" id="view-market" hidden>
+<div class="page-head">
+<div>
+<div class="crumbs" id="m-crumbs"></div>
+<h1 id="m-title"></h1>
+<p class="tagline" id="m-tagline"></p>
+</div>
+<div class="readout" id="m-readout"></div>
+</div>
+<div id="m-root"></div>
+</section>
+<section class="view" id="view-map" hidden>
+<div class="page-head">
+<div>
+<div class="crumbs" id="map-crumbs"></div>
+<h1 id="map-title"></h1>
+<p class="tagline" id="map-tagline"></p>
+</div>
+<div class="readout" id="readout"></div>
+</div>
+<p class="notice"><span class="src src-ai">AI 评估</span>需求强度、内容拥挤度、人群规模和年龄段都是对每个场景的判断，用来排序和比较，不是统计数据。<span id="custom-notice" hidden>当前商品不在示例中，场景由场景库组合生成，可作为策划起点。</span></p>
+<div class="toolbar">
+<div class="chips" id="circle-chips" aria-label="按兴趣圈层筛选"></div>
+<div class="seg" role="group" aria-label="视图">
+<button type="button" id="mode-chart" aria-pressed="true">星图</button>
+<button type="button" id="mode-list" aria-pressed="false">列表</button>
+</div>
+</div>
+<div class="toolbar">
+<div class="chips" id="age-chips" aria-label="按年龄段筛选"></div>
+</div>
+<div class="chart-wrap" id="chart-wrap">
+<svg id="chart" viewBox="0 0 1000 600" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
+<div class="tooltip" id="tooltip" hidden></div>
+</div>
+<div class="scene-list" id="scene-list" hidden></div>
+<div class="legend-note">
+<span>● 越大，人群越多</span>
+<span>同色虚线连接同一兴趣圈层</span>
+<span>粉色区域为机会区：需求 ≥ 55 且拥挤度 ≤ 45</span>
+</div>
+</section>
+<section class="view" id="view-plan" hidden>
+<div class="plan-actions">
+<button class="btn btn-sm" type="button" id="plan-back">← 回到星图继续挑选</button>
+<button class="btn btn-primary btn-sm" type="button" id="plan-copy">复制全部文案</button>
+</div>
+<div id="plan-root"></div>
+</section>
+<footer class="site-foot">机构数据均附原文链接；京东价格为 2026-10-10 搜索页实采；场景分数为 AI 评估。 · 一物千景 Demo</footer>
+</main>
+<div class="tray" id="tray" hidden>
+<div class="picked" id="tray-picked"></div>
+<button class="btn btn-primary" type="button" id="tray-go">生成本周策划</button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-title" role="dialog">
+<div class="drawer-head">
+<span class="cat" id="d-cat"></span>
+<button class="icon-btn" type="button" id="d-close" aria-label="关闭">×</button>
+</div>
+<div class="drawer-body" id="d-body"></div>
+<div class="drawer-foot">
+<button class="btn" type="button" id="d-prev">上一个</button>
+<button class="btn btn-primary" type="button" id="d-pick">加入策展清单</button>
+<button class="btn" type="button" id="d-next">下一个</button>
+</div>
+</aside>
+<div class="loading" id="loading" hidden>
+<div class="loading-inner">
+<div class="orbit"></div>
+<p class="line">正在读取品类数据…</p>
+<p class="line">正在拆解人群与瞬间…</p>
+<p class="line">正在评估内容拥挤度…</p>
+</div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>window.CIRCLES = {
+work:   { name: "职场通勤", color: "#F2994A", age: "25-30" },
+campus: { name: "校园考试", color: "#4F86F7", age: "18-24" },
+family: { name: "亲子家庭", color: "#58B368", age: "31-40" },
+outdoor:{ name: "户外山野", color: "#22A699", age: "25-30" },
+solo:   { name: "独居自处", color: "#9B6BE0", age: "25-30" },
+gift:   { name: "送礼心意", color: "#EC5D92", age: "25-30" }
+};
+window.PRODUCTS = [
+{
+id: "cup", name: "便携保温杯", tagline: "316不锈钢 · 12小时保温 · 一键开盖", price: "100-300元", emoji: "◐",
+scenes: [
+{ id:"cup1", title:"凌晨两点还在赶稿的插画师", circle:"work", x:78, y:34, size:2,
+moment:"数位板旁的热水早凉了，她懒得起身去烧，只想伸手就有一口温的，别打断刚找到的手感。",
+pains:["一起身灵感就断","普通杯子放桌边容易被手肘碰倒"],
+searches:["熬夜画画 桌面好物","自由职业 工作台 必备","不用起身的喝水神器"],
+hooks:["单手开盖不用放下笔","防漏倒了也不怕弄湿画稿"],
+worn:["“打工人续命好物”泛泛合集","开箱+倒热水测温度的固定套路"],
+titles:["凌晨2点的画桌上，终于不用再起身烧水了","自由插画师的桌面，只留这一个杯子","赶稿人请收下：一口热水不打断手感"],
+cover:{ layout:"left", text:"top", subject:"深夜台灯下的数位板，杯子在手边", note:"暖光+屏幕冷光对比，杯子只占画面1/4，让“深夜工作”先被看见" } },
+{ id:"cup2", title:"冬天送娃上学的早高峰妈妈", circle:"family", x:82, y:74, size:3,
+moment:"7点10分，书包、早餐、外套都塞好了，最后才想起孩子的水杯，还得是到中午都温的。",
+pains:["孩子嫌重、总忘带回家","早上手忙脚乱没空灌水"],
+searches:["儿童保温杯 上学","小学生 保温杯 轻便","孩子不爱喝水怎么办"],
+hooks:["轻到孩子愿意自己背","杯身可以写名字防丢"],
+worn:["儿童杯安全材质科普","“宝妈必囤”清单"],
+titles:["孩子终于愿意自己背水杯了，原因是轻","早上7点的妈妈，只需要这一个动作","上学第一周，老师夸了他的水杯"],
+cover:{ layout:"center", text:"bottom", subject:"小手握着杯子走进校门的背影", note:"不拍产品正面，拍孩子的背影，标题放底部" } },
+{ id:"cup3", title:"考研自习室里一坐十二小时", circle:"campus", x:86, y:58, size:3,
+moment:"图书馆不让带开水壶，接一次热水要排队五分钟，她算过，一天能省出半小时。",
+pains:["反复接水打断专注","自习室安静，开盖声太响会尴尬"],
+searches:["考研 自习室 必备","图书馆 静音 水杯","考研党 一天的装备"],
+hooks:["一杯够喝一上午","开盖静音不打扰别人"],
+worn:["考研文具全家福","励志打卡类摆拍"],
+titles:["考研第187天，桌上终于少跑一趟开水房","图书馆静音党：开盖不吵到隔壁","一杯撑过一上午，考研人的小确幸"],
+cover:{ layout:"top-left", text:"top", subject:"堆满真题的书桌一角，杯子立在书堆边", note:"俯拍桌面，用书和笔记营造真实感，避免过度摆拍" } },
+{ id:"cup4", title:"冬季登顶后想喝口热水的徒步者", circle:"outdoor", x:70, y:48, size:2,
+moment:"零下三度的山顶，风很大，打开杯子那一下冒出的白气，是整趟路最值得拍的画面。",
+pains:["冷天普通杯两小时就凉","戴手套拧不开杯盖"],
+searches:["冬季徒步 装备","登山 保温杯 推荐","户外 戴手套 好拧"],
+hooks:["山顶倒出来还冒热气","大盖子戴手套也能拧"],
+worn:["户外装备硬核参数对比","专业品牌测评"],
+titles:["零下3度的山顶，那一口热水是真的","冬天爬山，我只多带了这一样","登顶照里最出片的，居然是一缕白气"],
+cover:{ layout:"center", text:"top", subject:"山顶背景里杯口升起的白气", note:"逆光拍白气，产品是道具，情绪是主角" } },
+{ id:"cup5", title:"不想在会议室拿“保温杯”的职场新人", circle:"work", x:64, y:82, size:3,
+moment:"她想喝热水，但不想被叫“老干部”，开会时放在桌上的东西，也是一种自我介绍。",
+pains:["保温杯总和“中年”挂钩","颜值杯往往保温差"],
+searches:["好看的保温杯","通勤 保温杯 高级感","不土的保温杯"],
+hooks:["看起来像随行杯","配色能和电脑包搭"],
+worn:["“颜值天花板”保温杯合集","ins风桌面布景"],
+titles:["会议桌上没人认出它是保温杯","职场第一年，我把老干部杯换掉了","通勤包里的高级感，从一个杯子开始"],
+cover:{ layout:"left", text:"bottom", subject:"会议桌一角，笔记本与杯子同框", note:"这个场景已经很拥挤，建议用“反差”角度切入" } },
+{ id:"cup6", title:"生理期在工位上需要一杯热水的她", circle:"work", x:80, y:40, size:3,
+moment:"肚子隐隐作痛的下午，她不想一趟趟走去茶水间，只想把热的捂在手里。",
+pains:["不好意思频繁离开工位","需要热度维持更久"],
+searches:["生理期 办公室 好物","经期 工位 小物","女生 办公室 抽屉 必备"],
+hooks:["一杯热水捂到下班","杯身握着刚好暖手"],
+worn:["暖宫贴、红糖姜茶合集"],
+titles:["那几天的工位，我只需要这一杯","女生抽屉里，应该常备的不是红糖","不用解释，也能被照顾到的下午"],
+cover:{ layout:"center", text:"top", subject:"双手捧着杯子的特写", note:"只拍手和杯子，温柔、克制，不要出现“痛”的表情" } },
+{ id:"cup7", title:"开夜车的网约车司机", circle:"work", x:55, y:16, size:2,
+moment:"凌晨一点，最后一单送到机场，车里只有导航的声音和杯架里那杯还热的茶。",
+pains:["开车时没法拧盖","杯子在杯架里会晃"],
+searches:["开车 喝水 方便","车载 保温杯","跑夜车 必备"],
+hooks:["单手开盖不用低头","杯身尺寸卡得进杯架"],
+worn:["几乎没有人写过"],
+titles:["跑了三年夜车，杯架里终于有了刚好的杯子","凌晨1点的机场高速，一口热茶","司机师傅说：开车喝水最怕拧盖子"],
+cover:{ layout:"left", text:"top", subject:"夜晚车内中控，杯子在杯架里", note:"蓝海场景，素人真实口吻效果最好，不必精修" } },
+{ id:"cup8", title:"冬夜露营守着篝火的人", circle:"outdoor", x:42, y:24, size:1,
+moment:"火快灭了，大家都钻进帐篷，她还坐在外面，杯里的热可可要撑到看完星星。",
+pains:["夜里气温骤降饮品很快变冷","营地取热水不方便"],
+searches:["冬季露营 保暖","露营 热饮","营地 夜晚 必备"],
+hooks:["睡前灌满，第二天早上还温","可以直接装热可可、热红酒"],
+worn:["露营装备大合集"],
+titles:["冬天露营，最后一口热可可留给星星","零下的营地，我靠这个熬到了凌晨","露营装备里最被低估的一件"],
+cover:{ layout:"center", text:"bottom", subject:"篝火余光下握着杯子的剪影", note:"暗调画面，红色只出现在火光里" } },
+{ id:"cup9", title:"想给爸爸换掉玻璃茶杯的女儿", circle:"gift", x:58, y:52, size:2,
+moment:"爸爸用了十年的玻璃杯又裂了一道缝，她想送个他会真的天天用、不会嫌“浪费钱”的东西。",
+pains:["长辈嫌贵、舍不得用","长辈要泡茶，茶叶堵口"],
+searches:["送爸爸 实用礼物","长辈 泡茶 保温杯","父亲节 礼物 不踩雷"],
+hooks:["自带茶隔，茶水分离","爸爸会拿去单位跟同事炫耀"],
+worn:["“送长辈礼物清单”类合集"],
+titles:["给爸爸换掉用了10年的玻璃杯","我爸收到后，第二天就带去单位了","送长辈礼物，实用比贵重更重要"],
+cover:{ layout:"left", text:"top", subject:"长辈的手和茶杯，背景是旧茶几", note:"用旧物和新物同框，讲“替换”的故事" } },
+{ id:"cup10", title:"早八地铁上单手抓扶手的通勤族", circle:"work", x:72, y:88, size:3,
+moment:"一只手抓扶手、一只手刷手机，杯子在包里，最怕的是一开包发现漏了一包水。",
+pains:["包里漏水毁掉电脑","杯子太重压肩"],
+searches:["通勤 保温杯 轻","不漏水 保温杯","通勤包 装什么"],
+hooks:["倒置摇晃不漏","轻到感觉不到"],
+worn:["“通勤好物”大合集","倒置测漏视频"],
+titles:["通勤包里放了一年，从没漏过","早八人的包，再轻一点","被挤成照片的地铁上，它没有漏"],
+cover:{ layout:"center", text:"top", subject:"打开的通勤包俯拍", note:"最拥挤的场景，除非有明显差异点，否则不建议首发" } },
+{ id:"cup11", title:"在医院陪护家人的夜里", circle:"family", x:62, y:12, size:2,
+moment:"病房的开水间在走廊尽头，晚上要陪着，不敢走远，她只想身边随时有一杯热的。",
+pains:["不能频繁离开病床","需要长时间保温"],
+searches:["住院 陪护 带什么","陪床 必备 清单","医院 陪护 好物"],
+hooks:["灌一次撑过整晚","家人半夜醒来随时能喝"],
+worn:["几乎没有商家内容"],
+titles:["陪护清单里，我把它写在第一行","在医院陪妈妈的第七天","那些深夜，热水是我能给的最小的照顾"],
+cover:{ layout:"center", text:"bottom", subject:"病房窗台上的杯子与晨光", note:"语气要克制真诚，避免营销感，这类内容更需要信任" } },
+{ id:"cup12", title:"夏天被图书馆冷气冻到的研究生", circle:"campus", x:48, y:30, size:2,
+moment:"外面35度，图书馆里18度，她穿着外套写论文，想喝冰的又怕冷，最后还是想要温的。",
+pains:["夏天用不到保温杯的误解","冰饮和热饮需求来回切换"],
+searches:["图书馆 冷气 太冷","夏天 空调房 喝什么","保温杯 也能保冷吗"],
+hooks:["早上装冰水，下午还是冰的","一个杯子冷热都能装"],
+worn:["几乎没人写夏天保温杯"],
+titles:["夏天也离不开保温杯的人，请举手","35度的天，18度的图书馆","原来保温杯最好用的季节是夏天"],
+cover:{ layout:"top-left", text:"top", subject:"图书馆窗外烈日，桌上杯子挂着凉意", note:"反季节切入，搜索竞争低、话题新" } }
+]
+},
+{
+id: "candle", name: "香薰蜡烛", tagline: "大豆蜡 · 木质调 · 燃烧约40小时", price: "100-300元", emoji: "✺",
+scenes: [
+{ id:"cd1", title:"下班回出租屋，需要一个“开关”的人", circle:"solo", x:84, y:80, size:3,
+moment:"门一关，外卖放下，她点上蜡烛，那一刻才算真正下班。",
+pains:["工作情绪带回家","出租屋没有“家”的感觉"],
+searches:["下班 仪式感","出租屋 改造 氛围","一个人住 治愈"],
+hooks:["点燃那一下就是下班信号","不用大改，也能有家的味道"],
+worn:["“下班后的仪式感”已大量重复","烛光+红酒的标准画面"],
+titles:["我给自己设了一个“下班开关”","出租屋也值得被好好闻一闻","一个人住的第三年，学会了点蜡烛"],
+cover:{ layout:"center", text:"top", subject:"门边钥匙盘旁刚点燃的烛光", note:"已是红海，换“门口”这个不常见的位置拍" } },
+{ id:"cd2", title:"刚搬进老房子，想盖住旧味道", circle:"solo", x:62, y:44, size:2,
+moment:"房东说房子“很干净”，但一进门还是有上一任租客的味道，她想先让房间认识自己。",
+pains:["异味来源不明，通风也散不掉","不想用刺鼻的香精喷雾"],
+searches:["老房子 异味","搬家 去味","租房 房间味道"],
+hooks:["木质调盖住潮味不呛人","闻起来像是“我的房间”"],
+worn:["甲醛科普、除味剂测评"],
+titles:["搬进老房子的第一晚，我先换了味道","房间认识你，需要一点时间和一支蜡烛","租的房子，也要闻起来像自己的"],
+cover:{ layout:"left", text:"bottom", subject:"未拆完的纸箱上放着蜡烛", note:"“搬家进行时”比完美房间更真实" } },
+{ id:"cd3", title:"考试周睡不着的大学生", circle:"campus", x:55, y:38, size:2,
+moment:"明天考高数，宿舍熄灯了，她还在脑子里背公式，想要点什么让自己慢下来。",
+pains:["宿舍禁止明火","焦虑到睡不着"],
+searches:["考试周 失眠","睡前 放松","宿舍 香氛 不用火"],
+hooks:["不点燃也能扩香","睡前闻着更容易放空"],
+worn:["助眠好物合集"],
+titles:["考试周的宿舍，不点燃的香气也能陪你","睡不着的晚上，我会打开它闻一闻","给明天要考试的自己，一点安静"],
+cover:{ layout:"center", text:"top", subject:"台灯下合上的课本与蜡烛罐", note:"注意强调“不点燃”，避免宿舍用火风险" } },
+{ id:"cd4", title:"养猫的家里担心猫砂味", circle:"solo", x:76, y:26, size:2,
+moment:"朋友来家里第一句话是“你养猫了吧”，她有点尴尬，想要家里先被闻到的是别的味道。",
+pains:["担心香氛对猫不友好","猫可能碰倒明火"],
+searches:["养猫 家里 味道","猫砂味 怎么去","养猫 能用香薰吗"],
+hooks:["选择宠物友好的香调","放在猫够不到的地方"],
+worn:["除臭猫砂测评"],
+titles:["养猫的家，也可以先被闻到木头香","朋友来了，没人发现我养了两只猫","铲屎官的香气选择清单"],
+cover:{ layout:"center", text:"bottom", subject:"高处书架上的蜡烛，猫在下面", note:"同时展示“安全距离”，传递负责任的态度" } },
+{ id:"cd5", title:"第一次去男友父母家带伴手礼", circle:"gift", x:50, y:18, size:2,
+moment:"水果太普通，烟酒不合适，她想要一件看起来有心、又不会太贵重的礼物。",
+pains:["不知道长辈喜好","怕礼物太轻或太重"],
+searches:["第一次见家长 带什么","见男朋友父母 礼物","上门 伴手礼"],
+hooks:["包装体面，拿得出手","香调温和，长辈不会抗拒"],
+worn:["见家长礼物清单多为烟酒茶"],
+titles:["第一次见家长，我带了一支蜡烛","阿姨说：这个味道真好闻","见家长伴手礼，不想送水果的看这里"],
+cover:{ layout:"left", text:"top", subject:"系着丝带的礼盒和一束花", note:"蓝海+高客单场景，适合加大投入" } },
+{ id:"cd6", title:"闺蜜搬新家的乔迁礼", circle:"gift", x:70, y:84, size:3,
+moment:"她搬家了，群里商量送什么，最后还是落到“香薰蜡烛吧”。",
+pains:["容易撞礼","送的香味对方未必喜欢"],
+searches:["乔迁礼物","闺蜜 搬家 送什么","乔迁 礼物 不踩雷"],
+hooks:["可刻字，不撞礼","多香调可选"],
+worn:["乔迁礼物大合集里几乎必有香薰蜡烛"],
+titles:["给闺蜜的乔迁礼，我刻上了她的新门牌","送了五年蜡烛，这次终于送对了味","乔迁礼不撞款的小心思"],
+cover:{ layout:"center", text:"top", subject:"新钥匙与刻字蜡烛", note:"红海场景，靠“刻字/定制”做差异" } },
+{ id:"cd7", title:"在家办公，分不清上下班", circle:"work", x:58, y:30, size:2,
+moment:"卧室就是办公室，电脑合上了，脑子还在开会，她需要一个信号告诉自己可以停了。",
+pains:["工作和生活没有边界","长期居家情绪低落"],
+searches:["居家办公 效率","在家工作 分界线","远程办公 心理"],
+hooks:["开工点一支，收工熄灭","用气味划出工作区"],
+worn:["居家办公桌面改造"],
+titles:["居家办公两年，我用气味给自己打卡","熄灭蜡烛，就是我的下班铃","远程工作者的边界感练习"],
+cover:{ layout:"left", text:"top", subject:"合上的笔记本电脑旁熄灭的蜡烛与一缕烟", note:"“熄灭”这个动作是记忆点" } },
+{ id:"cd8", title:"每天泡澡的二十分钟", circle:"solo", x:66, y:72, size:2,
+moment:"手机放在门外，浴室只留烛光，这二十分钟谁也找不到她。",
+pains:["浴室湿气大","想要沉浸感但不想太复杂"],
+searches:["泡澡 氛围","浴室 香薰","睡前 放松 仪式"],
+hooks:["烛光让浴室像小型SPA","香味在热气里更柔和"],
+worn:["浴缸+烛光的标准画面已很多"],
+titles:["每天最安静的20分钟","手机放门外，蜡烛点起来","给没有浴缸的人：淋浴也可以有烛光"],
+cover:{ layout:"center", text:"bottom", subject:"雾气中的烛光", note:"可以做“没有浴缸”的反差切入" } },
+{ id:"cd9", title:"给民宿房间做“气味记忆”的主理人", circle:"work", x:44, y:14, size:1,
+moment:"客人退房后留言说“想念房间里的味道”，主理人意识到，香气可以成为民宿的名片。",
+pains:["批量采购成本","需要稳定统一的香味"],
+searches:["民宿 香氛","民宿 细节 提升","民宿 好评 小心思"],
+hooks:["同一香调做全店统一","可做B端定制款"],
+worn:["几乎没有商家从B端写"],
+titles:["客人退房后，留言说想念房间的味道","民宿主理人的小心机：给房间一个专属香","如何让客人记住你的民宿"],
+cover:{ layout:"left", text:"top", subject:"民宿床头柜一角", note:"B端场景，可以引导到批量采购" } },
+{ id:"cd10", title:"瑜伽或冥想开始前的五分钟", circle:"solo", x:46, y:52, size:1,
+moment:"铺好垫子，关掉通知，点一支蜡烛，看着火苗呼吸几次，再开始。",
+pains:["很难静下来","练习容易被打断"],
+searches:["冥想 入门","在家 瑜伽 氛围","正念 练习"],
+hooks:["盯着火苗练习专注","固定香气帮助进入状态"],
+worn:["冥想好物零散"],
+titles:["冥想新手，从盯着一支蜡烛开始","每天早上的5分钟，我先点一支蜡烛","气味是最快的“开始键”"],
+cover:{ layout:"center", text:"top", subject:"瑜伽垫一角与烛光", note:"留白多一点，配色素净" } },
+{ id:"cd11", title:"哄睡孩子后，属于妈妈的一小时", circle:"family", x:68, y:20, size:2,
+moment:"孩子终于睡着，客厅收拾到一半，她坐下来点了蜡烛，这一小时只属于她自己。",
+pains:["没有自己的时间","需要注意儿童安全"],
+searches:["宝妈 自己的时间","带娃 崩溃 放松","妈妈 治愈 时刻"],
+hooks:["孩子睡了才点，起身前熄灭","不用出门的小奖励"],
+worn:["几乎没有商家内容"],
+titles:["孩子睡着后的一小时，是我的","当妈以后，我学会了给自己点一支蜡烛","不是母亲，只是我自己的时间"],
+cover:{ layout:"center", text:"bottom", subject:"沙发旁的烛光与散落的玩具", note:"真实不完美的客厅比精修更打动人" } },
+{ id:"cd12", title:"纪念日在家布置一场小惊喜", circle:"gift", x:40, y:64, size:2,
+moment:"他说“不用过了吧”，她还是偷偷买了花和蜡烛，在他回家前把客厅暗下来。",
+pains:["布置太复杂","怕效果不如图片"],
+searches:["纪念日 布置 在家","惊喜 布置 简单","在家 浪漫 晚餐"],
+hooks:["几支蜡烛就能改变房间氛围","不用复杂装饰"],
+worn:["“求婚布置”类内容很多"],
+titles:["没订餐厅，我们在家过了纪念日","三支蜡烛就能完成的惊喜","他推门的那一刻"],
+cover:{ layout:"center", text:"top", subject:"暗下来的客厅里一排烛光", note:"别用花瓣，简单的画面反而高级" } }
+]
+},
+{
+id: "tote", name: "通勤托特包", tagline: "防泼水帆布 · 14寸电脑仓 · 多分区", price: "300-800元", emoji: "▢",
+scenes: [
+{ id:"tt1", title:"一包装下电脑、午饭和健身衣的打工人", circle:"work", x:88, y:68, size:3,
+moment:"早上出门要带的东西：电脑、充电器、饭盒、运动鞋，她不想再拎两个袋子。",
+pains:["东西多，一个包装不下","饭盒和电脑混在一起怕弄脏"],
+searches:["通勤包 能装电脑","大容量 托特包","上班 带饭 包"],
+hooks:["分区放，饭盒不碰电脑","一个包解决一整天"],
+worn:["“能装”测试视频大量重复"],
+titles:["早上出门，我只拿一个包","电脑、饭盒、运动鞋，都在里面","打工人的包，必须能装下一整天"],
+cover:{ layout:"top-left", text:"top", subject:"包里物品平铺俯拍", note:"“装包”内容拥挤，需要更有生活感的物品组合" } },
+{ id:"tt2", title:"入职第一周，想要看起来靠谱", circle:"work", x:60, y:40, size:2,
+moment:"新工作第一天，她换了三次衣服，最后发现最让她安心的是手里拎着的那个包。",
+pains:["学生包显得稚气","皮包太贵太正式"],
+searches:["入职 第一天 穿搭","职场新人 包","实习生 通勤包"],
+hooks:["低调利落，不显学生气","价格适合第一份工资"],
+worn:["职场穿搭合集"],
+titles:["入职第一周，我换掉了学生时代的双肩包","职场新人，不用一开始就买皮包","第一份工资，买了一个靠谱的包"],
+cover:{ layout:"left", text:"bottom", subject:"写字楼电梯镜子前的半身照", note:"“新人”情绪是核心，要有一点点紧张感" } },
+{ id:"tt3", title:"抱着论文资料去找导师的研究生", circle:"campus", x:52, y:34, size:2,
+moment:"打印稿、电脑、两本参考书，她不想抱着一摞东西穿过整个校园。",
+pains:["A4资料容易折角","双肩包拿东西不方便"],
+searches:["研究生 包","能放A4 的包","学生 托特包 推荐"],
+hooks:["A4资料平放不折角","开口大，随手就能拿"],
+worn:["学生包内容多为双肩包"],
+titles:["去见导师的路上，论文终于没折角了","研究生的包，A4能平放是刚需","抱着一摞书走过校园的日子结束了"],
+cover:{ layout:"center", text:"top", subject:"包里露出的打印稿和书脊", note:"细节特写，展示“A4平放”" } },
+{ id:"tt4", title:"复工后每天背奶的新手妈妈", circle:"family", x:80, y:22, size:2,
+moment:"吸奶器、储奶袋、冰包，还有电脑，她需要一个看起来不像妈妈包的通勤包。",
+pains:["妈妈包太“妈”，不想被看出来","需要保温分区"],
+searches:["背奶 包","背奶妈妈 通勤","复工 背奶 装备"],
+hooks:["放得下冰包，又像普通通勤包","职场与母亲身份都被照顾"],
+worn:["几乎没有通勤包品牌写过"],
+titles:["复工第一个月，我的包里装着两种身份","背奶妈妈也想要一个好看的通勤包","没人看得出来，这是一个背奶包"],
+cover:{ layout:"left", text:"top", subject:"办公桌下的包，露出冰包一角", note:"高需求蓝海，情感共鸣强" } },
+{ id:"tt5", title:"下雨天骑车去上班的人", circle:"work", x:66, y:28, size:2,
+moment:"突然下雨，她把包挂在车把上骑了十分钟，到公司第一件事是打开看电脑有没有湿。",
+pains:["普通帆布包遇雨就透","挂车把容易晃"],
+searches:["防水 通勤包","骑车 通勤 包","下雨 电脑 包"],
+hooks:["防泼水，小雨不透","肩带长度可以斜挎骑车"],
+worn:["防水测试视频较少"],
+titles:["雨天骑车上班，电脑还是干的","通勤骑行党的包，要能扛小雨","一场突然的雨，验证了我的选择"],
+cover:{ layout:"center", text:"bottom", subject:"水珠挂在包面上的特写", note:"一个水滴镜头就能说明卖点" } },
+{ id:"tt6", title:"周末逛展和citywalk", circle:"outdoor", x:58, y:86, size:3,
+moment:"美术馆、咖啡店、二手书店，她一天要走两万步，包要好看，也要装得下顺手买的画册。",
+pains:["好看的包装不下东西","走一天肩膀疼"],
+searches:["citywalk 包","逛展 穿搭","帆布包 推荐"],
+hooks:["装得下画册","肩带宽，走一天不勒"],
+worn:["citywalk穿搭已极度拥挤"],
+titles:["逛展一整天，包里多了一本画册","citywalk的包，要好看也要能装","两万步之后，肩膀没有抗议"],
+cover:{ layout:"center", text:"top", subject:"美术馆白墙前的背影", note:"非常拥挤，建议作为次要场景" } },
+{ id:"tt7", title:"当天往返的高铁出差", circle:"work", x:70, y:44, size:2,
+moment:"早上7点的高铁，中午见客户，晚上回家，她不想为一天拖一个行李箱。",
+pains:["一天出差带行李箱太麻烦","需要放下一件换洗衣物"],
+searches:["出差 当天往返","一日出差 包","商务 通勤包"],
+hooks:["装得下电脑+一件衬衫","放在高铁行李架上不显眼"],
+worn:["出差收纳内容偏向行李箱"],
+titles:["当天往返的出差，我只带一个包","早7点高铁，晚9点到家","不拖行李箱的出差，轻松多了"],
+cover:{ layout:"left", text:"top", subject:"高铁车窗边的座位与包", note:"车窗流动的风景让画面有节奏" } },
+{ id:"tt8", title:"想送即将入职学妹的毕业礼物", circle:"gift", x:38, y:30, size:1,
+moment:"学妹找到第一份工作，她想送一个比鲜花更实用、能每天用到的东西。",
+pains:["预算有限但想体面","不知道对方喜好"],
+searches:["毕业礼物 送学妹","入职 礼物","送同事 实用 礼物"],
+hooks:["每天都会用到","颜色温和，不挑人"],
+worn:["毕业礼物多为饰品和花"],
+titles:["送学妹的入职礼物，我选了一个包","比鲜花更持久的祝福","毕业礼物，送一点“明天”"],
+cover:{ layout:"center", text:"bottom", subject:"包上夹着一张手写卡片", note:"手写卡片是情绪锚点" } },
+{ id:"tt9", title:"下班直接去健身房的人", circle:"outdoor", x:62, y:56, size:2,
+moment:"工作日去健身，她要在包里同时放电脑和湿毛巾，最怕下班后衣服味道沾到电脑包。",
+pains:["干湿不分离","运动鞋没地方放"],
+searches:["健身 通勤 一个包","干湿分离 包","下班 健身 带什么"],
+hooks:["独立鞋袋，干湿分开","上班看起来不像运动包"],
+worn:["健身包多为运动品牌"],
+titles:["上班包，也是我的健身包","干湿分离之后，电脑终于没有汗味了","从工位到健身房，只换一双鞋"],
+cover:{ layout:"top-left", text:"top", subject:"包里分区展示运动鞋与电脑", note:"一图说清分区设计" } },
+{ id:"tt10", title:"在咖啡馆远程办公的一天", circle:"solo", x:56, y:76, size:2,
+moment:"她背着电脑去咖啡馆，点一杯拿铁坐一下午，包挂在椅背上，看起来也要像生活的一部分。",
+pains:["包放地上不卫生","挂椅背容易滑落"],
+searches:["咖啡馆 办公","远程办公 装备","数字游民 包"],
+hooks:["提手可挂椅背","放在桌上也好看"],
+worn:["咖啡馆办公拍照已较多"],
+titles:["在咖啡馆工作的第100天","包挂在椅背上，也是风景","数字游民的轻装备"],
+cover:{ layout:"center", text:"top", subject:"咖啡馆窗边，电脑和包同框", note:"拥挤度偏高，需更有个人风格的画面" } },
+{ id:"tt11", title:"周末带娃去公园野餐的妈妈", circle:"family", x:74, y:48, size:2,
+moment:"湿巾、水杯、零食、小玩具，她想用一个好看的包代替那个印满卡通的妈妈包。",
+pains:["妈妈包太幼稚","东西多找不到"],
+searches:["遛娃 包","妈妈包 替代","带娃出门 必备"],
+hooks:["分区多，随手就能找到湿巾","妈妈也想好看"],
+worn:["妈妈包测评集中在专用品牌"],
+titles:["带娃野餐，我没有背妈妈包","妈妈的包，也可以不印卡通","公园野餐一下午，包里装了什么"],
+cover:{ layout:"center", text:"bottom", subject:"野餐垫上的包与孩子的小手", note:"孩子不露脸，只露手" } },
+{ id:"tt12", title:"担心大包显矮的小个子女生", circle:"work", x:46, y:62, size:2,
+moment:"155cm的她，背大托特总觉得是“包背人”，可电脑又必须装下。",
+pains:["大包显得人更小","肩带长度不合适"],
+searches:["小个子 托特包","155 背什么包","小个子 通勤包"],
+hooks:["肩带可调，挂在腰线以上","包型挺括不拖沓"],
+worn:["小个子穿搭多，但包较少"],
+titles:["155cm的我，终于不是“包背人”了","小个子通勤，包的比例很重要","肩带调短3cm，整个人高了一截"],
+cover:{ layout:"left", text:"top", subject:"全身镜前的对比照", note:"做“比例”对比图，信息量足" } }
+]
+},
+{
+id: "coffee", name: "冻干咖啡", tagline: "3秒速溶 · 冷水可溶 · 独立小罐", price: "百元以下", emoji: "◉",
+scenes: [
+{ id:"cf1", title:"早八前五分钟冲出宿舍的学生", circle:"campus", x:86, y:84, size:3,
+moment:"7点55分，她一手拿着课本，一手往瓶子里倒冷水，摇两下就出门。",
+pains:["来不及买咖啡","早上没有热水"],
+searches:["早八 续命","宿舍 咖啡","冷水 速溶 咖啡"],
+hooks:["冷水3秒就化","一罐一杯，不用称量"],
+worn:["“早八续命”内容极度拥挤"],
+titles:["早八前5分钟，我的咖啡已经摇好了","宿舍没有热水，也能喝上咖啡","冲出宿舍的路上，它刚好化开"],
+cover:{ layout:"center", text:"top", subject:"宿舍门口，手里晃着的透明瓶", note:"红海场景，靠动态和速度感做区分" } },
+{ id:"cf2", title:"出差住酒店，喝不上好咖啡", circle:"work", x:72, y:40, size:2,
+moment:"酒店房间只有一包速溶三合一，第二天要见客户，她需要一杯像样的咖啡。",
+pains:["酒店咖啡难喝","早上来不及出门找咖啡店"],
+searches:["出差 咖啡","酒店 带什么","出差 必备 好物"],
+hooks:["几个小罐塞进化妆包","酒店烧水壶就能冲"],
+worn:["出差好物合集里较少"],
+titles:["出差的第一件行李，是5罐咖啡","酒店的早晨，也可以有好咖啡","见客户之前的那一杯"],
+cover:{ layout:"left", text:"bottom", subject:"酒店窗边的马克杯和城市清晨", note:"窗外风景让“出差”一眼可识别" } },
+{ id:"cf3", title:"露营早晨醒来的第一杯", circle:"outdoor", x:60, y:78, size:2,
+moment:"帐篷外起了雾，炉子上烧着水，她想要一杯不用手冲器具的咖啡。",
+pains:["露营装备太多","手冲器材麻烦"],
+searches:["露营 咖啡","露营 早餐","户外 咖啡 简单"],
+hooks:["一罐就是一杯，不用带器具","山间的雾和咖啡香"],
+worn:["露营咖啡多为手冲内容"],
+titles:["露营的早晨，不带手冲壶也可以","醒来时，雾还没散","露营装备减重：咖啡只带小罐"],
+cover:{ layout:"center", text:"top", subject:"雾中帐篷前冒热气的杯子", note:"拥挤度偏高，可强调“轻装”角度" } },
+{ id:"cf4", title:"夜班护士交班前的提神时刻", circle:"work", x:64, y:14, size:2,
+moment:"凌晨四点，病区安静下来，她在护士站喝一口咖啡，撑过最后两个小时。",
+pains:["夜班时间长","没时间去买咖啡"],
+searches:["夜班 护士","夜班 提神","护士 必备 好物"],
+hooks:["护士站冷水就能冲","小罐装方便放口袋"],
+worn:["几乎没有商家写过"],
+titles:["夜班护士的凌晨4点","护士站抽屉里，常备这几罐","交班前的最后一杯"],
+cover:{ layout:"center", text:"bottom", subject:"护士站台面上的杯子与夜色", note:"职业真实感最重要，可与真实护士博主合作" } },
+{ id:"cf5", title:"自驾高速，服务区咖啡太贵", circle:"outdoor", x:58, y:26, size:2,
+moment:"开了三个小时，服务区一杯咖啡要38元还难喝，她从车里拿出自己带的那罐。",
+pains:["长途驾驶疲劳","服务区咖啡贵且一般"],
+searches:["自驾 提神","长途 开车 必备","自驾游 带什么"],
+hooks:["矿泉水一倒就是冰美式","车里常备不占地方"],
+worn:["几乎没人写过"],
+titles:["自驾第三小时，我在服务区自己冲了一杯","长途开车的人，车里常备什么","服务区38元的咖啡，我不买了"],
+cover:{ layout:"left", text:"top", subject:"车窗外高速公路，杯架里的冰咖啡", note:"价格对比是天然钩子" } },
+{ id:"cf6", title:"健身前一杯冰美式", circle:"outdoor", x:70, y:58, size:2,
+moment:"下班去健身房前，她想喝一杯没有糖的冰美式，不想停下来排队。",
+pains:["外卖咖啡加糖多","时间紧"],
+searches:["健身前 咖啡","运动 前 喝什么","无糖 冰美式"],
+hooks:["无糖无奶","摇摇杯一摇就好"],
+worn:["健身饮品内容较多"],
+titles:["健身前的冰美式，我自己摇","下班到健身房的路上，摇一杯","练前一杯，不用排队"],
+cover:{ layout:"center", text:"top", subject:"健身包旁的摇摇杯", note:"可与运动博主合作" } },
+{ id:"cf7", title:"下午三点办公室集体犯困", circle:"work", x:84, y:72, size:3,
+moment:"会议结束，整个办公室都开始犯困，有人提议拼单，她从抽屉里拿出几罐分给大家。",
+pains:["拼单要等半小时","天天点外卖咖啡开销大"],
+searches:["办公室 咖啡","下午 犯困","打工人 续命"],
+hooks:["抽屉常备，随时分享","一杯的钱比外卖少很多"],
+worn:["“打工人续命”内容拥挤"],
+titles:["下午3点，我的抽屉成了办公室咖啡角","不拼单了，抽屉里就有","打工人每月咖啡账单，我省了一半"],
+cover:{ layout:"top-left", text:"top", subject:"打开的办公桌抽屉，一排小罐", note:"“分享”比“自用”更有传播性" } },
+{ id:"cf8", title:"喝不惯黑咖啡，想自己做拿铁", circle:"solo", x:66, y:66, size:2,
+moment:"美式太苦，外面的拿铁又太甜，她想在家用燕麦奶调一杯刚刚好的。",
+pains:["黑咖啡太苦","外卖拿铁热量高"],
+searches:["在家 做拿铁","燕麦拿铁 做法","速溶 咖啡 好喝 方法"],
+hooks:["冷牛奶也能直接溶","自己控制甜度"],
+worn:["DIY咖啡教程较多"],
+titles:["不爱喝黑咖啡的人，试试这样做拿铁","在家30秒，一杯燕麦拿铁","喝咖啡入门，从调一杯拿铁开始"],
+cover:{ layout:"center", text:"bottom", subject:"牛奶倒入时的分层画面", note:"分层瞬间是最强视觉钩子" } },
+{ id:"cf9", title:"给加班同事送“续命礼盒”", circle:"gift", x:44, y:26, size:1,
+moment:"项目上线前一周，大家都在加班，她想给组里每个人送一份小礼物。",
+pains:["预算有限但想有心意","不知道送什么"],
+searches:["送同事 小礼物","加班 礼物","团队 打气 礼物"],
+hooks:["小罐装分装成礼盒","每人一份不贵也有心意"],
+worn:["同事礼物多为零食"],
+titles:["项目上线前，我给组里每个人发了一份咖啡","送同事的礼物，实用最重要","给加班的伙伴们，一点续命的心意"],
+cover:{ layout:"center", text:"top", subject:"桌上一排贴着名字的小礼盒", note:"B端团购场景可延伸" } },
+{ id:"cf10", title:"担心喝咖啡心慌的考研党", circle:"campus", x:54, y:30, size:2,
+moment:"一杯外卖咖啡下去，她心跳加快、一下午都学不进去，想试试只喝半杯。",
+pains:["外卖咖啡浓度太高","喝多了心慌"],
+searches:["咖啡 心慌","喝咖啡 心跳快","考研 咖啡 怎么喝"],
+hooks:["自己控制浓度","一罐可以分两次冲"],
+worn:["几乎没有商家从“控量”角度写"],
+titles:["喝咖啡容易心慌的人，可以试试“半罐”","考研党的咖啡，要自己控制浓度","我不是不能喝咖啡，只是需要少一点"],
+cover:{ layout:"left", text:"top", subject:"半罐咖啡粉和一杯浅色咖啡", note:"注意避免健康功效宣称，只讲“自己控制浓度”" } },
+{ id:"cf11", title:"教爸妈第一次喝咖啡", circle:"family", x:34, y:12, size:1,
+moment:"过年回家，她给爸妈冲了一杯加奶的咖啡，爸爸说“原来不苦”。",
+pains:["长辈觉得咖啡苦、不健康","不会用咖啡器具"],
+searches:["爸妈 喝咖啡","给父母 带什么","过年 回家 礼物"],
+hooks:["不用器具，长辈也会冲","加奶调成他们接受的口味"],
+worn:["几乎空白"],
+titles:["过年回家，我教爸妈喝咖啡","爸爸说：原来咖啡不苦","给爸妈的第一杯咖啡"],
+cover:{ layout:"center", text:"bottom", subject:"老茶几上的两杯咖啡", note:"家庭温情，蓝海但需求偏低，适合节日节点" } },
+{ id:"cf12", title:"夏天做咖啡冰块特调", circle:"solo", x:48, y:54, size:2,
+moment:"周末下午，她把咖啡冻成冰块，倒进牛奶里，看着它一点点化开。",
+pains:["冰块化了咖啡变淡","想做点好看的饮品"],
+searches:["咖啡冰块","夏日 特调","在家 饮品 好看"],
+hooks:["冷水即溶，做冰块很方便","越化越浓"],
+worn:["夏日特调内容中等"],
+titles:["咖啡冰块，越化越好喝","夏天的周末，冻一盒咖啡冰块","一杯会慢慢变色的拿铁"],
+cover:{ layout:"center", text:"top", subject:"冰块在牛奶里化开的渐变", note:"渐变色天然适合封面" } }
+]
+}
+];
+window.SCENE_LIBRARY = [
+{ circle:"work",   who:"连续开了三个会的项目经理", when:"午饭只剩十分钟的时候", pain:"时间被切得很碎", search:"打工人 午休" },
+{ circle:"work",   who:"刚入职的应届生", when:"第一周想给同事留下好印象时", pain:"不想显得太学生气", search:"职场新人 必备" },
+{ circle:"work",   who:"居家办公的自由职业者", when:"分不清上班和下班的晚上", pain:"工作和生活没有边界", search:"居家办公 效率" },
+{ circle:"work",   who:"经常出差的销售", when:"当天往返的高铁上", pain:"行李必须越少越好", search:"出差 必备 好物" },
+{ circle:"campus", who:"备考第200天的考研党", when:"图书馆闭馆前的最后一小时", pain:"注意力越来越难集中", search:"考研 自习室 必备" },
+{ circle:"campus", who:"住六人间的大一新生", when:"熄灯后的宿舍", pain:"空间小、不能打扰室友", search:"宿舍 好物" },
+{ circle:"family", who:"刚复工的新手妈妈", when:"孩子睡着后的那一个小时", pain:"几乎没有属于自己的时间", search:"宝妈 自己的时间" },
+{ circle:"family", who:"想给爸妈换掉旧东西的女儿", when:"过年回家的那几天", pain:"长辈总说“不用浪费钱”", search:"给爸妈 实用 礼物" },
+{ circle:"outdoor",who:"周末徒步的新手", when:"第一次登顶的山顶", pain:"装备不想太专业太重", search:"徒步 新手 装备" },
+{ circle:"outdoor",who:"第一次去露营的情侣", when:"天黑以后的营地", pain:"东西太多不知道带什么", search:"露营 新手 清单" },
+{ circle:"solo",   who:"一个人住的第三年", when:"下班回家关上门的那一刻", pain:"房间缺少“家”的感觉", search:"一个人住 治愈" },
+{ circle:"solo",   who:"刚搬进老房子的租客", when:"搬家后的第一个晚上", pain:"一切都还很陌生", search:"租房 改造" },
+{ circle:"gift",   who:"第一次去见对方父母的人", when:"出门前最后挑礼物时", pain:"怕礼物太轻或太重", search:"见家长 带什么" },
+{ circle:"gift",   who:"想给闺蜜过生日的人", when:"生日前一周", pain:"不想和别人撞礼", search:"闺蜜 生日礼物" },
+{ circle:"gift",   who:"给加班团队打气的组长", when:"项目上线前一周", pain:"预算有限但想有心意", search:"送同事 小礼物" },
+{ circle:"outdoor",who:"下班直接去健身房的人", when:"从工位到健身房的路上", pain:"东西多、时间紧", search:"下班 健身 带什么" }
+];</script>
+<script>window.JD_NOTE="京东搜索页，2026-10-10 晚采集；取首屏及下拉加载的非广告商品，已剔除二手、标题缺失和代购店铺。价格为搜索页展示价，可能含促销；登录账号下排序带个性化。";
+window.MARKET={"cup":{"path":["家居日用","杯壶水具","保温杯"],"bins":[0,50,80,100,130,160,200,250,300,400],"skus":[{"sku":"100295747935","t":"BENEUNDER保温杯大容量保冷咖啡水杯不锈钢","p":69,"sold":"6万+","sf":60000,"b":"蕉下","seg":"咖啡随行杯"},{"sku":"6276476","t":"炊大皇 保温杯 316L不锈钢茶水分离商务便携保温杯490ml","p":28.41,"sold":"100万+","sf":1000000,"b":"炊大皇","seg":"茶水分离/泡茶"},{"sku":"100230986098","t":"Wedgwood金粉年华蓝色随行杯350ml保冷杯保温杯","p":294,"sold":"1万+","sf":10000,"b":"Wedgwood","seg":"咖啡随行杯"},{"sku":"100137470068","t":"象印 保温杯 360ml 进口不锈钢带储格茶杯","p":99,"sold":"4万+","sf":40000,"b":"象印","seg":"茶水分离/泡茶"},{"sku":"100218537674","t":"象印 保温杯316L不锈钢大容量男女款","p":204,"sold":"2万+","sf":20000,"b":"象印","seg":"常规保温杯"},{"sku":"100124156761","t":"京东京造保温杯 316L不锈钢口袋水杯200ml","p":33.9,"sold":"20万+","sf":200000,"b":"京东京造","seg":"常规保温杯"},{"sku":"100064706039","t":"富光保温杯弹跳盖316L不锈钢大容量学生","p":56.91,"sold":"30万+","sf":300000,"b":"富光","seg":"常规保温杯"},{"sku":"10234404017396","t":"Stanley星星条纹系列保温杯","p":201.1,"sold":"1000+","sf":1000,"b":"Stanley","seg":"常规保温杯"},{"sku":"100276330648","t":"BABLOV花伴森吸管保温杯700ML","p":83.76,"sold":"5000+","sf":5000,"b":"BABLOV","seg":"吸管/冰霸杯"},{"sku":"100311643563","t":"米家弹盖保温杯 500ml 316L不锈钢","p":99,"sold":"200万+","sf":2000000,"b":"米家","seg":"常规保温杯"},{"sku":"10072217834321","t":"STANLEY保温杯吸管杯冰霸杯 887ml","p":220.1,"sold":"4万+","sf":40000,"b":"Stanley","seg":"吸管/冰霸杯"},{"sku":"100250810927","t":"京东京造 弹盖保温杯 纯钛茶隔 500ml","p":63.9,"sold":"7000+","sf":7000,"b":"京东京造","seg":"钛杯"},{"sku":"100209331115","t":"卡罗特 保温杯冰霸杯吸管杯陶瓷内胆 810mL","p":75.65,"sold":"4万+","sf":40000,"b":"卡罗特","seg":"吸管/冰霸杯"},{"sku":"100272464036","t":"名创优品保温杯大容量316L不锈钢","p":49,"sold":"3万+","sf":30000,"b":"名创优品","seg":"常规保温杯"},{"sku":"100115626279","t":"物生物保温杯316L不锈钢大容量","p":53.1,"sold":"4万+","sf":40000,"b":"物生物","seg":"常规保温杯"},{"sku":"100141121176","t":"北鼎 保温杯 茶水分离泡茶杯316L不锈钢","p":132.51,"sold":"2万+","sf":20000,"b":"北鼎","seg":"茶水分离/泡茶"},{"sku":"100226522316","t":"富光小钛阳纯钛保温杯 茶水分离 360ml","p":99,"sold":"6万+","sf":60000,"b":"富光","seg":"钛杯"},{"sku":"100191695185","t":"富光保温杯 316L不锈钢带茶隔 520ml","p":60.89,"sold":"20万+","sf":200000,"b":"富光","seg":"茶水分离/泡茶"},{"sku":"100343404386","t":"米家纯钛保温杯大容量","p":179,"sold":"20万+","sf":200000,"b":"米家","seg":"钛杯"},{"sku":"100298447721","t":"特美刻 不锈钢蘑菇杯通勤水杯","p":125.1,"sold":"7000+","sf":7000,"b":"特美刻","seg":"常规保温杯"},{"sku":"100145030166","t":"虎牌 保温保冷杯 480ML","p":178.6,"sold":"3万+","sf":30000,"b":"虎牌","seg":"常规保温杯"},{"sku":"10228926897325","t":"Wedgwood mini随行杯保温杯陶瓷涂层200ml","p":254,"sold":"100+","sf":100,"b":"Wedgwood","seg":"陶瓷内胆"},{"sku":"100202502617","t":"Tagi.爆米花双饮吸管保温杯316L 480ml","p":175.12,"sold":"3000+","sf":3000,"b":"Tagi.","seg":"吸管/冰霸杯"},{"sku":"100218537660","t":"象印 原装进口保温杯 316L不锈钢","p":178.2,"sold":"2万+","sf":20000,"b":"象印","seg":"常规保温杯"},{"sku":"100264946555","t":"Starbucks经典系列黑色钛杯320ml","p":359,"sold":"2万+","sf":20000,"b":"星巴克","seg":"钛杯"},{"sku":"10234996499014","t":"STANLEY ZO&FRIENDS联名保温咖啡杯 354ml","p":288,"sold":"600+","sf":600,"b":"Stanley","seg":"咖啡随行杯"},{"sku":"100177769045","t":"Wedgwood野草莓吸管杯592ml陶瓷涂层","p":314,"sold":"6000+","sf":6000,"b":"Wedgwood","seg":"吸管/冰霸杯"},{"sku":"100174266003","t":"Tagi. 双饮保温杯 316L 620ml","p":175.12,"sold":"5000+","sf":5000,"b":"Tagi.","seg":"常规保温杯"},{"sku":"100308947089","t":"星巴克便携不锈钢杯","p":173,"sold":"2000+","sf":2000,"b":"星巴克","seg":"常规保温杯"},{"sku":"100379573362","t":"Wedgwood不锈钢保温瓶","p":344,"sold":"300+","sf":300,"b":"Wedgwood","seg":"常规保温杯"},{"sku":"100010462320","t":"虎牌 保温杯弹盖 360ml","p":185.9,"sold":"50万+","sf":500000,"b":"虎牌","seg":"常规保温杯"},{"sku":"10092040604918","t":"慕咖STTOKE咖啡随行保温杯陶瓷内胆460ml","p":261.6,"sold":"8000+","sf":8000,"b":"慕咖","seg":"陶瓷内胆"},{"sku":"100238380595","t":"野兽派家居 Hello Kitty不锈钢儿童保温杯吸管杯","p":206.57,"sold":"2000+","sf":2000,"b":"野兽派","seg":"儿童杯"},{"sku":"100324536158","t":"BABLOV花伴森咖啡杯钛杯儿童保温杯","p":159.99,"sold":"1万+","sf":10000,"b":"BABLOV","seg":"儿童杯"},{"sku":"100107940882","t":"膳魔师 保温杯400ml带茶滤","p":187,"sold":"5万+","sf":50000,"b":"膳魔师","seg":"茶水分离/泡茶"},{"sku":"100174265961","t":"Tagi. 保温杯 400ml 苹果吸管杯","p":156.87,"sold":"1000+","sf":1000,"b":"Tagi.","seg":"吸管/冰霸杯"},{"sku":"100225729496","t":"Tagi.保温杯316L不锈钢1200ml大容量","p":176.52,"sold":"4000+","sf":4000,"b":"Tagi.","seg":"常规保温杯"},{"sku":"10165155396358","t":"复古随行保温出行水壶","p":113.14,"sold":"1000+","sf":1000,"b":"M Stand","seg":"咖啡随行杯"},{"sku":"100244798967","t":"BABLOV花伴森陶瓷内胆儿童保温杯咖啡杯470ml","p":131.48,"sold":"900+","sf":900,"b":"BABLOV","seg":"儿童杯"},{"sku":"100235894615","t":"虎牌 差旅kitty弹盖杯480ml","p":216.6,"sold":"2万+","sf":20000,"b":"虎牌","seg":"常规保温杯"},{"sku":"10208345206122","t":"特美刻 户外纯钛保温杯双饮吸管杯480ml","p":202.55,"sold":"1000+","sf":1000,"b":"特美刻","seg":"钛杯"},{"sku":"100102247490","t":"膳魔师 保温杯550ml陶瓷内胆","p":248.46,"sold":"10万+","sf":100000,"b":"膳魔师","seg":"陶瓷内胆"},{"sku":"100233369765","t":"膳魔师超轻保温钛杯","p":357.76,"sold":"2万+","sf":20000,"b":"膳魔师","seg":"钛杯"},{"sku":"100315701138","t":"小罐茶保温杯焖泡杯礼盒","p":229.15,"sold":"1万+","sf":10000,"b":"小罐茶","seg":"茶水分离/泡茶"},{"sku":"100298113195","t":"膳魔师 纯钛杯200ml","p":317,"sold":"800+","sf":800,"b":"膳魔师","seg":"钛杯"},{"sku":"100114971441","t":"象印 保温杯进口不锈钢学生水杯","p":168.3,"sold":"1万+","sf":10000,"b":"象印","seg":"常规保温杯"}],"size":{"title":"中国杯壶市场规模","unit":"亿元","points":[{"y":"2021","v":326}],"src":"华经产业研究院（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},"facts":[{"k":"保温杯在杯壶市场中的占比","v":"超过 50%","yr":"2021","src":"华经产业研究院（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},{"k":"中国保温杯产量年复合增长率","v":"5.9%","yr":"2017–2021","src":"华经产业研究院（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},{"k":"杯壶市场前三名合计份额（CR3）","v":"13.1%","yr":"2021","src":"国盛证券（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},{"k":"不锈钢保温杯 高 / 中 / 低端销售额占比","v":"7% / 32% / 61%","yr":"原文未注明","src":"艾瑞咨询（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},{"k":"全球不锈钢保温杯由中国生产的比例","v":"约 65%","yr":"原文未注明","src":"艾瑞咨询（36氪转引）","url":"https://www.36kr.com/p/2818084401220100"},{"k":"哈尔斯海外营收及占比","v":"近 29 亿元，87.06%","yr":"2024","src":"哈尔斯 2024 年业绩报告（界面新闻转引）","url":"https://www.jiemian.com/article/12928497.html"}],"share_note":"公开数据只到杯壶整体的集中度：前三名合计 13.1%（2021，国盛证券），说明市场分散、新品牌仍有空间。品牌级份额暂无可靠公开数据。","age":[]},"candle":{"path":["家居日用","家居香氛","香薰蜡烛"],"bins":[0,50,100,150,200,250,300,400,500,700],"skus":[{"sku":"100155533851","t":"无印良品香味蜡烛 85g 葡萄柚","p":28,"sold":"10万+","sf":100000,"b":"无印良品","seg":"单只常规装"},{"sku":"100370706470","t":"野兽派 Jungle苹果脸玫瑰香薰蜡烛礼盒","p":156.03,"sold":"50万+","sf":500000,"b":"野兽派","seg":"礼盒装"},{"sku":"100057745870","t":"梅森马吉拉 慵懒周末香氛蜡烛70g","p":255,"sold":"2万+","sf":20000,"b":"梅森马吉拉","seg":"单只常规装"},{"sku":"100303073536","t":"祖玛珑 迷你香氛蜡烛礼盒","p":315,"sold":"50万+","sf":500000,"b":"祖玛珑","seg":"礼盒装"},{"sku":"100019788946","t":"宇宙的猜想 至空单只香薰蜡烛礼盒","p":128.16,"sold":"2万+","sf":20000,"b":"宇宙的猜想","seg":"礼盒装"},{"sku":"100197631738","t":"无印良品香薰蜡烛 秋梨 85g","p":28,"sold":"10万+","sf":100000,"b":"无印良品","seg":"单只常规装"},{"sku":"100395153038","t":"Lavas艺术家限定礼盒","p":227.8,"sold":"1万+","sf":10000,"b":"Lavas","seg":"礼盒装"},{"sku":"10151174512674","t":"观夏 昆仑煮雪香薰蜡烛130g","p":204,"sold":"4000+","sf":4000,"b":"观夏","seg":"单只常规装"},{"sku":"100049710303","t":"野兽派香薰蜡烛礼盒野桃木槿花","p":165.17,"sold":"50万+","sf":500000,"b":"野兽派","seg":"礼盒装"},{"sku":"100134629911","t":"蒂普提克香氛蜡烛浆果香70g","p":345,"sold":"8000+","sf":8000,"b":"蒂普提克","seg":"单只常规装"},{"sku":"100144829946","t":"梅森马吉拉 香氛蜡烛礼盒35g×4","p":475,"sold":"1万+","sf":10000,"b":"梅森马吉拉","seg":"礼盒装"},{"sku":"100386126740","t":"野兽派 Hello Kitty苹果薰衣草香薰蜡烛礼盒","p":156.03,"sold":"50万+","sf":500000,"b":"野兽派","seg":"礼盒装"},{"sku":"100197631740","t":"无印良品香薰蜡烛 桧木 85g","p":28,"sold":"10万+","sf":100000,"b":"无印良品","seg":"单只常规装"},{"sku":"100040660253","t":"罗意威香薰蜡烛番茄叶170g","p":660.44,"sold":"1万+","sf":10000,"b":"罗意威","seg":"大容量（≥170g）"},{"sku":"100293763031","t":"MUJI香氛蜡烛 木质 M 80g","p":58,"sold":"1000+","sf":1000,"b":"无印良品","seg":"单只常规装"},{"sku":"100057620837","t":"野兽派玫瑰庄园香薰蜡烛礼盒","p":156.91,"sold":"50万+","sf":500000,"b":"野兽派","seg":"礼盒装"},{"sku":"100298577082","t":"罗意威 柏树迷你蜡烛55g","p":247,"sold":"200+","sf":200,"b":"罗意威","seg":"迷你装（≤65g）"},{"sku":"100250064475","t":"野兽派无忌之檀香氛蜡烛","p":179.68,"sold":"4000+","sf":4000,"b":"野兽派","seg":"单只常规装"},{"sku":"100078430385","t":"梅森马吉拉 温暖壁炉香氛蜡烛70g","p":255,"sold":"2万+","sf":20000,"b":"梅森马吉拉","seg":"单只常规装"},{"sku":"100049710333","t":"野兽派 Jungle清新龙舌兰香薰蜡烛礼盒","p":165.17,"sold":"50万+","sf":500000,"b":"野兽派","seg":"礼盒装"},{"sku":"100133588322","t":"祖玛珑鼠尾草与海盐香氛蜡烛65g","p":255,"sold":"3万+","sf":30000,"b":"祖玛珑","seg":"迷你装（≤65g）"},{"sku":"100243051227","t":"Lavas狐狸与玫瑰香氛蜡烛120g","p":123.55,"sold":"2000+","sf":2000,"b":"Lavas","seg":"单只常规装"},{"sku":"100233422533","t":"梅森马吉拉壁炉香薰礼盒70g","p":305,"sold":"1万+","sf":10000,"b":"梅森马吉拉","seg":"礼盒装"},{"sku":"10230127525656","t":"Songmont 香薰蜡烛","p":298,"sold":"300+","sf":300,"b":"Songmont","seg":"单只常规装"},{"sku":"100155533849","t":"无印良品香味蜡烛 180g 秋梨","p":58,"sold":"10万+","sf":100000,"b":"无印良品","seg":"大容量（≥170g）"},{"sku":"100166259400","t":"蒂普提克 迷你无花果香氛蜡烛70g","p":345,"sold":"8000+","sf":8000,"b":"蒂普提克","seg":"迷你装（≤65g）"},{"sku":"100283068573","t":"woodwick香薰蜡烛小瓶款 85g","p":155,"sold":"","sf":0,"b":"WoodWick","seg":"单只常规装"},{"sku":"100048017766","t":"Lavas Q版香薰蜡烛礼盒","p":227.8,"sold":"1万+","sf":10000,"b":"Lavas","seg":"礼盒装"},{"sku":"100085430726","t":"Lavas绿日桃金娘香薰蜡烛礼盒","p":179.2,"sold":"2000+","sf":2000,"b":"Lavas","seg":"礼盒装"},{"sku":"100090656151","t":"宋朝冷山春雨清茶香薰蜡烛","p":78.08,"sold":"1万+","sf":10000,"b":"宋朝","seg":"单只常规装"},{"sku":"100203831237","t":"TRUDON楚敦 摩洛哥薄荷茶香氛蜡烛70g","p":323,"sold":"700+","sf":700,"b":"楚敦","seg":"单只常规装"},{"sku":"100033356662","t":"祖玛珑英国梨与小苍兰蜡烛200g","p":480,"sold":"3万+","sf":30000,"b":"祖玛珑","seg":"大容量（≥170g）"},{"sku":"100197631736","t":"无印良品香味蜡烛 白檀 85g","p":28,"sold":"10万+","sf":100000,"b":"无印良品","seg":"单只常规装"},{"sku":"100230176538","t":"Lavas艺术家限定礼盒","p":277.95,"sold":"1万+","sf":10000,"b":"Lavas","seg":"礼盒装"},{"sku":"10062513593546","t":"野兽派Jungle香氛礼盒 巴黎周末","p":165.17,"sold":"5万+","sf":50000,"b":"野兽派","seg":"礼盒装"},{"sku":"100050191806","t":"Jupiter & Venus 英国梨与小苍兰香薰蜡烛","p":87.5,"sold":"2万+","sf":20000,"b":"Jupiter & Venus","seg":"单只常规装"},{"sku":"100308078934","t":"大英博物馆 蝶恋花单只香氛蜡烛","p":57.85,"sold":"1000+","sf":1000,"b":"大英博物馆","seg":"单只常规装"},{"sku":"100027787557","t":"宇宙的猜想 至空双支香薰蜡烛礼盒","p":284.24,"sold":"9000+","sf":9000,"b":"宇宙的猜想","seg":"礼盒装"},{"sku":"100366734324","t":"南国芭乐香薰造型蜡烛","p":128.76,"sold":"","sf":0,"b":"京东101HOME","seg":"单只常规装"},{"sku":"100070936347","t":"宇宙的猜想 香薰蜡烛","p":190.4,"sold":"1000+","sf":1000,"b":"宇宙的猜想","seg":"单只常规装"},{"sku":"100293763081","t":"MUJI香氛蜡烛 柑橘 S 28g","p":38,"sold":"1000+","sf":1000,"b":"无印良品","seg":"迷你装（≤65g）"},{"sku":"100066205098","t":"Lavas粉雪 Q版香薰蜡烛","p":79,"sold":"5000+","sf":5000,"b":"Lavas","seg":"单只常规装"},{"sku":"100070936339","t":"宇宙的猜想 香薰礼盒","p":202.3,"sold":"1000+","sf":1000,"b":"宇宙的猜想","seg":"礼盒装"}],"size":{"title":"中国家居香氛市场规模","unit":"亿元","points":[{"y":"2023","v":86.78}],"growth":"同比 +15.26%","src":"智研咨询","url":"https://www.chyxx.com/industry/1206814.html"},"facts":[{"k":"家居香氛市场规模","v":"约 86.78 亿元，同比 +15.26%","yr":"2023","src":"智研咨询","url":"https://www.chyxx.com/industry/1206814.html"},{"k":"竞争格局","v":"Diptyque、祖玛珑等外资品牌占较大比重；气味图书馆、野兽派等国货跨界品牌拥有用户基础","yr":"2024 年发布","src":"智研咨询","url":"https://www.chyxx.com/industry/1206814.html"}],"share_note":"机构只给出定性判断：外资品牌占较大比重（智研咨询）。具体份额暂无可靠公开数据。","age":[{"txt":"80 后、90 后、00 后已成为家居香氛的主要消费群体","src":"智研咨询","url":"https://www.chyxx.com/industry/1206814.html"}]},"tote":{"path":["服饰箱包","女包","托特包"],"bins":[0,150,200,250,300,400,600,1000,1500,4000],"skus":[{"sku":"100046872532","t":"纽芝兰女包 托特包","p":240,"sold":"7万+","sf":70000,"b":"纽芝兰","seg":"国内及其他品牌"},{"sku":"100241618685","t":"ECODAY 编织包大容量托特包通勤包","p":268.8,"sold":"1万+","sf":10000,"b":"ECODAY","seg":"国内及其他品牌"},{"sku":"100142285457","t":"蔻驰 GALLERY大号手提单肩托特包","p":751.45,"sold":"1万+","sf":10000,"b":"蔻驰","seg":"国际轻奢品牌"},{"sku":"100291352051","t":"ECODAY通勤单肩出游旅行包中号","p":284,"sold":"1000+","sf":1000,"b":"ECODAY","seg":"国内及其他品牌"},{"sku":"100292226224","t":"珑骧 Le Pliage Original中号托特包","p":1300,"sold":"1万+","sf":10000,"b":"珑骧","seg":"国际轻奢品牌"},{"sku":"10195848263457","t":"拉菲斯汀 大容量托特包 可装13寸笔记本","p":447.12,"sold":"1000+","sf":1000,"b":"拉菲斯汀","seg":"国内及其他品牌"},{"sku":"100107918260","t":"Teenie Weenie 通勤大容量托特斜挎包","p":173.75,"sold":"1万+","sf":10000,"b":"Teenie Weenie","seg":"国内及其他品牌"},{"sku":"100151442380","t":"蔻驰 CITY33大号手提托特包","p":1523.8,"sold":"6万+","sf":60000,"b":"蔻驰","seg":"国际轻奢品牌"},{"sku":"100068102652","t":"芙拉 NET系列 牛皮大号托特手提包","p":658,"sold":"","sf":0,"b":"芙拉","seg":"国际轻奢品牌"},{"sku":"100152180973","t":"Lee 女包潮流托特包","p":168.99,"sold":"8000+","sf":8000,"b":"Lee","seg":"国内及其他品牌"},{"sku":"100126216442","t":"卡思乐 植鞣牛皮大容量托特包","p":1090.11,"sold":"5000+","sf":5000,"b":"卡思乐","seg":"国内及其他品牌"},{"sku":"100251569267","t":"lululemon多口袋托特包","p":489,"sold":"700+","sf":700,"b":"lululemon","seg":"运动户外品牌"},{"sku":"10211153890372","t":"纽芝兰 海豚托特包 可放13寸电脑","p":243,"sold":"3000+","sf":3000,"b":"纽芝兰","seg":"国内及其他品牌"},{"sku":"10225287154193","t":"ROSYDOEDIAN托特包","p":374,"sold":"8000+","sf":8000,"b":"ROSYDOEDIAN","seg":"国内及其他品牌"},{"sku":"100281205146","t":"蔻驰女士手提单肩托特包","p":1159,"sold":"1万+","sf":10000,"b":"蔻驰","seg":"国际轻奢品牌"},{"sku":"100310905225","t":"蔻驰 CITY中号单肩托特包","p":1458,"sold":"800+","sf":800,"b":"蔻驰","seg":"国际轻奢品牌"},{"sku":"100292924510","t":"tomtoc地球肌理托特包","p":334,"sold":"1000+","sf":1000,"b":"tomtoc","seg":"国内及其他品牌"},{"sku":"10204392917226","t":"KANGOL 托特包通勤大容量电脑包","p":251.05,"sold":"100","sf":100,"b":"KANGOL","seg":"运动户外品牌"},{"sku":"100090986133","t":"珑骧 帆布中号托特包","p":957.55,"sold":"300+","sf":300,"b":"珑骧","seg":"国际轻奢品牌"},{"sku":"100146066366","t":"蔻一托特包","p":189.78,"sold":"2000+","sf":2000,"b":"蔻一","seg":"国内及其他品牌"},{"sku":"100322414364","t":"ECODAY 编织包大容量托特包","p":273.9,"sold":"1000+","sf":1000,"b":"ECODAY","seg":"国内及其他品牌"},{"sku":"100265808319","t":"纽芝兰小众编编包","p":260,"sold":"2万+","sf":20000,"b":"纽芝兰","seg":"国内及其他品牌"},{"sku":"100256525735","t":"热风尼龙单肩托特包大容量通勤包","p":126.25,"sold":"600+","sf":600,"b":"热风","seg":"国内及其他品牌"},{"sku":"100018806899","t":"纽芝兰托特包","p":240,"sold":"10万+","sf":100000,"b":"纽芝兰","seg":"国内及其他品牌"},{"sku":"100221923463","t":"Champion 大容量托特包","p":190,"sold":"2000+","sf":2000,"b":"Champion","seg":"运动户外品牌"},{"sku":"100314237073","t":"卡思乐 链条菱格托特包","p":279,"sold":"","sf":0,"b":"卡思乐","seg":"国内及其他品牌"},{"sku":"100248159111","t":"ECODAY 斜挎编织包大容量托特包","p":284,"sold":"3000+","sf":3000,"b":"ECODAY","seg":"国内及其他品牌"},{"sku":"100165527571","t":"芙拉女士手提托特包","p":900.5,"sold":"","sf":0,"b":"芙拉","seg":"国际轻奢品牌"},{"sku":"100251001417","t":"北面单肩包大容量托特手拎包","p":332.1,"sold":"500+","sf":500,"b":"北面","seg":"运动户外品牌"},{"sku":"100198382319","t":"汤丽柏琦 ELLA小号托特包","p":1379,"sold":"300+","sf":300,"b":"汤丽柏琦","seg":"国际轻奢品牌"},{"sku":"100377285622","t":"珑骧Le Pliage Original托特包","p":1400,"sold":"1万+","sf":10000,"b":"珑骧","seg":"国际轻奢品牌"},{"sku":"100196108667","t":"toutou 单肩腋下托特包","p":169.15,"sold":"8000+","sf":8000,"b":"toutou","seg":"国内及其他品牌"},{"sku":"10211158823164","t":"UR 经典托特单肩包","p":245,"sold":"300+","sf":300,"b":"UR","seg":"国内及其他品牌"},{"sku":"100331047636","t":"ECODAY 束束包大容量托特包","p":294,"sold":"1000+","sf":1000,"b":"ECODAY","seg":"国内及其他品牌"},{"sku":"100058500863","t":"MCM LIZ小号托特包双面子母包","p":3635,"sold":"3000+","sf":3000,"b":"MCM","seg":"国际轻奢品牌"},{"sku":"100254294649","t":"MICHAEL KORS MOORE小号托特包","p":640.5,"sold":"","sf":0,"b":"Michael Kors","seg":"国际轻奢品牌"},{"sku":"100167070000","t":"蕉下托特包单肩包","p":82,"sold":"6万+","sf":60000,"b":"蕉下","seg":"运动户外品牌"},{"sku":"100318533136","t":"UNICARE帆布托特包防泼水大容量","p":185.4,"sold":"1000+","sf":1000,"b":"UNICARE","seg":"国内及其他品牌"},{"sku":"10209529746792","t":"TERRAINCOGNITA 大容量抽绳托特包","p":309,"sold":"200+","sf":200,"b":"TERRAINCOGNITA","seg":"国内及其他品牌"},{"sku":"10114255183554","t":"Tagi. 拼色帆布托特斜挎包","p":238,"sold":"5000+","sf":5000,"b":"Tagi.","seg":"国内及其他品牌"},{"sku":"100266018400","t":"15MINS 大容量hobo托特包","p":209,"sold":"2000+","sf":2000,"b":"15MINS","seg":"国内及其他品牌"},{"sku":"100016912637","t":"耐克休闲单肩包","p":195,"sold":"1万+","sf":10000,"b":"耐克","seg":"运动户外品牌"},{"sku":"100177232080","t":"卡思乐 植鞣牛皮托特包","p":773.51,"sold":"7000+","sf":7000,"b":"卡思乐","seg":"国内及其他品牌"}],"size":{"title":"中国女包市场规模（托特包无单独公开数据）","unit":"亿元","points":[{"y":"2017","v":900},{"y":"2022","v":1204},{"y":"2023E","v":1290,"e":true}],"src":"观研天下","url":"https://www.chinabaogao.com/free/202310/667695.html"},"facts":[{"k":"女包市场规模","v":"900 亿元 → 1204 亿元","yr":"2017 → 2022","src":"观研天下","url":"https://www.chinabaogao.com/free/202310/667695.html"},{"k":"复合材料女包 / 真皮女包市场规模","v":"753.15 亿元 / 393.2 亿元","yr":"2021","src":"观研天下","url":"https://www.chinabaogao.com/free/202310/667695.html"},{"k":"国内品牌女包价格","v":"大多在 500 元以下","yr":"2023 年发布","src":"观研天下","url":"https://www.chinabaogao.com/free/202310/667695.html"}],"share_note":"托特包这一细分没有找到可靠的市场规模或品牌份额公开数据。","age":[]},"coffee":{"path":["食品饮料","咖啡","速溶咖啡","冻干咖啡"],"bins":[0,15,25,35,45,60,80,120,200],"skus":[{"sku":"100098787354","t":"摩可纳8号冻干黑咖啡10条","p":13.9,"sold":"50万+","sf":500000,"b":"摩可纳","seg":"小条/小罐便携装"},{"sku":"5824877","t":"摩可纳经典8号深烘冻干黑咖100g","p":56.9,"sold":"100万+","sf":1000000,"b":"摩可纳","seg":"罐装/大包装"},{"sku":"100025409527","t":"AGF 冻干速溶黑咖啡蓝棕罐80g","p":37.9,"sold":"50万+","sf":500000,"b":"AGF","seg":"罐装/大包装"},{"sku":"1083759","t":"雀巢瑞士金牌速溶原味黑咖啡100g","p":59,"sold":"100万+","sf":1000000,"b":"雀巢","seg":"罐装/大包装"},{"sku":"100061481040","t":"AGF蓝金罐冻干咖啡80g","p":39.71,"sold":"10万+","sf":100000,"b":"AGF","seg":"罐装/大包装"},{"sku":"100282401815","t":"花田萃小黄油美式冻干咖啡50g","p":17.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"风味冻干"},{"sku":"100236309135","t":"悠诗诗UCC速溶咖啡粉90g","p":33.9,"sold":"4万+","sf":40000,"b":"悠诗诗UCC","seg":"罐装/大包装"},{"sku":"7950983","t":"雀巢瑞士金牌速溶浓郁黑咖啡100g","p":59,"sold":"100万+","sf":1000000,"b":"雀巢","seg":"罐装/大包装"},{"sku":"100196153491","t":"花田萃意式冻干黑咖啡100g","p":33.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"罐装/大包装"},{"sku":"100240615673","t":"花田萃6风味小罐冻干咖啡2g×6颗","p":7.9,"sold":"2万+","sf":20000,"b":"花田萃","seg":"风味冻干"},{"sku":"100027937436","t":"大卫杜夫速溶咖啡 意式浓缩 100g","p":59.48,"sold":"10万+","sf":100000,"b":"大卫杜夫","seg":"罐装/大包装"},{"sku":"100377881966","t":"花田萃香草风味浓缩冻干咖啡50g","p":17.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"风味冻干"},{"sku":"100123558314","t":"悠诗诗114冻干黑咖啡1.8g×28条","p":25.5,"sold":"10万+","sf":100000,"b":"悠诗诗UCC","seg":"小条/小罐便携装"},{"sku":"100098787340","t":"摩可纳5号冻干黑咖啡10条","p":17.66,"sold":"50万+","sf":500000,"b":"摩可纳","seg":"小条/小罐便携装"},{"sku":"100245685393","t":"花田萃经典浓缩冻干咖啡50g","p":17.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"罐装/大包装"},{"sku":"100029862588","t":"悠诗诗117冻干1.8g×10条","p":12.9,"sold":"10万+","sf":100000,"b":"悠诗诗UCC","seg":"小条/小罐便携装"},{"sku":"100318805040","t":"悠诗诗冻干咖啡70g","p":34.9,"sold":"100万+","sf":1000000,"b":"悠诗诗UCC","seg":"罐装/大包装"},{"sku":"100277145233","t":"花田萃黄油风味冻干咖啡100g","p":33.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"风味冻干"},{"sku":"5824913","t":"摩可纳经典8号深烘冻干黑咖200g","p":103.3,"sold":"100万+","sf":1000000,"b":"摩可纳","seg":"罐装/大包装"},{"sku":"100089628863","t":"摩可纳5号冻干黑咖啡30条","p":42.31,"sold":"50万+","sf":500000,"b":"摩可纳","seg":"小条/小罐便携装"},{"sku":"100073671034","t":"OM三大产区咖啡24颗","p":65.9,"sold":"9万+","sf":90000,"b":"OM","seg":"小条/小罐便携装"},{"sku":"100296375502","t":"AGF冻干咖啡金罐醇香风味80g","p":41.3,"sold":"50万+","sf":500000,"b":"AGF","seg":"风味冻干"},{"sku":"100085425628","t":"艾弗五F5冷萃咖啡18颗","p":39.9,"sold":"1万+","sf":10000,"b":"艾弗五","seg":"小条/小罐便携装"},{"sku":"100274796335","t":"摩可纳浓醇9号冻干黑咖200g","p":115.9,"sold":"100万+","sf":1000000,"b":"摩可纳","seg":"罐装/大包装"},{"sku":"100274807859","t":"摩可纳芮斯萃朵12号冻干黑咖200g","p":115.9,"sold":"100万+","sf":1000000,"b":"摩可纳","seg":"罐装/大包装"},{"sku":"100135727029","t":"waitrose冻干速溶黑咖啡粉","p":43.16,"sold":"8000+","sf":8000,"b":"Waitrose","seg":"罐装/大包装"},{"sku":"100200237301","t":"永璞5D锁香冻干咖啡块 2g×2颗","p":12.9,"sold":"3万+","sf":30000,"b":"永璞","seg":"小条/小罐便携装"},{"sku":"100270792226","t":"AGF冻干咖啡蓝标蓝罐80g","p":39.9,"sold":"50万+","sf":500000,"b":"AGF","seg":"罐装/大包装"},{"sku":"100325826326","t":"咖皮0糖0脂冻干咖啡粉90g","p":27.41,"sold":"100+","sf":100,"b":"咖皮","seg":"罐装/大包装"},{"sku":"100257811077","t":"连咖啡意式速溶冻干咖啡50g","p":23.9,"sold":"5000+","sf":5000,"b":"连咖啡","seg":"罐装/大包装"},{"sku":"100044895594","t":"铭氏 冻干咖啡100g","p":28.41,"sold":"5万+","sf":50000,"b":"铭氏","seg":"罐装/大包装"},{"sku":"100354830628","t":"星巴克精品冻干黑咖啡15杯","p":59.8,"sold":"6000+","sf":6000,"b":"星巴克","seg":"小条/小罐便携装"},{"sku":"100192315891","t":"摩可纳焦糖风味冻干黑咖啡95g","p":62.55,"sold":"20万+","sf":200000,"b":"摩可纳","seg":"风味冻干"},{"sku":"100201365162","t":"雀巢日本金牌 冻干黑咖啡80g","p":47,"sold":"6万+","sf":60000,"b":"雀巢","seg":"罐装/大包装"},{"sku":"100285804045","t":"花田萃黄油风味冻干咖啡400g","p":134.9,"sold":"9万+","sf":90000,"b":"花田萃","seg":"风味冻干"}],"size":{"title":"中国速溶咖啡市场规模（冻干无单独公开数据）","unit":"亿元","points":[{"y":"2022","v":418},{"y":"2024","v":680},{"y":"2026E","v":1099,"e":true}],"src":"艾媒咨询","url":"https://report.iimedia.cn/tag/%E9%80%9F%E6%BA%B6%E5%92%96%E5%95%A1","alt":"口径差异：观研天下给出的 2022 年速溶咖啡规模为 720 亿元。"},"facts":[{"k":"精品速溶 / 传统速溶品牌份额","v":"约 19% / 约 75.4%","yr":"原文未注明","src":"观研天下","url":"https://www.chinabaogao.com/baogao/202305/635620.html"},{"k":"冻干速溶、咖啡浓缩液等新消费咖啡线上销售额","v":"约 20 亿元（估算）","yr":"2021","src":"第一财经 YiMagazine 估算（界面新闻转引）","url":"https://www.jiemian.com/article/7352386.html"},{"k":"购买速溶咖啡的前三考量","v":"口味 47.79%、价格 40.65%、保质期 39.92%","yr":"2025 调查","src":"艾媒咨询","url":"https://report.iimedia.cn/tag/%E9%80%9F%E6%BA%B6%E5%92%96%E5%95%A1"},{"k":"速溶咖啡饮用频率最高的一档","v":"每周 4–6 次，占 36.24%","yr":"2025 调查","src":"艾媒咨询","url":"https://report.iimedia.cn/tag/%E9%80%9F%E6%BA%B6%E5%92%96%E5%95%A1"}],"share_note":"精品速溶约占 19%、传统速溶品牌约 75.4%（观研天下，年份未标注）。三顿半等品牌的具体份额暂无可靠公开数据；三顿半未出现在本次京东样本中。","age":[{"txt":"精品速溶的主力人群被描述为高学历、高收入、高消费的年轻群体，原文未给出具体年龄段","src":"艾媒咨询 CEO 张毅（界面新闻转引）","url":"https://www.jiemian.com/article/7352386.html"}]}};
+window.PLATFORM={"title":"小红书月活用户结构","bars":[{"k":"95 后","v":50},{"k":"00 后","v":35}],"extra":"男女比例约 3:7；一二线城市用户占比近半","src":"千瓜《2024「活跃用户」研究报告（小红书平台）》（界面新闻转引）","url":"https://www.jiemian.com/article/11499491.html","note":"95 后与 00 后两组有重叠口径，不能相加。"};
+window.SCENE_AGE={"cup1":"25-30","cup2":"31-40","cup3":"18-24","cup4":"25-30","cup5":"18-24","cup6":"25-30","cup7":"31-40","cup8":"25-30","cup9":"25-30","cup10":"25-30","cup11":"31-40","cup12":"18-24","cd1":"25-30","cd2":"25-30","cd3":"18-24","cd4":"25-30","cd5":"25-30","cd6":"25-30","cd7":"31-40","cd8":"25-30","cd9":"31-40","cd10":"31-40","cd11":"31-40","cd12":"25-30","tt1":"25-30","tt2":"18-24","tt3":"18-24","tt4":"31-40","tt5":"25-30","tt6":"18-24","tt7":"31-40","tt8":"25-30","tt9":"25-30","tt10":"25-30","tt11":"31-40","tt12":"18-24","cf1":"18-24","cf2":"31-40","cf3":"25-30","cf4":"25-30","cf5":"31-40","cf6":"25-30","cf7":"25-30","cf8":"18-24","cf9":"31-40","cf10":"18-24","cf11":"25-30","cf12":"18-24"};</script>
+<script>(function () {
+"use strict";
+var CIRCLES = window.CIRCLES, PRODUCTS = window.PRODUCTS, LIB = window.SCENE_LIBRARY;
+var MARKET = window.MARKET, PLATFORM = window.PLATFORM, SCENE_AGE = window.SCENE_AGE, JD_NOTE = window.JD_NOTE;
+var AGES = ["18-24", "25-30", "31-40", "41+"];
+var MAX_PICK = 6;
+var DAYS = ["周一", "周二", "周三", "周四", "周五", "周六"];
+var SAMPLE_PRICE = { cup: 129, candle: 168, tote: 299, coffee: 39 }; // 示例定价，可拖动修改
+var state = {
+product: null, myPrice: null, comps: [],
+segFilter: null, brandFilter: null, binSel: -1, brandSort: "n",
+filters: {}, ageFilter: null, picked: [], mode: "chart"
+};
+var $ = function (id) { return document.getElementById(id); };
+var esc = function (s) {
+return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; });
+};
+var fmt = function (n) { return (Math.round(n * 100) / 100).toString(); };
+var jdUrl = function (sku) { return "https://item.jd.com/" + sku + ".html"; };
+var src = function (kind) {
+return kind === "org" ? '<span class="src src-org">机构数据</span>' : kind === "jd" ? '<span class="src src-jd">京东实采</span>' : '<span class="src src-ai">AI 评估</span>';
+};
+function isOpp(s) { return s.x >= 55 && s.y <= 45; }
+function oppScore(s) { return Math.round(s.x * 0.6 + (100 - s.y) * 0.4); }
+function catalog(i) { return state.product.code + "·" + String(i + 1).padStart(2, "0"); }
+function crowdVerdict(y) {
+if (y >= 65) return "红海：这个角度已经被写了很多";
+if (y >= 45) return "中等：有人写过，仍有差异化空间";
+return "蓝海：很少看到商家从这个角度写";
+}
+function advice(s) {
+if (isOpp(s)) return { tag: "机会区", text: "优先发布。用真实素人口吻，首发后可小额加热测试。", opp: true };
+if (s.y >= 65) return { tag: "红海", text: "不建议首发。只有找到明显的差异角度时再写。", opp: false };
+if (s.x < 45) return { tag: "小众", text: "需求偏小，适合配合节日或话题节点发布。", opp: false };
+return { tag: "稳健", text: "可作为常规内容补充，保持账号的场景多样性。", opp: false };
+}
+function seeded(str) {
+var h = 2166136261;
+for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+return function () {
+h += 0x6D2B79F5; var t = h;
+t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+};
+}
+function generate(name, point) {
+var rnd = seeded(name);
+var pool = LIB.slice();
+for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
+var sell = point || "刚好合用";
+var scenes = pool.slice(0, 12).map(function (p, k) {
+var y = Math.round(10 + rnd() * 80);
+var layouts = ["center", "left", "top-left"];
+return {
+id: "c" + k, title: p.who, circle: p.circle, age: CIRCLES[p.circle].age,
+x: Math.min(94, Math.round(30 + rnd() * 62)), y: y, size: 1 + Math.floor(rnd() * 3),
+moment: p.when + "，" + p.who + "最在意的是" + p.pain + "。如果手边刚好有一个" + name + "，" + sell + "。",
+pains: [p.pain, "不确定" + name + "是否适合自己的情况"],
+searches: [p.search, p.search.split(" ")[0] + " " + name, name + " 推荐", name + " 真实体验"],
+hooks: [sell, "正好回应“" + p.pain + "”这件事"],
+worn: y >= 55 ? [name + "测评大合集", "开箱加参数对比的固定套路"] : ["这个场景下还很少看到" + name + "的内容"],
+titles: [p.when + "，我带上了" + name, p.who + "的" + name + "清单", "给" + p.pain.replace(/^[很太]/, "") + "的人：试试" + name],
+cover: { layout: layouts[Math.floor(rnd() * 3)], text: rnd() > 0.5 ? "top" : "bottom", subject: p.who + "与" + name + "同框", note: "先让人看出是“" + p.when + "”，商品只占画面一角" }
+};
+});
+return { id: null, name: name, tagline: point || "自定义商品", code: "NEW", custom: true, path: ["自定义商品"], scenes: scenes, market: null };
+}
+function loadSample(id) {
+var p = PRODUCTS.filter(function (q) { return q.id === id; })[0];
+var scenes = p.scenes.map(function (s) { var c = Object.assign({}, s); c.age = SCENE_AGE[s.id] || CIRCLES[s.circle].age; return c; });
+return { id: id, name: p.name, tagline: p.tagline, code: id.toUpperCase(), custom: false, path: MARKET[id].path, scenes: scenes, market: MARKET[id] };
+}
+var VIEWS = ["home", "market", "map", "plan"];
+function go(view) {
+VIEWS.forEach(function (v) {
+$("view-" + v).hidden = v !== view;
+var b = $("step-" + v);
+if (v === view) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current");
+});
+$("step-market").disabled = !state.product;
+$("step-map").disabled = !state.product;
+$("step-plan").disabled = state.picked.length === 0;
+$("tray").hidden = view !== "map";
+closeDrawer();
+if (view === "plan") renderPlan();
+window.scrollTo(0, 0);
+}
+function start(product, price) {
+var loading = $("loading"), lines = loading.querySelectorAll(".line");
+lines.forEach(function (l) { l.classList.remove("on"); });
+loading.hidden = false;
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var step = reduce ? 120 : 500;
+lines.forEach(function (l, i) { setTimeout(function () { l.classList.add("on"); }, step * i + 80); });
+setTimeout(function () {
+state.product = product;
+state.myPrice = price || (product.id ? SAMPLE_PRICE[product.id] : null);
+state.priceIsSample = !price && !!product.id;
+state.comps = []; state.segFilter = null; state.brandFilter = null; state.binSel = -1;
+state.picked = []; state.ageFilter = null; state.filters = {};
+Object.keys(CIRCLES).forEach(function (c) { state.filters[c] = true; });
+loading.hidden = true;
+renderMarket(); renderMap();
+go("market");
+}, step * 3 + 200);
+}
+function miniConstellation(scenes) {
+var w = 280, h = 140, pad = 14, svg = '<svg viewBox="0 0 ' + w + " " + h + '" aria-hidden="true">';
+var ox = pad + 0.55 * (w - 2 * pad), oy = pad + 0.55 * (h - 2 * pad);
+svg += '<rect x="' + ox + '" y="' + oy + '" width="' + (w - pad - ox) + '" height="' + (h - pad - oy) + '" rx="8" fill="#fff0f2"/>';
+scenes.forEach(function (s) {
+svg += '<circle cx="' + (pad + s.x / 100 * (w - 2 * pad)) + '" cy="' + (pad + (1 - s.y / 100) * (h - 2 * pad)) + '" r="' + (2 + s.size * 1.6) + '" fill="' + CIRCLES[s.circle].color + '"/>';
+});
+return svg + "</svg>";
+}
+function renderSamples() {
+$("samples").innerHTML = PRODUCTS.map(function (p) {
+var m = MARKET[p.id];
+return '<button type="button" class="sample" data-id="' + p.id + '">' + miniConstellation(p.scenes) +
+'<div class="meta"><span class="path">' + m.path.join(" › ") + '</span><span class="name">' + esc(p.name) + "</span>" +
+'<span class="stat">' + m.skus.length + " 个实采 SKU · 机会区 <b>" + p.scenes.filter(isOpp).length + "</b> 个</span></div></button>";
+}).join("");
+$("samples").querySelectorAll(".sample").forEach(function (b) {
+b.addEventListener("click", function () { start(loadSample(b.getAttribute("data-id")), null); });
+});
+}
+$("product-form").addEventListener("submit", function (e) {
+e.preventDefault();
+var name = $("f-name").value.trim();
+if (!name) { $("f-error").hidden = false; $("f-name").focus(); return; }
+$("f-error").hidden = true;
+var price = parseFloat($("f-price").value) || null;
+var match = PRODUCTS.filter(function (p) { return p.name === name || name.indexOf(p.name.replace("便携", "")) > -1; })[0];
+start(match ? loadSample(match.id) : generate(name, $("f-point").value.trim()), price);
+});
+function allSkus() {
+var m = state.product.market;
+var base = m ? m.skus : [];
+return base.concat(state.comps);
+}
+function filteredSkus() {
+return allSkus().filter(function (s) {
+if (s.mine) return true;
+if (state.segFilter && s.seg !== state.segFilter) return false;
+if (state.brandFilter && s.b !== state.brandFilter) return false;
+return true;
+});
+}
+function bins() {
+var m = state.product.market;
+if (m) return m.bins;
+var ps = state.comps.map(function (c) { return c.p; }).concat(state.myPrice ? [state.myPrice] : []);
+var mx = Math.max.apply(null, ps.concat([100]));
+var step = Math.pow(10, Math.floor(Math.log10(mx / 6))) * (mx / 6 / Math.pow(10, Math.floor(Math.log10(mx / 6))) > 5 ? 5 : mx / 6 / Math.pow(10, Math.floor(Math.log10(mx / 6))) > 2 ? 2 : 1);
+var out = []; for (var v = 0; v <= mx + step; v += step) out.push(v);
+return out.length > 2 ? out : [0, 50, 100];
+}
+function binOf(p, b) { for (var i = 0; i < b.length - 1; i++) if (p < b[i + 1]) return i; return b.length - 2; }
+function binLabel(i, b) { return i === b.length - 2 ? b[i] + "+" : b[i] + "–" + b[i + 1]; }
+function median(a) { if (!a.length) return 0; var s = a.slice().sort(function (x, y) { return x - y; }); var m = Math.floor(s.length / 2); return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; }
+function renderMarket() {
+var p = state.product, m = p.market;
+$("m-crumbs").innerHTML = p.path.map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("");
+$("m-title").textContent = p.name;
+$("m-tagline").textContent = p.tagline;
+var skus = m ? m.skus : [];
+var brands = {}; skus.forEach(function (s) { brands[s.b] = 1; });
+$("m-readout").innerHTML = m ?
+'<div><span class="v">' + skus.length + '</span><span class="l">实采 SKU</span></div>' +
+'<div><span class="v">' + Object.keys(brands).length + '</span><span class="l">品牌</span></div>' +
+'<div><span class="v">¥' + fmt(median(skus.map(function (s) { return s.p; }))) + '</span><span class="l">样本价格中位数</span></div>' : "";
+var h = "";
+if (!m) {
+h += '<p class="notice">这个品类还没有接入机构数据和京东实采价格。你可以在下面的价格带里添加自己调研到的竞品价格，工具会自动切分价格带并显示你的定位。</p>';
+}
+h += '<div class="dossier">';
+if (m) {
+h += '<section class="card span-7"><div class="card-head"><div><h3>' + esc(m.size.title) + '</h3><p>单位：' + m.size.unit + "</p></div>" + src("org") + "</div>" +
+'<div class="trend" id="trend"></div>' +
+'<p class="muted" style="margin-top:8px">来源：<a class="src-link" href="' + m.size.url + '" target="_blank" rel="noopener">' + esc(m.size.src) + "</a>" +
+(m.size.alt ? "。" + esc(m.size.alt) : "") + "</p></section>";
+h += '<section class="card span-5"><div class="card-head"><div><h3>关键事实</h3><p>每条附原文出处</p></div>' + src("org") + '</div><div class="facts">' +
+m.facts.map(function (f) {
+return '<div class="fact"><span class="k">' + esc(f.k) + '</span><span class="v">' + esc(f.v) + '</span><span class="meta"><span>' + esc(f.yr) +
+'</span><a class="src-link" href="' + f.url + '" target="_blank" rel="noopener">' + esc(f.src) + "</a></span></div>";
+}).join("") + "</div></section>";
+}
+h += '<section class="card span-12"><div class="card-head"><div><h3>同类 SKU 细分价格带</h3><p>' +
+(m ? "点击柱子查看该价格带里的商品；在下方细分类型或品牌表里点选，可联动筛选" : "添加竞品价格后自动生成") + "</p></div>" + (m ? src("jd") : "") + "</div>" +
+'<div class="price-tools"><label for="my-price">你的定价</label><input type="range" id="my-price-range" aria-label="拖动调整你的定价">' +
+'<input type="number" id="my-price" min="1">' + '<span class="muted" id="price-hint"></span></div>' +
+'<div class="hist" id="hist"></div><div class="position" id="position"></div>' +
+'<div class="sku-head"><span id="sku-head-t"></span><span id="filter-pills"></span></div>' +
+'<div class="sku-list" id="sku-list"></div>' +
+'<form class="add-comp" id="add-comp"><input id="comp-name" placeholder="添加你调研到的竞品，例如：某品牌 500ml 保温杯" maxlength="40"><input id="comp-price" type="number" min="0.1" step="0.01" placeholder="价格"><button class="btn btn-sm" type="submit">添加</button></form>' +
+"</section>";
+if (m) {
+h += '<section class="card span-6"><div class="card-head"><div><h3>' + (p.id === "tote" ? "品牌类型" : "细分类型") + '</h3><p>' +
+(p.id === "tote" ? "按样本品牌归类" : "按样本商品标题关键词归类") + "，点击筛选</p></div>" + src("jd") + '</div><div class="hbars" id="segs"></div></section>';
+h += '<section class="card span-6"><div class="card-head"><div><h3>品牌格局</h3><p>样本内统计，点击行筛选</p></div>' + src("jd") + "</div>" +
+'<p class="share-note">' + src("org") + " " + esc(m.share_note) + '</p><div class="table-wrap" id="brands"></div>' +
+'<p class="muted" style="margin-top:8px">“展示销量”取京东页面上的“已售 X+”下限加总，统计口径由平台决定，只能用来比较样本内的相对热度，不等于市场份额。</p></section>';
+}
+var ageCount = {}; p.scenes.forEach(function (s) { ageCount[s.age] = (ageCount[s.age] || 0) + 1; });
+h += '<section class="card span-12"><div class="card-head"><div><h3>聚焦人群与年龄段</h3><p>平台人群用机构数据，场景人群是 AI 评估；点击年龄段直接去星图筛选</p></div></div><div class="age-grid">' +
+'<div class="age-block"><h4>' + esc(PLATFORM.title) + " " + src("org") + "</h4>" + PLATFORM.bars.map(function (b) {
+return '<div class="hbar" style="cursor:default"><span>' + b.k + '</span><span class="track"><span class="fill" style="width:' + b.v + '%;display:block"></span></span><span class="c">' + b.v + "%</span></div>";
+}).join("") + '<p class="muted" style="margin-top:6px">' + esc(PLATFORM.extra) + "。" + esc(PLATFORM.note) + ' 来源：<a class="src-link" href="' + PLATFORM.url + '" target="_blank" rel="noopener">' + esc(PLATFORM.src) + "</a></p>" +
+(m && m.age.length ? m.age.map(function (a) { return '<p class="quote">' + src("org") + " " + esc(a.txt) + ' · <a class="src-link" href="' + a.url + '" target="_blank" rel="noopener">' + esc(a.src) + "</a></p>"; }).join("") :
+'<p class="quote">本品类按年龄段的消费人群占比，暂无可靠公开数据。</p>') + "</div>" +
+'<div class="age-block"><h4>本商品 12 个场景的人群年龄 ' + src("ai") + '</h4><div class="age-chips">' +
+AGES.filter(function (a) { return ageCount[a]; }).map(function (a) {
+return '<button type="button" class="age-chip" data-age="' + a + '"><span class="v">' + ageCount[a] + ' 个</span><span class="l">' + a + " 岁 · 去星图看 →</span></button>";
+}).join("") + "</div></div></div></section>";
+if (m) {
+var urls = {}; [m.size].concat(m.facts).concat(m.age).concat([PLATFORM]).forEach(function (f) { urls[f.url] = f.src; });
+h += '<section class="card span-12 sources"><h3 style="font-size:14px;color:var(--ink)">数据说明与来源</h3><p>' + src("jd") + " " + esc(JD_NOTE) + " 每个 SKU 都可以点“看原页”打开京东商品页核对。</p><ol>" +
+Object.keys(urls).map(function (u) { return '<li><a href="' + u + '" target="_blank" rel="noopener">' + esc(urls[u]) + "</a></li>"; }).join("") + "</ol></section>";
+}
+h += "</div>";
+h += '<div class="dossier-cta"><button class="btn btn-dark" type="button" id="to-map">去看场景星图 →</button></div>';
+$("m-root").innerHTML = h;
+if (m) renderTrend();
+setupPrice();
+renderPriceBlock();
+if (m) { renderSegs(); renderBrands(); }
+$("m-root").querySelectorAll(".age-chip").forEach(function (b) {
+b.addEventListener("click", function () { state.ageFilter = b.getAttribute("data-age"); renderMap(); go("map"); });
+});
+$("to-map").addEventListener("click", function () { go("map"); });
+$("add-comp").addEventListener("submit", function (e) {
+e.preventDefault();
+var n = $("comp-name").value.trim(), pr = parseFloat($("comp-price").value);
+if (!n || !(pr > 0)) { toast("请填写竞品名称和价格"); return; }
+state.comps.push({ sku: null, t: n, p: pr, b: "你添加的", seg: "你添加的", sf: 0, mine: true });
+$("comp-name").value = ""; $("comp-price").value = "";
+if (!m) setupPrice();
+renderPriceBlock(); toast("已添加竞品");
+});
+}
+function renderTrend() {
+var s = state.product.market.size, pts = s.points;
+if (pts.length < 2) {
+$("trend").innerHTML = '<div class="big-figure"><span class="v">' + pts[0].v + '</span><span class="u">' + s.unit + "（" + pts[0].y + "）</span>" +
+(s.growth ? '<span class="g">' + esc(s.growth) + "</span>" : "") + "</div>" +
+'<p class="muted" style="margin-top:8px">公开报道只找到这一年的可靠数字，所以这里不画走势线，避免用推算值填满图表。</p>';
+return;
+}
+var W = 600, H = 240, L = 20, R = 20, T = 30, B = 32, max = Math.max.apply(null, pts.map(function (p) { return p.v; })) * 1.12;
+var bw = Math.min(90, (W - L - R) / pts.length * 0.5), step = (W - L - R) / pts.length;
+var svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="' + esc(s.title) + '">';
+svg += '<line class="gl" x1="' + L + '" x2="' + (W - R) + '" y1="' + (H - B) + '" y2="' + (H - B) + '"/>';
+pts.forEach(function (p, i) {
+var x = L + step * i + step / 2 - bw / 2, bh = (p.v / max) * (H - T - B), y = H - B - bh;
+svg += '<rect class="tb ' + (p.e ? "est" : "solid") + '" x="' + x + '" y="' + y + '" width="' + bw + '" height="' + bh + '" rx="6"/>';
+svg += '<text class="val" x="' + (x + bw / 2) + '" y="' + (y - 8) + '" text-anchor="middle">' + p.v + "</text>";
+svg += '<text class="axis" x="' + (x + bw / 2) + '" y="' + (H - 10) + '" text-anchor="middle">' + p.y + "</text>";
+});
+$("trend").innerHTML = svg + "</svg>" + '<p class="muted">年份间隔不等，按报告实际给出的年份排列；虚线框为机构预测值。</p>';
+}
+function setupPrice() {
+var b = bins(), r = $("my-price-range"), n = $("my-price");
+r.min = 1; r.max = b[b.length - 1]; r.step = b[b.length - 1] > 500 ? 5 : 1;
+if (state.myPrice) { r.value = Math.min(state.myPrice, b[b.length - 1]); n.value = state.myPrice; }
+$("price-hint").textContent = state.priceIsSample ? "示例定价，可拖动修改" : (state.myPrice ? "" : "填写后显示你的定位");
+r.oninput = function () { state.myPrice = +r.value; state.priceIsSample = false; n.value = r.value; $("price-hint").textContent = ""; renderPriceBlock(); };
+n.oninput = function () { var v = parseFloat(n.value); state.myPrice = v > 0 ? v : null; state.priceIsSample = false; if (v > 0) r.value = Math.min(v, +r.max); $("price-hint").textContent = ""; renderPriceBlock(); };
+}
+function renderPriceBlock() {
+var b = bins(), list = filteredSkus(), n = b.length - 1;
+var counts = new Array(n).fill(0); list.forEach(function (s) { counts[binOf(s.p, b)]++; });
+var max = Math.max.apply(null, counts.concat([1]));
+var W = 1000, H = 240, L = 4, R = 4, T = 26, B = 34, gap = 8, bw = (W - L - R) / n - gap;
+var myBin = state.myPrice ? binOf(state.myPrice, b) : -1;
+var svg = '<svg viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="价格带分布">';
+for (var i = 0; i < n; i++) {
+var x = L + i * (bw + gap) + gap / 2, bh = counts[i] ? Math.max(6, counts[i] / max * (H - T - B)) : 2, y = H - B - bh;
+var cls = "hb" + (i === state.binSel ? " sel" : i === myBin ? " mine" : "");
+svg += '<rect class="' + cls + '" data-bin="' + i + '" x="' + x + '" y="' + y + '" width="' + bw + '" height="' + bh + '" rx="6" tabindex="0" role="button" aria-label="' + binLabel(i, b) + "元，" + counts[i] + '个"/>';
+svg += '<text class="cnt" x="' + (x + bw / 2) + '" y="' + (y - 7) + '" text-anchor="middle">' + counts[i] + "</text>";
+svg += '<text class="lbl" x="' + (x + bw / 2) + '" y="' + (H - 12) + '" text-anchor="middle">' + binLabel(i, b) + "</text>";
+}
+svg += "</svg>";
+$("hist").innerHTML = svg;
+$("hist").querySelectorAll(".hb").forEach(function (r) {
+var pick = function () { var i = +r.getAttribute("data-bin"); state.binSel = state.binSel === i ? -1 : i; renderPriceBlock(); };
+r.addEventListener("click", pick);
+r.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(); } });
+});
+var others = list.filter(function (s) { return true; });
+var pos = "";
+if (state.myPrice && others.length) {
+var lower = others.filter(function (s) { return s.p < state.myPrice; }).length;
+var pct = Math.round(lower / others.length * 100);
+var same = others.filter(function (s) { return binOf(s.p, b) === myBin; }).length;
+var near = others.slice().sort(function (a, c) { return Math.abs(a.p - state.myPrice) - Math.abs(c.p - state.myPrice); })[0];
+pos = '<div><span class="v">' + pct + '%</span><span class="l">样本中比你便宜的 SKU</span></div>' +
+'<div><span class="v">' + same + ' 个</span><span class="l">与你同一价格带（' + binLabel(myBin, b) + " 元）</span></div>" +
+'<div><span class="v">¥' + fmt(near.p) + '</span><span class="l">最接近：' + esc(near.b) + "</span></div>";
+} else {
+pos = '<div><span class="v">—</span><span class="l">填写你的定价后显示分位</span></div><div><span class="v">—</span><span class="l">同价格带竞品数</span></div><div><span class="v">—</span><span class="l">最接近的竞品</span></div>';
+}
+$("position").innerHTML = pos;
+var rows = list.filter(function (s) { return state.binSel < 0 || binOf(s.p, b) === state.binSel; }).sort(function (a, c) { return a.p - c.p; });
+$("sku-head-t").textContent = (state.binSel >= 0 ? binLabel(state.binSel, b) + " 元：" : "全部：") + rows.length + " 个 SKU，按价格从低到高";
+var pills = "";
+if (state.segFilter) pills += '<button class="pill src-ai" style="border:0" data-clear="seg">' + esc(state.segFilter) + " ×</button> ";
+if (state.brandFilter) pills += '<button class="pill src-ai" style="border:0" data-clear="brand">' + esc(state.brandFilter) + " ×</button> ";
+if (state.binSel >= 0) pills += '<button class="pill src-ai" style="border:0" data-clear="bin">' + binLabel(state.binSel, b) + " 元 ×</button>";
+$("filter-pills").innerHTML = pills;
+$("filter-pills").querySelectorAll("[data-clear]").forEach(function (x) {
+x.addEventListener("click", function () {
+var k = x.getAttribute("data-clear");
+if (k === "seg") state.segFilter = null; if (k === "brand") state.brandFilter = null; if (k === "bin") state.binSel = -1;
+renderPriceBlock(); if (state.product.market) { renderSegs(); renderBrands(); }
+});
+});
+$("sku-list").innerHTML = rows.length ? rows.map(function (s) {
+return '<div class="sku-row' + (s.mine ? " mine" : "") + '"><span class="t">' + esc(s.t) + "<small>" + esc(s.b) + (s.sold ? " · 已售" + esc(s.sold) : "") + '</small></span><span class="p">¥' + fmt(s.p) + "</span>" +
+(s.sku ? '<a href="' + jdUrl(s.sku) + '" target="_blank" rel="noopener">看原页 ↗</a>' : '<span class="muted">你添加的</span>') + "</div>";
+}).join("") : '<div class="sku-row"><span class="t muted">这个价格带里还没有商品。</span></div>';
+}
+function renderSegs() {
+var skus = state.product.market.skus, c = {};
+skus.forEach(function (s) { c[s.seg] = (c[s.seg] || 0) + 1; });
+var keys = Object.keys(c).sort(function (a, b) { return c[b] - c[a]; });
+var max = c[keys[0]];
+$("segs").innerHTML = keys.map(function (k) {
+var ps = skus.filter(function (s) { return s.seg === k; }).map(function (s) { return s.p; });
+return '<button type="button" class="hbar" data-seg="' + esc(k) + '" aria-pressed="' + (state.segFilter === k) + '" title="价格 ¥' + fmt(Math.min.apply(null, ps)) + "–¥" + fmt(Math.max.apply(null, ps)) + '">' +
+"<span>" + esc(k) + '</span><span class="track"><span class="fill" style="display:block;width:' + (c[k] / max * 100) + '%"></span></span><span class="c">' + c[k] + "</span></button>";
+}).join("");
+$("segs").querySelectorAll(".hbar").forEach(function (b) {
+b.addEventListener("click", function () {
+var k = b.getAttribute("data-seg"); state.segFilter = state.segFilter === k ? null : k; state.binSel = -1;
+renderSegs(); renderPriceBlock();
+});
+});
+}
+function renderBrands() {
+var skus = state.product.market.skus, g = {};
+skus.forEach(function (s) {
+var x = g[s.b] || (g[s.b] = { b: s.b, n: 0, min: Infinity, max: 0, sf: 0 });
+x.n++; x.min = Math.min(x.min, s.p); x.max = Math.max(x.max, s.p); x.sf += s.sf;
+});
+var totalSf = skus.reduce(function (a, s) { return a + s.sf; }, 0) || 1;
+var rows = Object.keys(g).map(function (k) { return g[k]; });
+var key = state.brandSort;
+rows.sort(function (a, b) { return key === "min" ? a.min - b.min : (b[key] - a[key]); });
+var th = function (k, label) { return '<th><button type="button" data-sort="' + k + '"' + (key === k ? ' aria-sort="descending"' : "") + ">" + label + "</button></th>"; };
+$("brands").innerHTML = "<table><thead><tr><th>品牌</th>" + th("n", "SKU 数") + th("min", "价格区间") + th("sf", "展示销量占比") + "</tr></thead><tbody>" +
+rows.map(function (r) {
+return '<tr data-brand="' + esc(r.b) + '"' + (state.brandFilter === r.b ? ' class="sel"' : "") + "><td>" + esc(r.b) + '</td><td class="n">' + r.n + '</td><td class="n">¥' + fmt(r.min) + (r.max > r.min ? "–" + fmt(r.max) : "") +
+'</td><td class="n">' + (r.sf / totalSf * 100).toFixed(1) + "%</td></tr>";
+}).join("") + "</tbody></table>";
+$("brands").querySelectorAll("[data-sort]").forEach(function (b) {
+b.addEventListener("click", function (e) { e.stopPropagation(); state.brandSort = b.getAttribute("data-sort"); renderBrands(); });
+});
+$("brands").querySelectorAll("tbody tr").forEach(function (tr) {
+tr.addEventListener("click", function () {
+var k = tr.getAttribute("data-brand"); state.brandFilter = state.brandFilter === k ? null : k; state.binSel = -1;
+renderBrands(); renderPriceBlock();
+});
+});
+}
+var W = 1000, H = 600, L = 60, R = 24, T = 24, B = 54;
+function px(x) { return L + x / 100 * (W - L - R); }
+function py(y) { return T + (1 - y / 100) * (H - T - B); }
+function visible(s) { return state.filters[s.circle] && (!state.ageFilter || s.age === state.ageFilter); }
+function renderMap() {
+var p = state.product;
+$("map-crumbs").innerHTML = p.path.map(function (x) { return "<span>" + esc(x) + "</span>"; }).join("");
+$("map-title").textContent = p.name;
+$("map-tagline").textContent = p.tagline;
+$("custom-notice").hidden = !p.custom;
+var vis = p.scenes.filter(visible);
+var avg = vis.length ? Math.round(vis.reduce(function (a, s) { return a + s.y; }, 0) / vis.length) : 0;
+$("readout").innerHTML =
+'<div><span class="v">' + vis.length + '</span><span class="l">当前场景</span></div>' +
+'<div><span class="v accent">' + vis.filter(isOpp).length + '</span><span class="l">机会区</span></div>' +
+'<div><span class="v">' + avg + '</span><span class="l">平均拥挤度</span></div>';
+renderChips(); renderChart(); renderList(); renderTray();
+}
+function renderChips() {
+var used = {}; state.product.scenes.forEach(function (s) { used[s.circle] = true; });
+$("circle-chips").innerHTML = '<span class="lab">兴趣圈层</span>' + Object.keys(CIRCLES).filter(function (c) { return used[c]; }).map(function (c) {
+return '<button type="button" class="chip" data-c="' + c + '" aria-pressed="' + state.filters[c] + '"><i style="background:' + CIRCLES[c].color + '"></i>' + CIRCLES[c].name + "</button>";
+}).join("");
+$("circle-chips").querySelectorAll(".chip").forEach(function (b) {
+b.addEventListener("click", function () {
+var c = b.getAttribute("data-c");
+var on = Object.keys(state.filters).filter(function (k) { return state.filters[k] && used[k]; });
+if (on.length === 1 && state.filters[c]) return;
+state.filters[c] = !state.filters[c]; renderMap();
+});
+});
+var ages = {}; state.product.scenes.forEach(function (s) { ages[s.age] = (ages[s.age] || 0) + 1; });
+$("age-chips").innerHTML = '<span class="lab">年龄段 ' + src("ai") + "</span>" +
+'<button type="button" class="chip" data-a="" aria-pressed="' + !state.ageFilter + '">全部</button>' +
+AGES.filter(function (a) { return ages[a]; }).map(function (a) {
+return '<button type="button" class="chip" data-a="' + a + '" aria-pressed="' + (state.ageFilter === a || !state.ageFilter) + '">' + a + " 岁 · " + ages[a] + "</button>";
+}).join("");
+$("age-chips").querySelectorAll(".chip").forEach(function (b) {
+b.addEventListener("click", function () { var a = b.getAttribute("data-a"); state.ageFilter = a ? (state.ageFilter === a ? null : a) : null; renderMap(); });
+});
+}
+function renderChart() {
+var scenes = state.product.scenes, s = "";
+[0, 25, 50, 75, 100].forEach(function (v) {
+s += '<line class="grid-line" x1="' + px(v) + '" y1="' + T + '" x2="' + px(v) + '" y2="' + (H - B) + '"/>';
+s += '<line class="grid-line" x1="' + L + '" y1="' + py(v) + '" x2="' + (W - R) + '" y2="' + py(v) + '"/>';
+s += '<text class="tick" x="' + px(v) + '" y="' + (H - B + 18) + '" text-anchor="middle">' + v + "</text>";
+s += '<text class="tick" x="' + (L - 10) + '" y="' + (py(v) + 4) + '" text-anchor="end">' + v + "</text>";
+});
+s += '<rect class="opp-zone" x="' + px(55) + '" y="' + py(45) + '" width="' + (px(100) - px(55)) + '" height="' + (py(0) - py(45)) + '" rx="10"/>';
+s += '<text class="quad-label opp" x="' + (px(100) - 12) + '" y="' + (py(0) - 12) + '" text-anchor="end">机会区 · 需求高 写的人少</text>';
+s += '<text class="quad-label" x="' + (px(100) - 12) + '" y="' + (py(100) + 22) + '" text-anchor="end">红海 · 需求高 但拥挤</text>';
+s += '<text class="quad-label" x="' + (px(0) + 12) + '" y="' + (py(100) + 22) + '">内卷 · 需求低 也拥挤</text>';
+s += '<text class="quad-label" x="' + (px(0) + 12) + '" y="' + (py(0) - 12) + '">小众 · 等待时机</text>';
+s += '<text class="axis-label" x="' + ((L + W - R) / 2) + '" y="' + (H - 10) + '" text-anchor="middle">需求强度（评估）→</text>';
+s += '<text class="axis-label" transform="translate(16 ' + ((T + H - B) / 2) + ') rotate(-90)" text-anchor="middle">内容拥挤度（评估）→</text>';
+Object.keys(CIRCLES).forEach(function (c) {
+if (!state.filters[c]) return;
+var pts = scenes.filter(function (q) { return q.circle === c && visible(q); }).sort(function (a, b) { return a.x - b.x; });
+if (pts.length > 1) s += '<polyline class="const-line" stroke="' + CIRCLES[c].color + '" points="' + pts.map(function (q) { return px(q.x) + "," + py(q.y); }).join(" ") + '"/>';
+});
+scenes.forEach(function (q, i) {
+var r = 5 + q.size * 3.2, col = CIRCLES[q.circle].color, on = visible(q);
+var cls = "star" + (on ? "" : " dim") + (state.picked.indexOf(q.id) > -1 ? " picked" : "");
+s += '<g class="' + cls + '" data-i="' + i + '" tabindex="' + (on ? 0 : -1) + '" role="button" aria-label="' + esc(q.title) + '">' +
+'<circle class="halo" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + (r * 2.3) + '" fill="' + col + '" style="animation-delay:-' + ((i * 0.37) % 3.6).toFixed(2) + 's"/>' +
+'<circle class="ring" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + (r + 6) + '"/>' +
+'<circle class="core" cx="' + px(q.x) + '" cy="' + py(q.y) + '" r="' + r + '" fill="' + col + '"/>' +
+'<text class="num" x="' + (px(q.x) + r + 5) + '" y="' + (py(q.y) - r + 2) + '">' + String(i + 1).padStart(2, "0") + "</text></g>";
+});
+var svg = $("chart"); svg.innerHTML = s;
+svg.querySelectorAll(".star").forEach(function (g) {
+var i = +g.getAttribute("data-i");
+g.addEventListener("click", function () { openDrawer(i); });
+g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openDrawer(i); } });
+g.addEventListener("mouseenter", function () { showTip(i, g); });
+g.addEventListener("mouseleave", hideTip);
+g.addEventListener("focus", function () { showTip(i, g); });
+g.addEventListener("blur", hideTip);
+});
+}
+function showTip(i, g) {
+var q = state.product.scenes[i], tip = $("tooltip");
+var wrap = $("chart-wrap").getBoundingClientRect(), b = g.querySelector(".core").getBoundingClientRect();
+tip.innerHTML = "<b>" + esc(q.title) + "</b><span>" + CIRCLES[q.circle].name + " · " + q.age + " 岁 · 需求 " + q.x + " · 拥挤 " + q.y + "</span>";
+tip.hidden = false;
+var left = Math.max(8, Math.min(b.left - wrap.left + b.width / 2 - tip.offsetWidth / 2, wrap.width - tip.offsetWidth - 8));
+var top = b.top - wrap.top - tip.offsetHeight - 10; if (top < 8) top = b.bottom - wrap.top + 10;
+tip.style.left = left + "px"; tip.style.top = top + "px";
+}
+function hideTip() { $("tooltip").hidden = true; }
+function renderList() {
+var scenes = state.product.scenes;
+var order = scenes.map(function (s, i) { return i; }).filter(function (i) { return visible(scenes[i]); })
+.sort(function (a, b) { return oppScore(scenes[b]) - oppScore(scenes[a]); });
+$("scene-list").innerHTML = order.map(function (i) {
+var q = scenes[i];
+return '<button type="button" class="scene-card" data-i="' + i + '"><span class="top"><span>' + catalog(i) + " · " + q.age + " 岁</span>" +
+(isOpp(q) ? '<span class="badge-opp">机会区</span>' : "<span>" + CIRCLES[q.circle].name + "</span>") + "</span><h3>" + esc(q.title) + "</h3>" +
+'<span class="bars"><span>需求</span><span class="bar"><i style="width:' + q.x + '%"></i></span><span>拥挤</span><span class="bar crowd"><i style="width:' + q.y + '%"></i></span></span></button>';
+}).join("") || '<p class="muted">当前筛选下没有场景。</p>';
+$("scene-list").querySelectorAll(".scene-card").forEach(function (b) { b.addEventListener("click", function () { openDrawer(+b.getAttribute("data-i")); }); });
+}
+function setMode(m) {
+state.mode = m;
+$("chart-wrap").hidden = m !== "chart"; $("scene-list").hidden = m !== "list";
+$("mode-chart").setAttribute("aria-pressed", m === "chart"); $("mode-list").setAttribute("aria-pressed", m === "list");
+}
+$("mode-chart").addEventListener("click", function () { setMode("chart"); });
+$("mode-list").addEventListener("click", function () { setMode("list"); });
+var drawerIndex = -1;
+function radarSvg(y) {
+var r = 28, c = 2 * Math.PI * r, col = y >= 65 ? "#ff2442" : y >= 45 ? "#F2994A" : "#22A699";
+return '<svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="' + r + '" fill="none" stroke="#f4f4f6" stroke-width="6"/>' +
+'<circle cx="36" cy="36" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="6" stroke-linecap="round" stroke-dasharray="' + (c * y / 100).toFixed(1) + " " + c.toFixed(1) + '" transform="rotate(-90 36 36)"/>' +
+'<text x="36" y="41" text-anchor="middle" fill="#17171c" font-family="IBM Plex Mono, monospace" font-size="15">' + y + "</text></svg>";
+}
+function coverHtml(q) {
+var sub = { center: "left:18%;right:18%;top:24%;bottom:24%", left: "left:8%;width:46%;top:20%;bottom:16%", "top-left": "left:8%;width:60%;top:8%;height:52%" }[q.cover.layout] || "left:18%;right:18%;top:24%;bottom:24%";
+var band = q.cover.text === "top" ? "top:8px" : "bottom:8px";
+if (q.cover.layout === "top-left" && q.cover.text === "top") band = "bottom:8px";
+return '<div class="cover" aria-hidden="true"><div class="subject" style="' + sub + '">' + esc(q.cover.subject) + '</div><div class="text-band" style="' + band + '">' + esc(q.titles[0]) + "</div></div>";
+}
+function openDrawer(i) {
+hideTip(); drawerIndex = i;
+var q = state.product.scenes[i], c = CIRCLES[q.circle];
+$("d-cat").textContent = catalog(i) + (isOpp(q) ? " · 机会区" : "");
+var ul = function (a) { return "<ul>" + a.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("") + "</ul>"; };
+$("d-body").innerHTML =
+'<div><h2 class="d-title" id="d-title">' + esc(q.title) + '</h2><div class="d-tags"><span class="pill" style="background:var(--field)"><i style="width:8px;height:8px;border-radius:50%;background:' + c.color + '"></i>' + c.name + '</span><span class="pill" style="background:var(--field)">' + q.age + " 岁</span>" + src("ai") + "</div></div>" +
+'<div class="metrics"><div><span class="v">' + q.x + '</span><span class="l">需求强度</span></div><div><span class="v">' + q.y + '</span><span class="l">内容拥挤度</span></div><div><span class="v">' + ["", "小", "中", "大"][q.size] + '</span><span class="l">人群规模</span></div></div>' +
+'<div class="block"><h4>那一刻</h4><p class="moment">' + esc(q.moment) + "</p></div>" +
+'<div class="block"><h4>真实痛点</h4>' + ul(q.pains) + "</div>" +
+'<div class="block"><h4>她会这样搜</h4><div class="searchbars">' + q.searches.map(function (t) { return '<div class="searchbar">' + esc(t) + "</div>"; }).join("") + "</div></div>" +
+'<div class="block"><h4>打动她的点</h4>' + ul(q.hooks) + "</div>" +
+'<div class="block"><h4>同质化雷达</h4><div class="radar">' + radarSvg(q.y) + '<div><p class="verdict">' + crowdVerdict(q.y) + "</p>" + ul(q.worn) + "</div></div></div>" +
+'<div class="block"><h4>笔记标题建议</h4><div class="titles">' + q.titles.map(function (t, k) { return '<div class="title-row"><span>' + esc(t) + '</span><button type="button" data-copy="' + k + '">复制</button></div>'; }).join("") + "</div></div>" +
+'<div class="block"><h4>封面构图建议 · 3:4</h4><div class="cover-wrap">' + coverHtml(q) + '<div class="cover-note"><span><b>主体：</b>' + esc(q.cover.subject) + "</span><span>" + esc(q.cover.note) + "</span></div></div></div>";
+$("d-body").querySelectorAll("[data-copy]").forEach(function (b) { b.addEventListener("click", function () { copyText(q.titles[+b.getAttribute("data-copy")], "标题已复制"); }); });
+$("d-body").scrollTop = 0; updatePickBtn();
+$("drawer").classList.add("open"); $("drawer").setAttribute("aria-hidden", "false"); $("scrim").classList.add("open");
+document.querySelectorAll(".star").forEach(function (g) { g.classList.toggle("active", +g.getAttribute("data-i") === i); });
+setTimeout(function () { $("d-close").focus(); }, 50);
+}
+function closeDrawer() {
+if (!$("drawer").classList.contains("open")) return;
+$("drawer").classList.remove("open"); $("drawer").setAttribute("aria-hidden", "true"); $("scrim").classList.remove("open");
+document.querySelectorAll(".star.active").forEach(function (g) { g.classList.remove("active"); });
+}
+function stepDrawer(dir) {
+var scenes = state.product.scenes;
+var vis = scenes.map(function (s, i) { return i; }).filter(function (i) { return visible(scenes[i]); }).sort(function (a, b) { return scenes[a].x - scenes[b].x; });
+if (!vis.length) return;
+var pos = vis.indexOf(drawerIndex); if (pos < 0) pos = 0;
+openDrawer(vis[(pos + dir + vis.length) % vis.length]);
+}
+function updatePickBtn() {
+var q = state.product.scenes[drawerIndex], on = state.picked.indexOf(q.id) > -1, full = !on && state.picked.length >= MAX_PICK, b = $("d-pick");
+b.textContent = on ? "已加入 · 点击移除" : full ? "清单已满（" + MAX_PICK + " 个）" : "加入策展清单";
+b.disabled = full; b.classList.toggle("btn-primary", !on);
+}
+$("d-pick").addEventListener("click", function () {
+var q = state.product.scenes[drawerIndex], k = state.picked.indexOf(q.id);
+if (k > -1) { state.picked.splice(k, 1); toast("已从清单移除"); }
+else if (state.picked.length < MAX_PICK) { state.picked.push(q.id); toast("已加入策展清单（" + state.picked.length + "/" + MAX_PICK + "）"); }
+updatePickBtn(); renderChart();
+document.querySelectorAll(".star").forEach(function (g) { g.classList.toggle("active", +g.getAttribute("data-i") === drawerIndex); });
+renderTray();
+});
+$("d-close").addEventListener("click", closeDrawer);
+$("scrim").addEventListener("click", closeDrawer);
+$("d-prev").addEventListener("click", function () { stepDrawer(-1); });
+$("d-next").addEventListener("click", function () { stepDrawer(1); });
+document.addEventListener("keydown", function (e) {
+if (!$("drawer").classList.contains("open")) return;
+if (e.key === "Escape") closeDrawer();
+if (e.key === "ArrowRight") stepDrawer(1);
+if (e.key === "ArrowLeft") stepDrawer(-1);
+});
+function renderTray() {
+var n = state.picked.length, slots = "";
+for (var i = 0; i < MAX_PICK; i++) slots += '<span class="slot' + (i < n ? " on" : "") + '"></span>';
+$("tray-picked").innerHTML = slots + "<span>" + (n ? "已选 " + n + " 个场景" : "点开星星，把想打的场景加入清单") + "</span>";
+$("tray-go").disabled = n === 0; $("step-plan").disabled = n === 0;
+}
+$("tray-go").addEventListener("click", function () { go("plan"); });
+function pickedScenes() {
+var scenes = state.product.scenes;
+return state.picked.map(function (id) { for (var i = 0; i < scenes.length; i++) if (scenes[i].id === id) return { s: scenes[i], i: i }; })
+.filter(Boolean).sort(function (a, b) { return oppScore(b.s) - oppScore(a.s); });
+}
+function positioning() {
+var all = allSkus().filter(function (s) { return !s.mine; }).concat(state.comps);
+if (!state.myPrice || !all.length) return null;
+var b = bins(), lower = all.filter(function (s) { return s.p < state.myPrice; }).length;
+var mb = binOf(state.myPrice, b);
+return { pct: Math.round(lower / all.length * 100), band: binLabel(mb, b), same: all.filter(function (s) { return binOf(s.p, b) === mb; }).length, n: all.length };
+}
+function today() { var d = new Date(); return d.getFullYear() + "." + String(d.getMonth() + 1).padStart(2, "0") + "." + String(d.getDate()).padStart(2, "0"); }
+function renderPlan() {
+var root = $("plan-root");
+if (!state.product || !state.picked.length) {
+root.innerHTML = '<div class="empty"><p>清单还是空的。回到星图，点开星星，把想打的场景加入清单。</p></div>';
+$("plan-copy").disabled = true; return;
+}
+$("plan-copy").disabled = false;
+var items = pickedScenes(), pos = positioning();
+var circles = {}; items.forEach(function (it) { circles[it.s.circle] = 1; });
+var h = '<article class="sheet"><header class="sheet-head"><div><p class="eyebrow">本周种草策划 · ' + esc(state.product.path.join(" › ")) + "</p>" +
+"<h1>" + esc(state.product.name) + "：" + items.length + " 个被需要的瞬间</h1>" +
+'<p class="sub">' + esc(state.product.tagline) + (state.myPrice ? " · 定价 ¥" + fmt(state.myPrice) : "") + "</p></div>" +
+'<div class="issue">生成于 ' + today() + "<br>按机会分排序</div></header>" +
+'<div class="sheet-intro"><div><span class="v">' + items.length + '</span><span class="l">篇笔记</span></div>' +
+'<div><span class="v">' + items.filter(function (it) { return isOpp(it.s); }).length + '</span><span class="l">来自机会区</span></div>' +
+'<div><span class="v">' + Object.keys(circles).length + '</span><span class="l">覆盖兴趣圈层</span></div>' +
+'<div><span class="v">' + (pos ? pos.pct + "%" : "—") + '</span><span class="l">' + (pos ? "样本中比你便宜的 SKU" : "未填写定价") + "</span></div></div>";
+if (pos) h += '<p class="notice">' + src("jd") + "你的定价落在 " + pos.band + " 元价格带，这一带有 " + pos.same + " 个样本竞品（样本共 " + pos.n + " 个）。笔记里建议把这个价格带里竞品不常讲的场景放在前面。</p>";
+items.forEach(function (it, k) {
+var q = it.s, a = advice(q);
+h += '<section class="entry"><div class="day">' + DAYS[k] + "<small>" + catalog(it.i) + "</small></div>" +
+"<div><h3>" + esc(q.title) + '</h3><p class="who">' + CIRCLES[q.circle].name + " · " + q.age + " 岁 · 需求 " + q.x + " · 拥挤 " + q.y + "</p>" +
+'<p class="headline">' + esc(q.titles[0]) + '</p><div class="kw">' + q.searches.slice(0, 3).map(function (t) { return "<span>" + esc(t) + "</span>"; }).join("") + "</div></div>" +
+'<dl><div><dt>发布建议</dt><dd><span class="' + (a.opp ? "tag-opp" : "") + '">' + a.tag + "</span> · " + a.text + "</dd></div>" +
+"<div><dt>打动点</dt><dd>" + esc(q.hooks[0]) + "</dd></div><div><dt>封面</dt><dd>" + esc(q.cover.subject) + "。" + esc(q.cover.note) + "</dd></div></dl></section>";
+});
+h += '<footer class="sheet-foot"><span>场景分数为 AI 评估；价格定位基于京东实采样本（2026-10-10）。</span><span>一物千景</span></footer></article>';
+root.innerHTML = h;
+}
+function planText() {
+var items = pickedScenes(), pos = positioning();
+var out = ["【" + state.product.name + " · 本周种草策划】", state.product.tagline + (state.myPrice ? " · 定价 ¥" + fmt(state.myPrice) : "")];
+if (pos) out.push("价格定位：" + pos.band + " 元价格带，样本中 " + pos.pct + "% 的 SKU 比你便宜（京东实采样本 " + pos.n + " 个，2026-10-10）");
+out.push("");
+items.forEach(function (it, k) {
+var q = it.s, a = advice(q);
+out.push(DAYS[k] + "｜" + q.title + "（" + CIRCLES[q.circle].name + "，" + q.age + " 岁）");
+out.push("首选标题：" + q.titles[0]); out.push("备选标题：" + q.titles.slice(1).join(" / "));
+out.push("核心搜索词：" + q.searches.join("、")); out.push("打动点：" + q.hooks.join("；"));
+out.push("封面：" + q.cover.subject + "。" + q.cover.note); out.push("发布建议：" + a.tag + "，" + a.text); out.push("");
+});
+out.push("（场景分数为 AI 评估，不是统计数据）");
+return out.join("\n");
+}
+$("plan-copy").addEventListener("click", function () { copyText(planText(), "策划文案已复制"); });
+$("plan-back").addEventListener("click", function () { go("map"); });
+function copyText(text, msg) {
+function fallback() {
+var ta = document.createElement("textarea");
+ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.opacity = "0";
+document.body.appendChild(ta); ta.select();
+var ok = false; try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+document.body.removeChild(ta); toast(ok ? msg : "复制失败，请手动选择文字复制");
+}
+try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { toast(msg); }, fallback); else fallback(); }
+catch (e) { fallback(); }
+}
+var toastTimer;
+function toast(msg) {
+var t = $("toast"); t.textContent = msg; t.classList.add("show");
+clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove("show"); }, 1800);
+}
+document.querySelectorAll("[data-go]").forEach(function (b) { b.addEventListener("click", function () { if (!b.disabled) go(b.getAttribute("data-go")); }); });
+$("brand").addEventListener("click", function () { go("home"); });
+if (window.matchMedia && window.matchMedia("(max-width: 560px)").matches) setMode("list");
+renderSamples();
+go("home");
+})();</script>
+</body>
+</html>

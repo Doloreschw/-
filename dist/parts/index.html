@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>一物千景</title>
+<meta name="description" content="AI 场景种草策展台：先看品类市场与竞品价格带，再把商品拆成具体的人和瞬间，找到还没被写烂的种草场景。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+<button class="brand" id="brand" type="button" aria-label="回到首页">
+<span class="brand-dot" aria-hidden="true"></span>
+<span class="brand-mark">一物千景</span>
+<span class="brand-sub">AI 场景种草策展台</span>
+</button>
+<ol class="steps" aria-label="步骤">
+<li><button type="button" id="step-home" data-go="home"><span class="n">01</span><span class="t">输入商品</span></button></li>
+<li><button type="button" id="step-market" data-go="market" disabled><span class="n">02</span><span class="t">品类档案</span></button></li>
+<li><button type="button" id="step-map" data-go="map" disabled><span class="n">03</span><span class="t">场景星图</span></button></li>
+<li><button type="button" id="step-plan" data-go="plan" disabled><span class="n">04</span><span class="t">策展清单</span></button></li>
+</ol>
+</header>
+<main>
+<section class="view" id="view-home">
+<div class="hero">
+<div>
+<p class="eyebrow">给小红书中小商家的选题工具</p>
+<h1>一物<span class="dot">·</span>千景</h1>
+<p class="lede">先看清市场，再找到被需要的瞬间。</p>
+<p class="body">输入一件商品：先看它所在品类的市场规模、竞品和细分价格带，再把它拆成“具体的人 × 具体的瞬间”，在星图上找到需求高、还没被写烂的场景，排成一周的笔记策划。</p>
+<div class="legend">
+<span class="src src-org">机构数据</span><span class="muted">附原文链接</span>
+<span class="src src-jd">京东实采</span><span class="muted">真实 SKU 标价</span>
+<span class="src src-ai">AI 评估</span><span class="muted">判断，不是统计</span>
+</div>
+</div>
+<form class="card form-card" id="product-form" novalidate>
+<h2>拆解你的商品</h2>
+<div class="field">
+<label for="f-name">商品名称</label>
+<input id="f-name" name="name" maxlength="20" placeholder="例如：手冲咖啡壶">
+</div>
+<div class="field">
+<label for="f-point">一句话卖点</label>
+<input id="f-point" name="point" maxlength="40" placeholder="例如：细口出水，新手也能控流">
+</div>
+<div class="field-row">
+<div class="field">
+<label for="f-price">你的定价（元）</label>
+<input id="f-price" name="price" type="number" min="1" max="99999" placeholder="例如：129">
+</div>
+<button class="btn btn-primary" type="submit" id="f-submit">开始拆解</button>
+</div>
+<p class="form-error" id="f-error" hidden>请先填写商品名称。</p>
+</form>
+</div>
+<div class="section-head">
+<h2>从一个示例开始</h2>
+<p class="muted">示例品类已接入机构数据和京东实采价格</p>
+</div>
+<div class="samples" id="samples"></div>
+<div class="method">
+<div><span class="k">01</span><h3>输入商品</h3><p>名称、卖点和你的定价。</p></div>
+<div><span class="k">02</span><h3>品类档案</h3><p>市场规模、竞品品牌、细分类型和价格带，看清你站在哪。</p></div>
+<div><span class="k">03</span><h3>场景星图</h3><p>需求 × 拥挤度，按兴趣圈层和年龄段筛出机会场景。</p></div>
+<div><span class="k">04</span><h3>策展清单</h3><p>挑出场景，自动排成周一到周六的发布计划。</p></div>
+</div>
+</section>
+<section class="view" id="view-market" hidden>
+<div class="page-head">
+<div>
+<div class="crumbs" id="m-crumbs"></div>
+<h1 id="m-title"></h1>
+<p class="tagline" id="m-tagline"></p>
+</div>
+<div class="readout" id="m-readout"></div>
+</div>
+<div id="m-root"></div>
+</section>
+<section class="view" id="view-map" hidden>
+<div class="page-head">
+<div>
+<div class="crumbs" id="map-crumbs"></div>
+<h1 id="map-title"></h1>
+<p class="tagline" id="map-tagline"></p>
+</div>
+<div class="readout" id="readout"></div>
+</div>
+<p class="notice"><span class="src src-ai">AI 评估</span>需求强度、内容拥挤度、人群规模和年龄段都是对每个场景的判断，用来排序和比较，不是统计数据。<span id="custom-notice" hidden>当前商品不在示例中，场景由场景库组合生成，可作为策划起点。</span></p>
+<div class="toolbar">
+<div class="chips" id="circle-chips" aria-label="按兴趣圈层筛选"></div>
+<div class="seg" role="group" aria-label="视图">
+<button type="button" id="mode-chart" aria-pressed="true">星图</button>
+<button type="button" id="mode-list" aria-pressed="false">列表</button>
+</div>
+</div>
+<div class="toolbar">
+<div class="chips" id="age-chips" aria-label="按年龄段筛选"></div>
+</div>
+<div class="chart-wrap" id="chart-wrap">
+<svg id="chart" viewBox="0 0 1000 600" role="img" aria-label="场景星图：横轴需求强度，纵轴内容拥挤度"></svg>
+<div class="tooltip" id="tooltip" hidden></div>
+</div>
+<div class="scene-list" id="scene-list" hidden></div>
+<div class="legend-note">
+<span>● 越大，人群越多</span>
+<span>同色虚线连接同一兴趣圈层</span>
+<span>粉色区域为机会区：需求 ≥ 55 且拥挤度 ≤ 45</span>
+</div>
+</section>
+<section class="view" id="view-plan" hidden>
+<div class="plan-actions">
+<button class="btn btn-sm" type="button" id="plan-back">← 回到星图继续挑选</button>
+<button class="btn btn-primary btn-sm" type="button" id="plan-copy">复制全部文案</button>
+</div>
+<div id="plan-root"></div>
+</section>
+<footer class="site-foot">机构数据均附原文链接；京东价格为 2026-10-10 搜索页实采；场景分数为 AI 评估。 · 一物千景 Demo</footer>
+</main>
+<div class="tray" id="tray" hidden>
+<div class="picked" id="tray-picked"></div>
+<button class="btn btn-primary" type="button" id="tray-go">生成本周策划</button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="d-title" role="dialog">
+<div class="drawer-head">
+<span class="cat" id="d-cat"></span>
+<button class="icon-btn" type="button" id="d-close" aria-label="关闭">×</button>
+</div>
+<div class="drawer-body" id="d-body"></div>
+<div class="drawer-foot">
+<button class="btn" type="button" id="d-prev">上一个</button>
+<button class="btn btn-primary" type="button" id="d-pick">加入策展清单</button>
+<button class="btn" type="button" id="d-next">下一个</button>
+</div>
+</aside>
+<div class="loading" id="loading" hidden>
+<div class="loading-inner">
+<div class="orbit"></div>
+<p class="line">正在读取品类数据…</p>
+<p class="line">正在拆解人群与瞬间…</p>
+<p class="line">正在评估内容拥挤度…</p>
+</div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="data.js"></script>
+<script src="market.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
