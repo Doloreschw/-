@@ -81,6 +81,10 @@ python3 build.py               # 把 src/ 合并成根目录的单文件 index.h
 └── docs/screenshots/
 ```
 
+## 部署到不接受 HTML 附件的平台
+
+`python3 build_min.py` 会生成 `dist/parts/`：页面结构放进了 `shell.js`，所以需要上传的只有 `shell.js`、`styles.css`、`data.js`、`market.js`、`app.js` 五个文件；入口 `index-min.html` 只有一行，可以直接粘贴。
+
 ## 开启 GitHub Pages
 
 仓库 Settings → Pages → Build and deployment，Source 选 **Deploy from a branch**，Branch 选 `main`、目录 `/ (root)`，保存后约 1 分钟即可访问。
