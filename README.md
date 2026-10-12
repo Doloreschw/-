@@ -4,8 +4,8 @@
 
 给小红书中小商家的选题工具：输入一件商品，先看它所在品类的市场规模、竞品品牌和细分价格带，再把它拆成「具体的人 × 具体的瞬间」，在星图上找到**需求高、还没被写烂**的场景，排成一周的笔记策划。
 
-**在线体验：** `https://doloreschw.github.io/-/`（开启 GitHub Pages 后可用，见下文）
-**REDcowork 作品链接：** _待补充_
+**作品链接（REDcowork）：** https://redcowork.xiaohongshu.com/f/r9w6xeuhjg
+**GitHub Pages：** `https://doloreschw.github.io/-/`（开启 Pages 后可用，见下文）
 
 ![品类档案](docs/screenshots/02-market.png)
 
@@ -80,6 +80,10 @@ python3 build.py               # 把 src/ 合并成根目录的单文件 index.h
 │   └── app.js              # 交互逻辑
 └── docs/screenshots/
 ```
+
+## 关于 REDcowork 线上版本
+
+线上作品在本仓库代码的基础上，又在 REDcowork 中继续迭代（细分场景维度、话术拆解库、套公式写文案、合规检查、未收录品类的相近品类参考等），迭代指令见 [`docs/redcowork-prompts.md`](docs/redcowork-prompts.md)。因此线上版本的功能会比本仓库的代码更多。
 
 ## 部署到不接受 HTML 附件的平台
 
